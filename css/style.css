@@ -1,0 +1,47 @@
+.eue{
+    background-color: yellow;
+}
+.euee{
+    background-color: green;
+}
+.btn-primary{
+    background-color: green;
+    border-color: green;
+}
+.esp{
+    margin: 2px;
+    margin-left: 16px;
+    font-weight: lighter;
+}
+.opal{
+    background-color: black;
+    opacity: 0.5;
+    margin: 30px;
+}
+.pal{
+    margin: 80px;
+    overflow: hidden;
+}
+
+.borda{
+    border: 5px solid cornflowerblue;
+}
+.borda2{
+    border: 5px solid yellow;
+}
+.borda-r{
+    border: 5px solid yellow;
+    border-radius: 5%;
+}
+.margin-sm{
+    margin: 15px;
+}
+.margin-lg{
+    margin: 30px;
+}
+.padding-sm{
+    padding: 10px;
+}
+.padding-lg{
+    padding: 30px;
+}
