@@ -1,18 +1,23 @@
 .eue{
-    background-color: yellow;
+    background-color: #ebeb00;
 }
+
 .euee{
-    background-color: green;
+    background-color: #4CAF50;
 }
-.btn-primary{
-    background-color: green;
-    border-color: green;
+
+.btn-cl{
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: #f1f1f1;
 }
+
 .esp{
     margin: 2px;
     margin-left: 16px;
     font-weight: lighter;
 }
+
 .opal{
     background-color: black;
     opacity: 0.5;
@@ -27,18 +32,26 @@
     border: 5px solid cornflowerblue;
 }
 .borda2{
-    border: 5px solid yellow;
+    border: 5px solid #ebeb00;
 }
 .borda-r{
-    border: 5px solid yellow;
-    border-radius: 5%;
+    border: 5px solid #ebeb00;
+    border-top-right-radius: 3%;
+    border-top-left-radius: 3%;
 }
+.borda-r2{
+    border: 5px solid #ebeb00;
+    border-bottom-right-radius: 3%;
+    border-bottom-left-radius: 3%;
+}
+
 .margin-sm{
     margin: 15px;
 }
 .margin-lg{
     margin: 30px;
 }
+
 .padding-sm{
     padding: 10px;
 }
