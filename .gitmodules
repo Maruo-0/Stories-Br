@@ -1,0 +1,6 @@
+[submodule "STor"]
+	path = STor
+	url = https://github.com/Maruo-0/Stores-BR-Website.git
+[submodule "Stores-BR-Website"]
+	path = Stores-BR-Website
+	url = https://github.com/Maruo-0/Stores-BR-Website.git

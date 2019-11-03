@@ -1,6 +1,36 @@
 .eue{
     background-color: #ebeb00;
 }
+#logo {
+    padding: 1px;
+    display: flex;
+    justify-content: left;  
+
+    background: #DCDCDC;    
+    position: relative;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(14, 13, 13);
+    font-size: 2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, #000, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+
+    100% {
+        background-position: 500%;
+    }
+}
 
 .euee{
     background-color: #4CAF50;
@@ -57,4 +87,29 @@
 }
 .padding-lg{
     padding: 30px;
+}
+
+
+
+.menus {
+    float: right;
+    line-height: 100px;
+       font-family: 'Montserrat', sans-serif;
+       height: 100px;
+
+  
+    padding: 0 20px;
+    color: #fff;
+}
+
+.menus a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 10px;
+    transition: 0.4s;
+}
+
+.menus a:hover{
+    color: #48dbfb;
 }
