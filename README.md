@@ -1,3 +1,3 @@
-# Stores-BR-Website
+# Stories-BR-Website
 
 Site educativo que visa ensinar a hitória do Brasil a todos.
