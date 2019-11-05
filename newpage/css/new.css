@@ -1,0 +1,254 @@
+header {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+
+}
+
+
+.navbar {
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    font-weight: 300; 
+    color: #262626;
+}
+
+
+.nav-item {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link:hover,
+.navbar-light .navbar-nav .nav-item .active .nav-link {
+    background: #262626;
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link {
+    color: #262626;
+    padding: 5px 15px;
+}
+.quemsomos{
+    background: #d1cfcc;
+    padding-bottom: 40px;
+}
+.banner {
+    position: relative;
+    background: url(/img/ship.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    padding: 250px 0 200px;
+}
+
+.banner h1 {
+    margin: 0;
+    padding-bottom:260px;
+    font-size: 2.8em;
+    font-weight: 1000;
+    color: #191b8f;
+}
+
+.banner h2{
+    color:#fff;
+}
+.banner p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    font-weight: 1000;
+    color: #fff;
+}
+
+.btnD1 {
+
+    display: inline-block;
+    margin: 1em 0 0;
+    background: rgb(9, 156, 58);
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    font-weight: 800;
+    padding: 20px 10px;
+
+}
+
+.btnD1:hover {
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+    color: #ffff;
+    border: 2px solid #7f7f7f;
+    border-radius: 0;
+    outline: none;
+}
+
+
+
+.mg {
+    width: 140px;
+}
+#saibamais{
+    background: #333;
+
+}
+.container2 {
+    width: 1000px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container2 .card {
+    position: relative;
+}
+
+.container2 .card .face {
+    width: 300px;
+    height: 200px;
+    transition: 0.5s;
+}
+
+.container2 .card .face.face1 {
+    position: relative;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container2 .card :hover.face.face1 {
+    background: #218c74;
+    transform: translateY(0);
+}
+
+.container2 .card .face.face2 {
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-100px);
+
+}
+
+.container2 .card:hover .face.face2 {
+    transform: translateY(-0);
+}
+
+.container2 .card .face.face2 .content p {
+    margin: 0;
+    padding: 0;
+}
+
+.container2 .card .face.face2 .content a {
+
+    margin: 15px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container2 .card .face.face2 .content a:hover {
+    background: #218c74;
+    color: #fff;
+
+}
+
+.container2 .card .face.face1 .content {
+
+    opacity: 0.2;
+    transition: 0.5s;
+
+
+}
+
+.container2 .card:hover .face.face1 .content {
+    opacity: 1;
+}
+
+.container2 .card:hover .face.face1 .content img {
+    max-width: 100px;
+}
+
+.container2 .card:hover .face.face1 .content h3 {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+footer
+{
+    background:rgb(145, 139, 116);
+    height: 120px;
+    width: 100%;
+}
+   
+
+#logo {
+
+    padding: 0;
+    display: flex;
+    justify-content: left;
+    background: #DCDCDC;
+    position: relative;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(14, 13, 13);
+    font-size: 3em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, #000, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+
+#logo p {
+    text-decoration: none;
+}
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+
+    100% {
+        background-position: 500%;
+    }
+}
+
+
+@media(max-width:768) {
+    .banner {
+        padding: 200px 0;
+    }
+
+    .banner h1 {
+        font-size: 1.8em;
+    }
+
+}
