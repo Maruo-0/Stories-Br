@@ -1,6 +1,32 @@
 .eue{
     background-color: #ebeb00;
 }
+
+.navbar {
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    font-weight: 300; 
+    color: #262626;
+}
+
+
+.nav-item {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link:hover,
+.navbar-light .navbar-nav .nav-item .active .nav-link {
+    background: #2886d3;
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link {
+    color: #262626;
+    padding: 15px 15px;
+}
 #logo {
     padding: 1px;
     display: flex;

@@ -37,7 +37,7 @@ header {
 }
 .banner {
     position: relative;
-    background: url(/img/ship.jpg);
+    background: url(/newpage/img/ship.jpg);
     min-height: 100vh;
     background-size: cover;
     background-position: center;
@@ -45,7 +45,7 @@ header {
 }
 
 .banner h1 {
-    margin: 0;
+    margin: 20px;
     padding-bottom:260px;
     font-size: 2.8em;
     font-weight: 1000;
