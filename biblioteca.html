@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">    
 </head>
-<body>
-    <nav id="nav" class="navbar sticky-top navbar-expand-md navbar-dark bg-ligh">
+<body class="bg-img">
+    <nav id="nav" class="navbar sticky-top  navbar-dark bg-ligh">
         <button class="btn" id="sideMenu" type="button" onclick="openNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,9 +27,19 @@
     <div id="overl" class="sidenavb" onclick="closeNav()"></div>
 
     <div id="main">
-        <div class="row margin-lg">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
+        <div class="row padding-xl">
+            <div class="col-sm-4">
+                <a href="conteudo.html" target="_blank">
+                <div class="card mb-5">
+                    <img src="src/caravela.jpg" class="card-img-top" width="300px">
+                    <div class="card-body">
+                        <h5 class="card-title">Descobrimento Do Brasil</h5>
+                        <p class="card-text">Em 22 de abril de 1500, a esquadra comandada por Pedro Álvares Cabral chegou às terras do atual Sul da Bahia.</p>
+                        <p class="card-text"><small class="text-muted">13/11/2019 às 15:50</small></p>
+                    </div>
+                </div></a>
+            </div>
+            <div class="col-sm-4">
                 <div class="card mb-5">
                     <img src="src/bandeira.png" class="card-img-top" width="300px">
                     <div class="card-body">
@@ -39,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="card mb-5">
                     <img src="src/bandeira.png" class="card-img-top" width="300px">
                     <div class="card-body">
@@ -49,10 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
-
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
+            <div class="col-sm-4">
                 <div class="card mb-5">
                     <img src="src/bandeira.png" class="card-img-top" width="300px">
                     <div class="card-body">
@@ -62,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="card mb-5">
                     <img src="src/bandeira.png" class="card-img-top" width="300px">
                     <div class="card-body">
@@ -72,7 +79,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-sm-4">
+                <div class="card mb-5">
+                    <img src="src/bandeira.png" class="card-img-top" width="300px">
+                    <div class="card-body">
+                        <h5 class="card-title">Titulo</h5>
+                        <p class="card-text">Descrição</p>
+                        <p class="card-text"><small class="text-muted">Data de postagem</small></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
