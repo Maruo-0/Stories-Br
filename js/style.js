@@ -13,3 +13,11 @@ function closeNav() {
     document.getElementById("overl").style.width = "0%";
     document.getElementById("logo").style.width = "";
 }
+function favoritar() {
+    favorito = document.querySelector('#favorito');
+    if(this.favorito.innerText === 'favorite'){
+        this.favorito.innerText = 'favorite_border';
+    }else{
+    this.favorito.innerText = 'favorite';
+    }
+}
