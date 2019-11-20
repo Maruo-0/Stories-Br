@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <title>Stores BR</title>
     <!--CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   
-    <link rel="stylesheet" href="css/style.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="eua">
     <nav id="nav" class="navbar sticky-top  navbar-dark bg-ligh">
         <button class="btn" id="sideMenu" type="button" onclick="openNav()">
@@ -23,7 +25,8 @@
         <a href="biblioteca.html">Biblioteca</a>
         <a href="#">Favoritos</a>
         <a href="#">Histórico</a>
-        <a href="#"></a><br><br><br><br><br><br><br><br><br><hr>
+        <a href="#"></a><br><br><br><br><br><br><br><br><br>
+        <hr>
         <a href="#">Compartilhe</a>
     </div>
     <div id="overl" class="sidenavb" onclick="closeNav()"></div>
@@ -33,14 +36,15 @@
         <div class="row cont-wrap">
             <div class="col-md-3 cont-in">
                 <div class="cont-img">
-                        <img src="src/caravela.jpg" class="cont-i-img">
+                    <img src="src/caravela.jpg" class="cont-i-img">
                 </div><br>
                 <div class="row cont-row">
                     <a href="Descobrimento do Brasil em andamento.pdf" target="_blank"><button class="btn btn-clsm3">Leve o PDF</button></a>
-                    <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">favorite_border</i><!--favorite-->
+                    <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">favorite_border</i>
+                    <!--favorite-->
                 </div>
             </div>
-            <div class="col-md-9 cont-card">
+            <div class="col-md-9 cont-card" id="text-input">
                 <h3>Descobrimento do Brasil</h3>
                 O Descobrimento do Brasil ocorreu em 22 de abril de 1500, quando a esquadra
                 comandada por Pedro Álvares Cabral chegou às terras do atual Sul da Bahia.
@@ -71,7 +75,7 @@
                 A viagem de Cabral inseriu-se, então, nas diversas expedições de conquista da
                 costa africana e dos territórios asiáticos ricos em especiarias. A esquadra que
                 saiu de Lisboa em 9 de Março de 1500 era composta por 13 embarcações (10
-                naus e três caravelas) e cerca de 1500 homens. O objetivo da missão de 
+                naus e três caravelas) e cerca de 1500 homens. O objetivo da missão de
                 Cabral era utilizar as riquezas que levava para realizar alianças e lucrativos
                 negócios em Calicute, na Índia.
                 <h3>Carta de Caminha e a chegada dos portugueses</h3>
@@ -121,13 +125,26 @@
                 Carta de Pero Vaz de Caminha
                 Saiba o que é a Carta de Pero Vaz de Caminha e que importância ela tem
                 para a compressão da história do Brasil.
-                
             </div>
         </div>
     </section>
 
-    
-    
+    <button class="btn btn-light bn-lg btn-block" type="button" value="Play" id="play">Play responsiveVoice api</button>
+
+    <!--Texto para voz-->
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=QXQuGGcR"></script>
+
+    <script>
+        const say = document.querySelector('#text-input');
+        console.log(say.textContent);
+        const voice = 'Brazilian Portuguese Female';
+        const play = document.querySelector('#play');
+        play.addEventListener('click', e => {
+            setTimeout(responsiveVoice.speak(say.textContent, voice), 200);
+        });
+    </script>
+    <!--Texto para voz-->
+
 
 
     <script src="js/style.js"></script>
@@ -136,4 +153,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+
 </html>
