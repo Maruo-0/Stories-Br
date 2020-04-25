@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.cartao{    
+    width: 35%;
+    border: none;
+    border-radius: 1.2%;
+    margin-top: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: hidden;
+    float: left;
+}
+.title{
+    padding: 10px;
+    background-color: #263e73;
+    width: 100%;
+    color: #fff;
+}
+.body{
+    padding-top: 10px;
+    background-color: #e9dc2a;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+    font-size: 18px;
+    color: #263e73;
+}
+
+.cartao-jogos{
+    background-color: #e9dc2a;    
+    width: 95%;
+    border: solid 3px #263e73;
+    border-radius: 1.2%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    overflow: hidden;
+    float: left;
+}
+.jogos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.jogo{
+    background-color: #263e73;
+    color: #fff;
+    margin: 1.65%;
+    width: 30%;
+    border: none;
+    border-radius: 1.2%;
+    overflow: hidden;
+}
+
+
+
+
+.cart{
+    background-color: #263e73;
+    color: #fff;
+    margin: 1.65%;
+    padding: 5px;
+    width: 30%;
+    border: none;
+    border-radius: 1.2%;
+    overflow: hidden;
+    display: grid;
+}
+.cart .text{
+    display: none;
+    font-size: 20px;
+}
+.cart:hover{
+    background-color: #4160a3;
+}
+
+
+
+@media screen and (max-width: 425px){
+    .cartao{
+        width: 90%;
+    }
+    .jogo{
+        margin: 5%;
+        width: 90%;  
+    }
+
+
+
+    .cart{
+        margin: 5%;
+        width: 90%;
+        height: 260px;
+    }
+    .cart .text{
+        font-size: 18px;
+    }    
+}
+
+.bg-play{
+    background-image: url(../src/floresta.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}

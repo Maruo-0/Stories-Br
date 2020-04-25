@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- code by webdevtrick (https://webdevtrick.com) -->
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="santosDumont.css">
+</head>
+
+<body>
+    <div class="tema">
+        <h3>Escolha o tema</h3>
+        <ul>
+            <li>
+                <a href="../descobrimento.html">Descobrimento do Brasil</a>
+            </li>
+
+            <li>
+                <a href="../cabral/cabral.html">Pedro Alvares Cabral</a>
+            </li>
+            <li>
+                <a href="../DPedroI/D_Pedro.html">Dom Pedro I</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="grid">
+        <div id="quiz">
+            <h1>Quiz sobre Santos Dumont</h1>
+            <img src="img06.svg" alt="Santos Dumont">
+            <hr style="margin-bottom: 20px">
+
+            <p id="question"></p>
+
+            <div class="buttons">
+                <button id="btn0"><span id="choice0"></span></button>
+                <button id="btn1"><span id="choice1"></span></button>
+                <button id="btn2"><span id="choice2"></span></button>
+                <button id="btn3"><span id="choice3"></span></button>
+            </div>
+
+            <hr style="margin-top: 50px">
+            <footer>
+                <p id="progress">Question x of y</p>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="question.js"></script>
+
+</body>
+
+</html>

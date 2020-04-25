@@ -1,0 +1,25 @@
+Header add Access-Control-Allow-Origin "*"
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+
+RewriteRule ^login login.php [NC,L]
+RewriteRule ^inscricao inscricao.php [NC,L]
+RewriteRule ^quemsomos quemsomos.php [NC,L]
+
+
+RewriteRule ^livros biblioteca/livros.php [NC,L]
+RewriteRule ^livro/([0-9]+) biblioteca/livro.php?id=$1 [NC,L]
+
+
+RewriteRule ^admin/edicao admin/edicao.php [NC,L]
+
+RewriteRule ^perfil usuario/perfil.php [NC,L]
+
+RewriteRule ^playground/atividades playground/index.php [NC,L]
+RewriteRule ^playground/jogo-da-memoria playground/jogomemoria-js/index.html [NC,L]

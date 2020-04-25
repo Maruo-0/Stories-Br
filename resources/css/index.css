@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+ 
+.navbar-nav a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+
+/*inserir imagem no carrossel e tamanho*/
+.overlay1 {
+    background-image: url(/StoriesBr/resources/src/cd.jpg);
+    background-repeat: no-repeat;
+    height: 100vh;
+    height: 720px;
+    position: relative;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.overlay2 {
+    background-image: url(/StoriesBr/resources/src/id.png);
+    background-repeat: no-repeat;
+    height: 100vh;
+    height: 720px;
+    position: relative;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.overlay3 {
+    background-image: url(/StoriesBr/resources/src/hj.jpg);
+    background-repeat: no-repeat;
+    height: 100vh;
+    height: 720px;
+    position: relative;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+/*__________________________________________________________*/
+/*overlay inserindo camada de filtro escuro no carrossel  */
+.overlay1:before,
+.overlay2:before,
+.overlay3:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/*__________________________________________________________*/
+/*estilização de texto no carrossel  */
+.carousel-caption {
+    bottom: 150px;
+}
+
+.carousel-caption h2 {
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    width: 60%;
+    margin: auto;
+    font-size: 20px;
+    font-family: poppins;
+}
+
+.carousel-caption a {
+    text-transform: uppercase;
+    background: #262626;
+    padding: 10px 30px;
+    display: inline-block;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.carousel-caption a:hover {
+    text-decoration: none;
+}
+/*_______________________________________________________________________________________________*
+/*estilização da letra do logo*/
+.navbar-brand {
+    font-family: arial;
+    font-size: 35px;
+    font-weight: bold;
+}
+/*_______________________________________________________________________________________________*/
+/*estilização para manter a barra de menu sempre no top e sempre a frente de tudo*/
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.ab {
+    position: relative;
+}
+
+.descricao {
+    min-height: 550px;
+    align-items: center;
+    text-align: center;
+
+}
+/*_______________________________________________________________________________________________*/
+
+/* estilização dos cards de apresentação dos destaques*/
+
+.cont-card {
+    position: relative;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+
+}
+
+.cont-card .card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 100px 0;
+}
+
+.cont-card .card:nth-child(odd) {
+    flex-direction: row;
+}
+
+.cont-card .card:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.cont-card .card .imgBx {
+    position: relative;
+    left: 25px;
+    width: 500px;
+    height: 400px;
+    z-index: 1;
+}
+
+.concont-card tainer .card:nth-child(even) .imgBx {
+    left: -25px;
+
+}
+
+.cont-card .card .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.cont-card .card .contentBx {
+    position: relative;
+    right: 25px;
+    width: 500px;
+    height: 400px;
+    background: #02437fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 60px 20px 100px;
+}
+
+.cont-card .card:nth-child(even) .contentBx {
+    right: -55px;
+    padding: 20px 100px 20px 60px;
+
+}
+
+.cont-card .card .contentBx h2 {
+    font-size: 30px;
+    color: #fff;
+}
+
+.cont-card .card .contentBx p {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.cont-card .card .contentBx a {
+
+    display: inline-block;
+    margin-top: 15px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid#fff;
+
+}
+
+.cont-card .card .contentBx:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    background: #02437fff;
+    z-index: -1;
+}
+/*_______________________________________________________________________________________________*/
+
+
+/*listas de opções ao mover o mouse com surgimento de imagens  */
+.lista-img {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+    font-family: consolas;
+    overflow: hidden;
+}
+
+.lista-img .ul-img {
+    margin: 0 25%;
+    padding: 0;
+    display: flex;
+
+}
+
+.lista-img .ul-img .li-img {
+    position: relative;
+    list-style: none;
+}
+
+.lista-img .ul-img .li-img .a-img {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin: 0 100px;
+    white-space: nowrap;
+    padding: 5px 20px;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+/* fundo preto ao posionar o mouse sobre a letra */
+.lista-img .ul-img .li-img:hover .a-img {
+    background: #000;
+    color: #fff;
+
+}
+
+.lista-img .ul-img .li-img img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150px);
+    visibility: hidden;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+/* visualizar imagens ao mover mouse nos links*/
+.lista-img .ul-img .li-img:hover .l-img {
+
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-220px);
+}
+
+
+/* inverter posições das listas*/
+.lista-img .ul-img .li-img:nth-child(even) .l-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50px);
+    visibility: hidden;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.lista-img .ul-img .li-img:nth-child(even):hover .l-img {
+
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(50px);
+}
+/*_______________________________________________________________________________________________*/
+
+/* estlização da imagem de fundo e texto  da section quem somos */
+.fundo {
+    align-items: center;
+    justify-content: center;
+    background-image: url(/StoriesBr/resources/src/bnd.png);
+    background-repeat: no-repeat;
+    min-height: 450px;
+
+}
+
+.sobre {
+    text-align: center;
+    padding-top: 150px;
+    position: relative;   
+  max-width: 500px;
+    height: 400px;
+    background: rgb(7, 92, 40);
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px 20px 20px;
+}
+/*________________________________________________________________________________________*/
+/* estilização do rodapé */
+footer {
+    height: 100%;
+    background: #02437fff;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 10px;
+}
+.list {
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+}
+
+/*estilização dos butons de contato rede social_*/
+.social-buttons a {
+
+    display: inline-flex;
+    text-decoration: none;
+    font-size: 18px;
+    width: 60px;
+    height: 30px;
+    color: #fff;
+    justify-content: center;
+    align-items: left;
+    position: relative;
+    margin: 0 8px;
+}
+
+.social-buttons a::before {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #22a6b3, #30336b);
+    border-radius: 50%;
+    z-index: -1;
+    transition: 0.1s ease-in;
+}
+
+.social-buttons a:hover::before {
+    transform: scale(0);
+}
+
+.social-buttons a i {
+    transition: 0.1s ease-in;
+}
+
+.social-buttons a:hover i {
+    background: linear-gradient(45deg, #13330b, #30336b);
+    -webkit-text-fill-color: transparent;
+    transform: scale(2.2);
+}
+
+
+footer a {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+/*_______________________________________________________________________________________*/
+
+/*estilização para responsividade tamanho max-width:1000px */
+@media(max-width:1000px) {
+    .cont-card .card {
+        flex-direction: column;
+        max-width: 350px;
+        margin: 50px;
+    }
+
+    .cont-card .card .contentBx {
+        width: 100%;
+        height: auto;
+        right: 0;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .cont-card .card .contentBx:before {
+        top: 0;
+        bottom: 0;
+    }
+
+    .cont-card .card .imgBx {
+        width: 100%;
+        height: 250px;
+        left: 0;
+    }
+
+    .cont-card .card:nth-child(even) .imgBx {
+        left: 0;
+    }
+
+    .cont-card .card:nth-child(even) .contentBx {
+        right: 0;
+        padding: 30px;
+    }
+}
+/*__________________________________________________________*/
+
+/*estilização para responsividade tamanho max-width:768px */
+@media(max-width:768px) {
+
+    .lista-img {
+        display: none;
+    }
+
+    .carousel-caption h2 {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 45px;
+        font-weight: bold;
+    }
+
+    .carousel-caption p {
+        width: 100%;
+        margin: 0;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+#quemsomos{
+    margin-bottom: 40px;
+}
+
+.card{
+    border:0px;
+    background-color: transparent;
+}
