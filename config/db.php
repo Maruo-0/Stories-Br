@@ -1,9 +1,4 @@
 <?php
-/*
-define('DB_HOST', 'localhost');
-define('DB_USER', 'id11678826_root');
-define('DB_PASS', '123456789');
-define('DB_NAME', 'id11678826_stories');*/
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
