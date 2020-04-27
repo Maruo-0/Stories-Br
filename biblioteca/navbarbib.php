@@ -1,7 +1,7 @@
 <?php session_start();
     require('../config/db.php');
 
-    if(isset($_POST['delete'])){
+    if(isset($_POST['delete']) && $_SESSION['isadmin'] == 2 || $_SESSION['isadmin'] === 1){
         //get form data
         $delete_id = mysqli_real_escape_string($conn, $_POST['delete_id']);
 

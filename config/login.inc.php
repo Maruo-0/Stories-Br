@@ -1,11 +1,5 @@
-<?php //provisório //login direto do registro
+<?php 
 if (session_status()!==PHP_SESSION_ACTIVE)session_start();
-
-if (isset($_SESSION['POST'])){
-    $_POST = $_SESSION['POST'];
-    login();
-    unset($_SESSION['POST']);
-}
 
 if(isset($_GET['sair']) && $_GET['sair'] === 'true'){
     sair();
@@ -44,17 +38,22 @@ function login(){
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)) {
                 $checaSenha = password_verify($senha, $row['senha']);
+                $checaautent = $row['autenticado'];
                 if ($checaSenha == false) {
                     header("Location: ../login.php?error=senhaerrada");
                     exit();                    
                 }
-                elseif ($checaSenha == true) {
+                elseif ($checaSenha == true && $checaautent == 1) {
                     session_start();
                     $_SESSION['userid'] = $row['id'];
                     $_SESSION['useremail'] = $row['email'];
                     $_SESSION['isadmin'] = $row['admin'];
 
                     header("Location: ../usuario/perfil.php?login=sucedido");
+                    exit();                    
+                }
+                elseif($checaSenha == true && $checaautent != 1){
+                    header("Location: ../login.php?error=contanaoautenticada");
                     exit();                    
                 }
                 else {

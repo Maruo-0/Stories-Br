@@ -9,6 +9,7 @@ if (isset($_POST['registrar'])) {
     $senha = $_POST['senha'];
     $senhaRep = $_POST['senha-rep'];
     $admin = 0;
+    $autenticado = 0;
 
     if (empty($nome) || empty($email) || empty($senha) || empty($senhaRep)) {
         header("Location: ../inscricao.php?error=camposvazios&nome=".$nome."&email=".$email);
@@ -39,7 +40,7 @@ if (isset($_POST['registrar'])) {
                 exit();        
             }
             else {
-                $sql = "insert into usuarios (nome, email, senha, admin) values (?, ?, ?, ?)";
+                $sql = "insert into usuarios (nome, email, senha, admin, autenticado) values (?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
                     header("Location: ../inscricao.php?error=sqlerror");
@@ -48,17 +49,19 @@ if (isset($_POST['registrar'])) {
                 else {
                     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
 
-                    mysqli_stmt_bind_param($stmt, "ssss", $nome, $email, $hashedSenha, $admin);
+                    mysqli_stmt_bind_param($stmt, "sssss", $nome, $email, $hashedSenha, $admin, $autenticado);
                     mysqli_stmt_execute($stmt);
 
-
+                    
                     if (session_status()!==PHP_SESSION_ACTIVE){
                         session_start();
-                        $_SESSION['POST'] = $_POST;
+                        $_SESSION['POST'] = $_POST;///////direcionar pra pagina 
                     }
 
 
-                    header("Location: login.inc.php");
+                    //header("Location: login.inc.php");
+                    //header("Location: ../inscricao");//confirme através do seu email
+                    header("Location: email.inc.php?processo=autenticacao");
                     exit();
                 }
             }

@@ -9,6 +9,7 @@
         header("Location: /StoriesBr/");
         exit();                    
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +31,25 @@
 </nav>
     
 <form action="config/inscricao.inc.php" method="post">
+
+    <?php
+        if (isset($_SESSION['POST'])){
+            $_POST = $_SESSION['POST'];
+            $email = $_POST['email'];
+            unset($_SESSION['POST']);  
+            echo '<div class="container" style="margin-top:30px">
+            <center>
+            <h1>Um email de ativação foi enviado para '.$email.'</h1>
+            <h3>Para usar sua conta no StoriesBr, localize o e-mail de ativação</h3>
+            <h3>na sua caixa de entrada e use o link de autenticação.</h3>
+
+            <footer class="container signin fixed-bottom">
+                <p>Já tem uma conta? <a href="login">Faça o Login</a>.</p>
+            </footer>';
+            exit();
+        }
+    ?>
+
     <div class="container">
         <h1>Crie sua conta</h1>
         <p>Preencha os campos para se registrar.</p>
