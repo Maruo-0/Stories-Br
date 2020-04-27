@@ -9,7 +9,7 @@ define("MAIL", [
     "host" => "smtp.gmail.com",
     "port" => "587",
     "user" => "zeronsama5@gmail.com",
-    "passwd" => "",
+    "passwd" => "159+357456",
     "from_name" => "marcelo",
     "from_email" => "zeronsama5@gmail.com",
 ]);
@@ -27,7 +27,7 @@ function enviar(string $autsenha){
     elseif($_GET["processo"] === 'recuperar'){
         $endereço = $_POST["email"];
         $assunto = 'Faça sua nova senha aqui';
-        $corpo = '<h2>link de nova senha</h2>';
+        $corpo = '<h2>link de nova senha</h2> <a href="http://localhost/StoriesBr/config/recuperar.inc.php?rec='.$autsenha.'">trocar senha</a>';
         $corpoAlt = 'Link de nova senha';
     }
     
@@ -40,6 +40,7 @@ function enviar(string $autsenha){
     $mail->SMTPAuth   = true;   // Enable SMTP authentication
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->SMTPSecure = 'tls';
+    $mail->CharSet = 'UTF-8';
     $mail->Username   = MAIL["user"];     // SMTP username
     $mail->Password   = MAIL["passwd"];  // SMTP password
 
@@ -68,7 +69,9 @@ $senha;
 function criarLinkAutent(){
     require 'db.php';
     global $senha;
-    $_POST = $_SESSION['POST'];
+    if(isset($_GET["processo"]) && !isset($_POST['recuperar'])){
+        $_POST = $_SESSION['POST'];
+    }
     $email = $_POST['email'];
 
     $sql = "select * from usuarios where email=?;";
@@ -95,8 +98,12 @@ if(isset($_GET["processo"]) && $_GET["processo"] === 'autenticacao'){
     exit();
 }
 elseif(isset($_GET["processo"]) && $_GET["processo"] === 'recuperar'){
-    enviar();
-    header("Location: ../inscricao");//confirme através do seu email
+    if (session_status()!==PHP_SESSION_ACTIVE)session_start();
+    $_SESSION['POST'] = $_POST;
+    criarLinkAutent();
+    $autsenha =  $senha['senha'];
+    enviar($autsenha);
+    header("Location: ../login?senha=esqueceu");//confirme através do seu email
     exit();
 }
 
