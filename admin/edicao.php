@@ -7,7 +7,7 @@
     require('../config/db.php');
 
     //check for submit
-    if(isset($_POST['submit'])  && !empty($_FILES["arquivo"]["name"])){
+    if(isset($_POST['submit'])  && !empty($_FILES["arquivo"]["name"]) && !isset($_GET['ed'])){
 
         $dir_img = '../resources/src/';
         $dir_pdf = '../resources/pdf/';
@@ -102,7 +102,6 @@
             $result = mysqli_query($conn, $query);
             $historia = mysqli_fetch_assoc($result);
             mysqli_free_result($result);
-            mysqli_close($conn);
             $_FILES['arquivo']['name'][1] === $historia['id'];
         }
 
@@ -117,7 +116,7 @@
         $query = "update `historias` set `titulo`='$titulo',  `img_capa`='$img', `desc`='$desc', `texto`='$texto', `textoIngles`='$textoIn', `pdf`='$pdf' where `id` = {$updated_id}";
 
         if(empty($titulo) || empty($desc) || empty($texto)){
-            header("Location: edicao.php?error=camposvazios");
+            //header("Location: edicao.php?error=camposvazios");
             exit();
         }
         else{
@@ -144,9 +143,8 @@
         //var_dump($posts);
 
         mysqli_free_result($result);
-
-        mysqli_close($conn);
     }
+    mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -193,7 +191,7 @@
             elseif(isset($_GET['id'])){
                 echo '<h1>Editando - '.$historia['titulo'] .'</h1>
 
-                    <form method="POST" action="edicao.php?ed=true?id='.$historia['id'].'" enctype="multipart/form-data" style="background-color: #95a5a6; padding: 10px;">
+                    <form method="POST" action="edicao.php?ed=true&id='.$historia['id'].'" enctype="multipart/form-data" style="background-color: #95a5a6; padding: 10px;">
 
                     <input type="file" name="arquivo[]">
                     <label>Titulo</label>
@@ -227,7 +225,11 @@
     <script src='https://cdn.tiny.cloud/1/m5k5p2iwalfnp6bt442au68lhsqaurzbdaqlt6a3pgkf7f38/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
     <script>
     tinymce.init({
-        selector: '#titulo, #desc, #texto, #textoIn'
+        selector: '#titulo, #desc, #texto, #textoIn',
+        menu: {Opções: {title: 'Opções', items: 'code searchreplace wordcount'}},
+        menubar: 'Opções file',
+        toolbar: 'undo redo | styleselect',
+        plugins: 'wordcount code searchreplace print preview'
     });
 
     const salvar = document.querySelector('#salvar');
