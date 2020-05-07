@@ -7,7 +7,7 @@
     require('../config/db.php');
 
     //check for submit
-    if(isset($_POST['submit'])  && !empty($_FILES["arquivo"]["name"]) && !isset($_GET['ed'])){
+    if(isset($_POST['submit'])  && !empty($_FILES["arquivo"]["name"])){
 
         $dir_img = '../resources/src/';
         $dir_pdf = '../resources/pdf/';
@@ -116,7 +116,7 @@
         $query = "update `historias` set `titulo`='$titulo',  `img_capa`='$img', `desc`='$desc', `texto`='$texto', `textoIngles`='$textoIn', `pdf`='$pdf' where `id` = {$updated_id}";
 
         if(empty($titulo) || empty($desc) || empty($texto)){
-            //header("Location: edicao.php?error=camposvazios");
+            header("Location: edicao.php?error=camposvazios");
             exit();
         }
         else{
