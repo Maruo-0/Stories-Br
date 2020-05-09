@@ -1,33 +1,31 @@
+let navOpen = false
+const sideMenu = document.getElementById("sideMenu")
+const mySidenav = document.getElementById("mySidenav")
+const overl = document.getElementById("overl")
+const logo = document.getElementById("logo")
+const search_title = document.getElementById("search_title")
+const search = document.getElementById("search")
 function openNav() {
-    document.getElementById("sideMenu").style.marginLeft = "150px";
-    document.getElementById("mySidenav").style.width = "220px";
-    document.getElementById("overl").style.width = "100%";
+    sideMenu.style.marginLeft = "150px";
+    mySidenav.style.width = "220px";
+    overl.style.width = "100%";
     if(document.getElementById('nav').offsetWidth < "460"){
-        document.getElementById("logo").style.display = "none";
-        document.getElementById("search_title").style.display = "none";
-        document.getElementById("search").style.display = "none";
+        logo.style.display = "none";
+        search_title.style.display = "none";
+        search.style.display = "none";
     }
+    if(navOpen === false)navOpen = true
+    else closeNav()
 }
 function closeNav() {
-    document.getElementById("sideMenu").style.marginLeft = "0";
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("overl").style.width = "0%";
-    document.getElementById("logo").style.display = "";
-    document.getElementById("search_title").style.display = "block";
-    document.getElementById("search").style.display = "block";
+    sideMenu.style.marginLeft = "0";
+    mySidenav.style.width = "0";
+    overl.style.width = "0%";
+    logo.style.display = "";
+    search_title.style.display = "block";
+    search.style.display = "block";
+    navOpen = false
 }
-const side = document.querySelector('#sideMenu');
-side.addEventListener('click touchstart', e => {
-    document.getElementById("sideMenu").style.marginLeft = "150px";
-    document.getElementById("mySidenav").style.width = "220px";
-    document.getElementById("overl").style.width = "100%";
-    if(document.getElementById('nav').offsetWidth < "460"){
-        document.getElementById("logo").style.display = "none";
-        document.getElementById("search_title").style.display = "none";
-        document.getElementById("search").style.display = "none";
-    }
-});
-
 function favoritar() {
     favorito = document.querySelector('#favorito');
     if(this.favorito.innerText === 'favorite'){

@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-
- 
 .navbar-nav a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
@@ -9,8 +7,6 @@
     text-decoration: none;
     color: black;
 }
-
-
 /*inserir imagem no carrossel e tamanho*/
 .overlay1 {
     background-image: url(/StoriesBr/resources/src/cd.jpg);
@@ -35,25 +31,20 @@
 .overlay3 {
     background-image: url(/StoriesBr/resources/src/hj.jpg);
     background-repeat: no-repeat;
-    height: 100vh;
     height: 720px;
     position: relative;
     -webkit-background-size: cover;
     background-size: cover;
 }
-/*__________________________________________________________*/
 /*overlay inserindo camada de filtro escuro no carrossel  */
-.overlay1:before,
-.overlay2:before,
-.overlay3:before {
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    content: '';
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
 }
-/*__________________________________________________________*/
 /*estilização de texto no carrossel  */
 .carousel-caption {
     bottom: 150px;
@@ -87,14 +78,12 @@
 .carousel-caption a:hover {
     text-decoration: none;
 }
-/*_______________________________________________________________________________________________*
 /*estilização da letra do logo*/
 .navbar-brand {
     font-family: arial;
     font-size: 35px;
     font-weight: bold;
 }
-/*_______________________________________________________________________________________________*/
 /*estilização para manter a barra de menu sempre no top e sempre a frente de tudo*/
 .sticky-top {
     position: sticky;
@@ -110,10 +99,7 @@
     min-height: 550px;
     align-items: center;
     text-align: center;
-
 }
-/*_______________________________________________________________________________________________*/
-
 /* estilização dos cards de apresentação dos destaques*/
 
 .cont-card {
@@ -164,7 +150,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
+    border-radius: 3% 3% 3% 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
 }
 
 .cont-card .card .contentBx {
@@ -216,9 +203,9 @@
     right: 0;
     background: #02437fff;
     z-index: -1;
-}
-/*_______________________________________________________________________________________________*/
+    border-radius: 3% 0 3% 3%;
 
+}
 
 /*listas de opções ao mover o mouse com surgimento de imagens  */
 .lista-img {
@@ -228,6 +215,7 @@
     min-height: 60vh;
     font-family: consolas;
     overflow: hidden;
+    user-select: none;
 }
 
 .lista-img .ul-img {
@@ -253,14 +241,12 @@
     transition: 0.5s;
     z-index: 2;
 }
-
 /* fundo preto ao posionar o mouse sobre a letra */
 .lista-img .ul-img .li-img:hover .a-img {
     background: #000;
     color: #fff;
 
 }
-
 .lista-img .ul-img .li-img img {
     position: absolute;
     left: 50%;
@@ -268,8 +254,9 @@
     visibility: hidden;
     z-index: 1;
     transition: 0.5s;
-}
+    box-shadow: 4px 8px 8px 0 rgba(0, 0, 0, 0.425)
 
+}
 /* visualizar imagens ao mover mouse nos links*/
 .lista-img .ul-img .li-img:hover .l-img {
 
@@ -277,8 +264,6 @@
     opacity: 1;
     transform: translateX(-50%) translateY(-220px);
 }
-
-
 /* inverter posições das listas*/
 .lista-img .ul-img .li-img:nth-child(even) .l-img {
     position: absolute;
@@ -288,38 +273,34 @@
     z-index: 1;
     transition: 0.5s;
 }
-
 .lista-img .ul-img .li-img:nth-child(even):hover .l-img {
 
     visibility: visible;
     opacity: 1;
     transform: translateX(-50%) translateY(50px);
 }
-/*_______________________________________________________________________________________________*/
-
 /* estlização da imagem de fundo e texto  da section quem somos */
 .fundo {
-    align-items: center;
-    justify-content: center;
     background-image: url(/StoriesBr/resources/src/bnd.png);
     background-repeat: no-repeat;
-    min-height: 450px;
-
+    height: 410px;
+    margin-bottom: 30px;
 }
-
 .sobre {
     text-align: center;
-    padding-top: 150px;
     position: relative;   
-  max-width: 500px;
+    max-width: 500px;
     height: 400px;
     background: rgb(7, 92, 40);
     color: #fff;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px 20px 20px;
+    padding: 20px;
+    font-size: large;
+    border-radius: 10% 3% 0 10%;
 }
-/*________________________________________________________________________________________*/
 /* estilização do rodapé */
 footer {
     height: 100%;
@@ -335,10 +316,8 @@ footer {
     text-align: center;
     font-size: 25px;
 }
-
 /*estilização dos butons de contato rede social_*/
 .social-buttons a {
-
     display: inline-flex;
     text-decoration: none;
     font-size: 18px;
@@ -355,27 +334,19 @@ footer {
     position: relative;
     width: 60px;
     height: 60px;
-    background: linear-gradient(45deg, #22a6b3, #30336b);
-    border-radius: 50%;
     z-index: -1;
     transition: 0.1s ease-in;
 }
-
 .social-buttons a:hover::before {
     transform: scale(0);
 }
-
 .social-buttons a i {
     transition: 0.1s ease-in;
 }
-
 .social-buttons a:hover i {
-    background: linear-gradient(45deg, #13330b, #30336b);
-    -webkit-text-fill-color: transparent;
-    transform: scale(2.2);
+    color: #9feca3;
+    transform: scale(2);
 }
-
-
 footer a {
     color: #fff;
     font-size: 20px;
@@ -385,8 +356,6 @@ footer a {
     justify-content: left;
     align-items: left;
 }
-/*_______________________________________________________________________________________*/
-
 /*estilização para responsividade tamanho max-width:1000px */
 @media(max-width:1000px) {
     .cont-card .card {
@@ -401,11 +370,13 @@ footer a {
         right: 0;
         padding: 30px;
         text-align: center;
+        border-radius: 0 0 3% 3%;
     }
 
     .cont-card .card .contentBx:before {
         top: 0;
         bottom: 0;
+        border-radius: 0 0 3% 3%;
     }
 
     .cont-card .card .imgBx {
@@ -422,9 +393,11 @@ footer a {
         right: 0;
         padding: 30px;
     }
+    .cont-card .card .imgBx img {
+        border-radius: 3% 3% 0 0;
+    }
+    
 }
-/*__________________________________________________________*/
-
 /*estilização para responsividade tamanho max-width:768px */
 @media(max-width:768px) {
 
@@ -445,13 +418,24 @@ footer a {
         font-size: 18px;
         text-align: center;
     }
+    .sobre {
+        border-radius:0;
+    }
+    
 }
-
-#quemsomos{
-    margin-bottom: 40px;
+.nav-link:hover{
+    color: #9feca3;
 }
-
 .card{
     border:0px;
     background-color: transparent;
+}
+.carousel-caption{
+    user-select: none;
+}
+.destaques a{
+    text-decoration: none;
+}
+.form-control{
+    padding: 0
 }

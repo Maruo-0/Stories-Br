@@ -49,7 +49,7 @@ function login(){
                     $_SESSION['useremail'] = $row['email'];
                     $_SESSION['isadmin'] = $row['admin'];
 
-                    header("Location: ../usuario/perfil.php?login=sucedido");
+                    header("Location: ../perfil.php?login=sucedido");
                     exit();                    
                 }
                 elseif($checaSenha == true && $checaautent != 1){

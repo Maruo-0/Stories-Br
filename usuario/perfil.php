@@ -7,7 +7,7 @@
         if (isset($_SESSION['userid'])) {
            echo  '<p>Logged in</p>';
 
-           echo  '<form action="../config/login.inc.php?sair=true" method="post">
+           echo  '<form action="config/login.inc.php?sair=true" method="post">
            <button type="submit" name="logout">Logout</button>
            </form>';
 

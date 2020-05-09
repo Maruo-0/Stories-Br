@@ -66,44 +66,15 @@
     display: none;
 }
 
-.eue{
-    background-color: #e9dc2a;
-}
-
-.euee{
-    background-color: #4CAF50;
-}
-.eua{
-    background-color: #263e73;
-}
-
 .esp{
     margin: 2px;
     margin-left: 16px;
     font-weight: lighter;
 }
 
-.opal{
-    background-color: black;
-    opacity: 0.5;
-    margin: 30px;
-    padding: 0;
-}
-.pal{
-    margin: 80px;
-    overflow: hidden;
-}
-
 @media screen and (max-width: 640px){
     .esc{
         display: none;
-    }
-    .opal{
-        margin: 10px;
-    }
-    .pal{
-        overflow: visible;
-        margin: 20px;
     }
     .card-img-overlay{
         padding: 0;
@@ -114,31 +85,6 @@
     .card-text{
         font-size: 13px;
     }
-}
-#logo{
-    width: 200px;
-} 
-@media screen and (max-width: 290px){
-    #logo{
-        width: 140px;
-    }    
-}
-
-.borda{
-    border: 5px solid cornflowerblue;
-}
-.borda2{
-    border: 5px solid #ebeb00;
-}
-.borda-r{
-    border: 5px solid #ebeb00;
-    border-top-right-radius: 3%;
-    border-top-left-radius: 3%;
-}
-.borda-r2{
-    border: 5px solid #ebeb00;
-    border-bottom-right-radius: 3%;
-    border-bottom-left-radius: 3%;
 }
 
 .margin-sm{
@@ -224,8 +170,7 @@ hr{
 }
 
 .bg-img{
-    background-image: url(../src/biblioteca.jpg);
-    background-color: #585858;
+    background-color: #a1bbb1;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -257,21 +202,6 @@ hr{
 }
 .card-img-overlay:hover{
     color: #263e73;
-}
-.bg-initb{
-    padding: 30px;
-    background-image: url(../src/quadrinhos.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-}
-.banner{
-    padding: 0px;
-    margin: 0px;
-    background-image: url(../src/cristo.jpg);
-    background-size: cover;
-    background-position: top;
-    height: 350px;
 }
 
 #main a{
@@ -419,4 +349,8 @@ nav a:hover{
 }
 a .logo{
     margin-right: 8px;
+}
+
+h1, h2, h3, h4, h5{
+    overflow-y: hidden;
 }
