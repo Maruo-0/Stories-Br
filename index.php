@@ -20,50 +20,50 @@
 
 <body>
       <nav class="navbar container navbar-expand-xl navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="/StoriesBr/" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" >
-          Stories <img data-aos="zoom-in-left"src="resources/src/br.svg" alt="Stories Br">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação" data-aos="fade-down-left">
-          <span class="navbar-toggler-icon"></span>
-        </button> 
-        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="livros">Biblioteca</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Saiba mais</a>
-                </li>
-            
-        <?php 
-            if (isset($_SESSION['userid'])){            
-              echo  '<li class="nav-item"><a class="nav-link" href="perfil">Perfil</a></li>';
-                  
-              if ($_SESSION['isadmin'] === 2  || $_SESSION['isadmin'] === 1) {//checar admin
-                  if ($_SESSION['isadmin'] === 2) echo  '<li class="nav-item"><a class="nav-link" href="/StoriesBr/admin/paineladmin">Painel Admin</a></li>';
-                  echo  '<li class="nav-item active">
-                          <a class="nav-link" href="admin/edicao">Criar</a>
-                        </li>';
-                }                  
-                echo  '<form action="config/login.inc.php?sair=true" method="post">
-                        <button type="submit" name="logout" class="btn btn-danger">Sair</button>
-                      </form>';
-            }
-            else {
-              echo '<li class="nav-item">
-                      <a class="nav-link "  href="inscricao">Inscrever-se</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link "  href="login" tabindex="-1" aria-disabled="true">Entrar</a>
-                    </li>';
-            }
-            ?>
-              <form class="form-inline my-2 my-lg-0" method="POST" action="livros">
-                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar"data-aos="fade-down-left" name="search_title" id="search_title">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-aos="fade-down-left" name="search" id="search">Pesquisar</button>
-              </form>
-            </ul>
-        </div>
+          <a class="navbar-brand" href="/StoriesBr/" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" >
+            Stories <img data-aos="zoom-in-left"src="resources/src/br.svg" alt="Stories Br">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação" data-aos="fade-down-left">
+              <span class="navbar-toggler-icon"></span>
+          </button> 
+          <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="livros">Biblioteca</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Saiba mais</a>
+                  </li>
+              
+            <?php 
+              if (isset($_SESSION['userid'])){            
+                echo  '<li class="nav-item"><a class="nav-link" href="perfil">Perfil</a></li>';
+                    
+                if ($_SESSION['isadmin'] === 2  || $_SESSION['isadmin'] === 1) {//checar admin
+                    if ($_SESSION['isadmin'] === 2) echo  '<li class="nav-item"><a class="nav-link" href="/StoriesBr/admin/paineladmin">Painel Admin</a></li>';
+                    echo  '<li class="nav-item active">
+                            <a class="nav-link" href="admin/edicao">Criar</a>
+                          </li>';
+                  }                  
+                  echo  '<form action="config/login.inc.php?sair=true" method="post">
+                          <button type="submit" name="logout" class="btn btn-danger">Sair</button>
+                        </form>';
+              }
+              else {
+                echo '<li class="nav-item">
+                        <a class="nav-link "  href="inscricao">Inscrever-se</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link "  href="login" tabindex="-1" aria-disabled="true">Entrar</a>
+                      </li>';
+              }
+              ?>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="livros">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar"data-aos="fade-down-left" name="search_title" id="search_title">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-aos="fade-down-left" name="search" id="search">Pesquisar</button>
+                </form>
+              </ul>
+          </div>
       </nav>
 
       <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
