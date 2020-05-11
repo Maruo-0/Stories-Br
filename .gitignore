@@ -1,7 +1,4 @@
 resources/css/inscricao.css
-config/composer.json
-config/composer.lock
-a fazer.md
 resources/src
 resources/pdf
 usuario/perfil.html
