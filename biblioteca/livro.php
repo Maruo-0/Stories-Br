@@ -31,13 +31,26 @@
             </div>
         </div>
          <div class="col-md-9 cont-card">
-            <?php echo $historia['titulo']; ?>
+            <h1><?php echo trim($historia['titulo'], '<p></p>'); ?></h1>
             <p id="texto"></p>
+            <button class="btn btn-danger" type="button" value="<?php echo $historia['id']; ?>" id="reportar">Reportar erro</button>
         </div>
     </div>
 </section>
 <div id="text-ptbr" class="hidden select"><?php echo $historia['texto']; ?></div>
 <div id="text-en" class="hidden select"><?php echo $historia['textoIngles']; ?></div>
+
+<script>
+    //window.location.href = 'http://localhost/StoriesBr/fale-conosco'
+    const reportarBtn = document.querySelector('#reportar')
+    const titulo = '<?php echo trim($historia['titulo'], '<p></p>'); ?>'
+    reportarBtn.addEventListener('click', () =>{
+        localStorage.setItem("id", reportarBtn.value);
+        localStorage.setItem("titulo", titulo);
+        window.location.href = '../fale-conosco'
+    })
+
+</script>
 
 <!--Texto para voz-->
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=QXQuGGcR"></script>

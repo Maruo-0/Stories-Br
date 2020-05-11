@@ -10,7 +10,9 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 
 RewriteRule ^login login.php [NC,L]
 RewriteRule ^inscricao inscricao.php [NC,L]
-RewriteRule ^fale-conosco fale-conosco.html [NC,L]
+RewriteRule ^fale-conosco fale-conosco.php [NC,L]
+RewriteRule ^documentacao documentacao.php [NC,L]
+RewriteRule ^politica-privacidade politica-privacidade.php [NC,L]
 
 
 RewriteRule ^livros biblioteca/livros.php [NC,L]
@@ -18,6 +20,7 @@ RewriteRule ^livro/([0-9]+) biblioteca/livro.php?id=$1 [NC,L]
 
 
 RewriteRule ^admin/edicao admin/edicao.php [NC,L]
+RewriteRule ^admin/paineladmin admin/painel-admin.html [NC,L]
 
 RewriteRule ^perfil usuario/perfil.php [NC,L]
 

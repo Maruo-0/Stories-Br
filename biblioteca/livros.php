@@ -17,7 +17,7 @@
     }
     else{
         //Monta o SQL com LIMIT para exibição dos dados  
-        $sql = "select * from historias order by created_at desc limit $inicio, $quantidade";
+        $sql = "select * from historias where aprovado like '1' order by created_at desc limit $inicio, $quantidade";
         //Executa o SQL
         $query = mysqli_query($conn, $sql);
     }

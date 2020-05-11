@@ -58,15 +58,15 @@
       <?php
         if (isset($_SESSION['userid'])) {
           echo  '<form action="/StoriesBr/config/login.inc.php?sair=true" method="post">
-          <button type="submit" name="logout" class="btn btn-clsm" style="margin-left: 32px;">Logout</button>
-          </form>';
-          echo  '<a href="/StoriesBr/usuario/perfil">Perfil</a>';
+          <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Logout</button>
+          </form>
+          <a href="/StoriesBr/usuario/perfil">Perfil</a>
+          <a href="#">Favoritos</a>
+          <a href="#">Histórico</a>';
 
+          if ($_SESSION['isadmin'] === 2 || $_SESSION['isadmin'] === 1) {//checar admin
+            if ($_SESSION['isadmin'] === 2) echo  '<a href="/StoriesBr/admin/paineladmin">Painel Admin</a>';
 
-          echo  '<a href="#">Favoritos</a>';
-          echo  '<a href="#">Histórico</a>';
-
-          if ($_SESSION['isadmin'] == 2 || $_SESSION['isadmin'] === 1) {//checar admin
             echo  '<a href="/StoriesBr/admin/edicao">Criar</a>';
           }  
         }

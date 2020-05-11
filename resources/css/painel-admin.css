@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+}
+body{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(235, 235, 235);
+}
+h1, h2, h3, h4, h5{
+    overflow-y: unset;
+    margin: 5px;
+}
+#nav{
+    color: white;
+    justify-content: start;
+}
+#nav a{
+    margin-left: 20px;
+    font-size: 30px;
+}
+.bg-ligh {
+    background-color: #219653;
+}
+
+.caixa{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    width: 100%;
+}
+.sidenav{
+    background-color: #52D681;
+    padding-top: 36px;
+
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 25;
+    left: 0;
+}
+.sidenav a{
+    padding: 8px 8px 8px 32px;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+    width: 100%;
+    color: rgb(41, 41, 41);
+    cursor: pointer;
+    user-select: none;
+}
+.active{
+    background-color: #21ABA5;
+}
+.views{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.view{
+    width: 100%;
+    height: calc(100% - 61px);
+    display: none;
+    position: absolute;
+}
+.relogio {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+}
+.quadro-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin: 25px;
+    grid-gap: 1em;
+}
+.quadro{
+    max-width: 320px;
+    display: grid;
+    grid-template-columns:  80px auto;
+    padding: 15px;
+}
+.quadro-content{
+    display: grid;
+    grid-template-columns: auto 80px;
+    align-content: center;
+    padding-left: 10px;
+}
+.quadro-content select{
+    padding-left: 5px;
+    height: 30px;
+    appearance: none;
+    border-radius: 6%;
+}
+.quadro-opcoes-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 1em;
+    margin: 25px;
+
+}
+.quadro-mensagens{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 80px auto;
+    border: solid 1px #219653;
+    border-radius: 1%;
+}
+.quadro-mensagens-titulo{
+    margin: 10px 10px 0 10px;
+    border-bottom: solid 1px #219653;
+}
+.mensagem{
+    padding: 10px 0 0 10px;
+    display: grid;
+    grid-template-columns: 70px auto 90px;
+    font-weight: 500;
+}
+.quadro-rapido{
+    display: grid;
+    grid-template-rows: 60px auto;
+    border: solid 1px #219653;
+    padding: 15px;
+    border-radius: 1%;
+}
+.quadro-acoes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    column-gap: 10px;
+    row-gap: 10px;
+}
+.quadro-acoes .botao{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    background-color: #52D681;
+    border: solid 1px #219653;
+    transition-duration: 0.2s;
+}
+.quadro-acoes .botao:hover{
+    transform: scale(1.05);
+    background-color: #219653;
+    color: white;
+}
+.quadro-usuarios {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: calc(100% - 50px);
+    margin: 25px;
+}
+
+.quadro-usuarios td, .quadro-usuarios th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.quadro-usuarios th:nth-child(1){
+    width: 40px;
+}
+.quadro-usuarios th:nth-child(4){
+    width: 40px;
+}
+.quadro-usuarios tr:nth-child(even){background-color: #f2f2f2;}
+
+.quadro-usuarios tr:hover {background-color: #ddd;}
+
+.quadro-usuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.quadro-conteudo{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    column-gap: 10px;
+    row-gap: 10px;
+    margin: 30px;
+}
+.quadro-revisar{
+    cursor: pointer;
+    width: 100%;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.modal-content img{
+    width: 300px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.procurar {
+    width: calc(100% - 20px);
+    font-size: 16px;
+    padding: 12px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+@media screen and (max-width : 500px){
+
+}
