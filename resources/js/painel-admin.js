@@ -7,10 +7,12 @@ const botoes = document.querySelectorAll('.botao')
 let botao_id
 
 for (const botao of botoes) { botao.addEventListener('click', () =>{
+    carregarPags(botao.id)
+
     botao_id = botao.id //salva o id do botao
-    const botoes_ativos = document.querySelectorAll('#mySidenav .botao')
+    const botoes_ativar = document.querySelectorAll('#mySidenav .botao')
     // remove a class de todos e coloca no clicado
-    botoes_ativos.forEach(botao_ativo => { 
+    botoes_ativar.forEach(botao_ativo => { 
         botao_ativo.classList.remove('active');
         if(botao_ativo.id === botao.id){
             botao_ativo.classList.add('active');
@@ -84,80 +86,36 @@ function showTime(){
     setTimeout(showTime, 1000);
 }
 showTime();
-
-function fecharModal(){
-    modal1.forEach(modal => {
-        modal.style.display = "none";
-    })
-}
-
-const parent_modal = document.querySelectorAll("#parent-modal");
-const modal1 = document.querySelectorAll("#modal");
-const modalopen = document.querySelectorAll("#modalopen");
-const spans = document.querySelectorAll(".close");
-for (const modal of modalopen) { modal.addEventListener('click', () =>{
-    parent_modal.forEach(parent => {
-        if(parent.contains(modal)){
-            for(i = 0; i < modal1.length; i++){
-                if(parent.contains(modal1[i])){
-                    console.log(modal1[i])
-                    modal1[i].style.display = "block";
-                }
-            }
-        }
-    });
-})}
-for (const span of spans) { span.addEventListener('click', () =>{
-    fecharModal()
-})}
-
+///funções do modal, ordenarTabela, procurarNome ficavam aqui
+//dar um jeito de funcionar depois
 function ordenarTabela(n, tabela) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    //table = document.getElementById("tabela");
     switching = true;
-    //Set the sorting direction to ascending:
     dir = "asc"; 
-    /*Make a loop that will continue until
-    no switching has been done:*/
     while (switching) {
-      //start by saying: no switching is done:
       switching = false;
       rows = tabela.rows;
-      /*Loop through all table rows (except the
-      first, which contains table headers):*/
       for (i = 1; i < (rows.length - 1); i++) {
-        //start by saying there should be no switching:
         shouldSwitch = false;
-        /*Get the two elements you want to compare,
-        one from current row and one from the next:*/
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
-        /*check if the two rows should switch place,
-        based on the direction, asc or desc:*/
         if (dir == "asc") {
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            //if so, mark as a switch and break the loop:
             shouldSwitch= true;
             break;
           }
         } else if (dir == "desc") {
           if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-            //if so, mark as a switch and break the loop:
             shouldSwitch = true;
             break;
           }
         }
       }
       if (shouldSwitch) {
-        /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
-        //Each time a switch is done, increase this count by 1:
         switchcount ++;      
       } else {
-        /*If no switching has been done AND the direction is "asc",
-        set the direction to "desc" and run the while loop again.*/
         if (switchcount == 0 && dir == "asc") {
           dir = "desc";
           switching = true;
@@ -172,7 +130,7 @@ function procurarNome(id, tabelaId) {
     tr = tabelaId.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
-    if(id.id === 'procurarUser'){
+    if(id.id === 'procurarUser' || id.id === 'procurar2' || id.id === 'procurar'){
         for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
                 if (td) {
@@ -198,4 +156,127 @@ function procurarNome(id, tabelaId) {
             }
         }
     }
+}
+
+//refaz a seleção para adicionar funções de clique aos elementos novos
+function bindCliques(){
+    this.fecharModal = function(){
+        modal1.forEach(modal => {
+            modal.style.display = "none";
+        })
+    }
+    let parent_modal = document.querySelectorAll("#parent-modal");
+    let modal1 = document.querySelectorAll("#modal");
+    let modalopen = document.querySelectorAll("#modalopen");
+    let spans = document.querySelectorAll(".close");
+    //abrir modal
+    for (const modal of modalopen) { modal.addEventListener('click', () =>{
+        parent_modal.forEach(parent => {
+            if(parent.contains(modal)){
+                for(i = 0; i < modal1.length; i++){
+                    if(parent.contains(modal1[i])){
+                        //console.log(modal1[i])
+                        modal1[i].style.display = "block";
+                    }
+                }
+            }
+        });
+    })}
+    //fechar modal
+    for (const span of spans) { span.addEventListener('click', () =>{
+        this.fecharModal()
+    })}
+}
+
+function CriaRequest() {
+    try{
+        request = new XMLHttpRequest();        
+    }catch (IEAtual){
+        
+        try{
+            request = new ActiveXObject("Msxml2.XMLHTTP");       
+        }catch(IEAntigo){
+        
+            try{
+                request = new ActiveXObject("Microsoft.XMLHTTP");          
+            }catch(falha){
+                request = false;
+            }
+        }
+    }
+    
+    if (!request) 
+        alert("Seu Navegador não suporta Ajax!");
+    else
+        return request;
+}
+function carregarPags(id){
+    url = 'servicosadmin.php?'+id+'='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                switch (id) {
+                    case 'usuarios':
+                            const tabelaUsuarios = document.querySelector('#quadrousuarios tbody')
+                            tabelaUsuarios.innerHTML = xmlreq.responseText
+                        break;
+                    case 'conteudo':
+                            const tabelaConteudos = document.querySelector('#tabelaUser tbody')
+                            tabelaConteudos.innerHTML = xmlreq.responseText
+                        break;
+                    case 'revisao':
+                            const quadroRevisao = document.querySelector('#quadro-conteudo')
+                            quadroRevisao.innerHTML = xmlreq.responseText    
+                        break;
+                    case 'reportes':
+                            const tabelaReportes = document.querySelector('#tabela tbody')
+                            tabelaReportes.innerHTML = xmlreq.responseText
+                        break;
+                    case 'sugestoes':
+                        const tabelaSugestoes = document.querySelector('#tabela2 tbody')
+                        tabelaSugestoes.innerHTML = xmlreq.responseText
+                        break;
+                }
+                bindCliques() //refaz a seleção para adicionar funções de clique aos elementos novos
+            }else{
+                console.log(erro)
+            }
+        }
+    };
+    xmlreq.send(null);
+}
+
+function aprovar(id){
+    url = 'servicosadmin.php?negar=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                console.log('aprovado')
+                new bindCliques().fecharModal()
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
+}
+function negar(id){
+    url = 'servicosadmin.php?aprovar=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                console.log('negado')
+                new bindCliques().fecharModal()
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
 }

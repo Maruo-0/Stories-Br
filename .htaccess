@@ -20,7 +20,7 @@ RewriteRule ^livro/([0-9]+) biblioteca/livro.php?id=$1 [NC,L]
 
 
 RewriteRule ^admin/edicao admin/edicao.php [NC,L]
-RewriteRule ^admin/paineladmin admin/painel-admin.html [NC,L]
+RewriteRule ^admin/paineladmin admin/painel-admin.php [NC,L]
 
 RewriteRule ^perfil usuario/perfil.php [NC,L]
 

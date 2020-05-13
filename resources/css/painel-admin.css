@@ -69,6 +69,9 @@ h1, h2, h3, h4, h5{
     right: 15px;
     font-size: 22px;
 }
+.title{
+    margin-left: 20px;
+}
 .quadro-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -95,7 +98,7 @@ h1, h2, h3, h4, h5{
 }
 .quadro-opcoes-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 1em;
     margin: 25px;
 
@@ -114,7 +117,7 @@ h1, h2, h3, h4, h5{
 .mensagem{
     padding: 10px 0 0 10px;
     display: grid;
-    grid-template-columns: 70px auto 90px;
+    grid-template-columns: 90px auto 100px;
     font-weight: 500;
 }
 .quadro-rapido{
@@ -130,11 +133,22 @@ h1, h2, h3, h4, h5{
     column-gap: 10px;
     row-gap: 10px;
 }
+.botao{
+    cursor: pointer;
+}
+.btn-link{
+    position: relative;
+    top: 5px;
+}
+.btn-link:first-child{
+    padding: 0 5px 0 15px;
+    color: #212529;
+    text-decoration-style: none;
+}
 .quadro-acoes .botao{
     display: grid;
     justify-content: center;
     align-content: center;
-    cursor: pointer;
     background-color: #52D681;
     border: solid 1px #219653;
     transition-duration: 0.2s;
@@ -154,6 +168,10 @@ h1, h2, h3, h4, h5{
 .quadro-usuarios td, .quadro-usuarios th {
     border: 1px solid #ddd;
     padding: 8px;
+}
+.quadro-usuarios .alinhar{
+    display: flex;
+    flex-direction: row;
 }
 .quadro-usuarios th:nth-child(1){
     width: 40px;
@@ -181,7 +199,6 @@ h1, h2, h3, h4, h5{
     margin: 30px;
 }
 .quadro-revisar{
-    cursor: pointer;
     width: 100%;
 }
 .modal {
@@ -197,6 +214,7 @@ h1, h2, h3, h4, h5{
     background-color: rgba(0,0,0,0.4);
 }
 .modal-content {
+    display: block;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
@@ -214,6 +232,46 @@ h1, h2, h3, h4, h5{
 }
 .close:hover, .close:focus {
     color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.apagar{
+    background-color: rgb(151, 44, 44);
+    color: rgb(235, 235, 235);
+    border-radius: 5%;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 0 rgb(68, 23, 23);
+    padding: 5px;
+    margin-right: 10px;
+    transition-duration: 0.25s;
+}
+.apagar:hover{
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgb(151, 44, 44);
+    color: rgb(97, 97, 97);
+    text-decoration: none;
+    cursor: pointer;
+}
+.salvar{
+    background-color: rgb(50, 131, 81);
+    color: rgb(235, 235, 235);
+    border-radius: 5%;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 0 rgb(20, 70, 39);
+    padding: 5px;
+    margin-right: 10px;
+    transition-duration: 0.25s;
+}
+.salvar:hover{
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgb(50, 131, 81);
+    color: rgb(97, 97, 97);
     text-decoration: none;
     cursor: pointer;
 }
