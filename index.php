@@ -1,12 +1,25 @@
-<?php session_start();?>
+<?php session_start();
+  if(!isset($_SESSION['visitou'])){
+    require('config/db.php');
+    $queryVisitas = "select * from visitas";
+    $result = mysqli_query($conn, $queryVisitas); 
+    $query = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    $_SESSION['visitou'] = $query['visitas'] + 1;
+    $querySomaVisitas = "update visitas set visitas={$_SESSION['visitou']}";
+    mysqli_query($conn, $querySomaVisitas);
+    mysqli_close($conn); 
+  }
+  $_SESSION['visitou'] = true;
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="shortcut icon" type="image/png" href="/StoriesBr/resources/favicon.png"/>
-  <link rel="manifest" href="/StoriesBr/manifest.json"> 
+  <link rel="shortcut icon" type="image/png" href="resources/favicon.png"/>
+  <link rel="manifest" href="manifest.json"> 
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="resources/css/animate.min.css">

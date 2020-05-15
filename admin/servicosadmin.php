@@ -1,8 +1,17 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['userid'])){
+        header("Location: /StoriesBr/");
+        exit();
+    }
+    elseif($_SESSION['isadmin'] === 1 || $_SESSION['isadmin'] === 0){
+        header("Location: /StoriesBr/");
+        exit();
+    }
+
     require('../config/db.php');
 
-    if(isset($_GET['usuarios']) || isset($_GET['conteudo']) || 
-    isset($_GET['revisao']) || isset($_GET['reportes']) || isset($_GET['sugestoes'])){
+    if(isset($_GET['usuarios']) || isset($_GET['conteudo']) || isset($_GET['revisao']) || isset($_GET['reportes']) || isset($_GET['sugestoes'])){
         $requisicao = '';
 
         if(isset($_GET['usuarios'])){
@@ -61,7 +70,7 @@
                         <td>'.$query['desc'].'</td>
                         <td>'.$data.'</td>
                         <td>'.$resultquerynome['nome'].'</td>
-                        <td class="alinhar"><a target="_blank" href="/StoriesBr/livro/'.$query['id'].'">Ler</a><button>Editar</button><button>Excluir</button></td>
+                        <td class="alinhar"><a target="_blank" href="/StoriesBr/livro/'.$query['id'].'">Ler</a><a href="edicao.php?id='.$query['id'].'" target="_blank"><button>Editar</button></a><button>Excluir</button></td>
                     </tr>';
                 }
 
@@ -77,8 +86,8 @@
                     echo '<div id="parent-modal">
                         <div id="modalopen" class="quadro-revisar">
                             <img src="../resources/src/'.$query['img_capa'].'" width="100%">
-                            <h2>'.trim($query['titulo'], '<p></p>').'</h2>
-                            <p>'.$query['desc'].'</p>
+                            <h2>'.trim($query['titulo'], '<p></p>').'</h2><hr>
+                            '.$query['desc'].'
                         </div>
                         <div id="modal" class="modal">
                             <div class="modal-content">
@@ -164,6 +173,26 @@
 
         mysqli_close($conn);
         exit();
+    }    //fazer processos de aprovação e negação
+    elseif (isset($_GET['aprovar']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $querySalvar = "update historias set aprovado = 1 where id = {$id}";
+            mysqli_query($conn, $querySalvar);
+            mysqli_close($conn);
+        }
+        else{
+            header('Location: paineladmin?erroSQL');
+        }
     }
-
-    //fazer processos de aprocação e negação
+    elseif (isset($_GET['negar']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $querySalvar = "delete from historias where id = {$id}";
+            mysqli_query($conn, $querySalvar);
+            mysqli_close($conn);
+        }
+        else{
+            header('Location: paineladmin?erroSQL');
+        }
+    }

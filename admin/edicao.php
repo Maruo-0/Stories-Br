@@ -129,89 +129,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" type="image/png" href="/StoriesBr/resources/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="../resources/favicon.png"/>
     <title>Edição de conteúdo - Stories Br</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Slab', serif;
+        }
+        a{
+            text-decoration: none;
+            color: #000000;
+            font-size: large;
+        }
+        .content{
+            padding: 20px;
+            background-color: rgb(228, 228, 228);
+        }
+        h1, h2{
+            font-weight: 500;
+            margin: 20px 0 10px 0 ;
+        }
+        form{
+            background-color: rgb(221, 194, 161);
+            padding: 20px;
+            border: solid 1px #000000;
+            border-radius: 0 5px 5px 0;
+            overflow: hidden;
+        }
+        input[type="file"] {
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .btn{
+            border: none;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
+    <div class="content">
+    <a href="../" >/Página Inicial</a>
     <?php
+        if(isset($_GET['error'])){
+            echo '<h3>Erro Campos Vazios</h3>';
+        }
         if (isset($_SESSION['userid']) && $_SESSION['isadmin'] === 1 || $_SESSION['isadmin'] === 2) {
             if(!isset($_GET['id'])){
                 echo '<h1>Postar nova história</h1>
-                <form method="POST" action="edicao.php"  enctype="multipart/form-data" style="background-color: #95a5a6; padding: 10px;">
+                <form method="POST" action="edicao.php"  enctype="multipart/form-data">
 
-                <input type="file" name="arquivo[]">
-                <label>Titulo</label>
+                <input type="file" name="arquivo[]" accept=".png, .jpg">
+                <h2>Titulo:</h2>
                 <div type="text"  id="titulo"></div>
 
-                <label>Descrição</label>
+                <h2>Descrição:</h2>
                 <div type="text"  id="desc"></div>
 
-                <label>Texto</label>
+                <h2>Texto:</h2>
                 <div type="text" id="texto"></div>
 
-                <label>Texto Inglês</label>
+                <h2>Texto Inglês (opcional):</h2>
                 <div type="text" id="textoIn"></div>
 
-
-                <input type="file" name="arquivo[]">
+                <h2>Pdf:</h2>
+                <input type="file" name="arquivo[]" accept=".pdf">
                     
                 <center>
 
-                <input type="submit" name="submit" id="criar" value="Criar" class="btn btn-primary hidden"></center>
-                </form>
-                <button id="salvar" class="btn btn-primary">Salvar</button>';
+                <input type="submit" name="submit" value="Postar" class="btn hidden"></center>
+                </form>';
             }
             elseif(isset($_GET['id'])){
-                echo '<h1>Editando - '.$historia['titulo'] .'</h1>
+                echo '<h1>Editando - '.trim($historia['titulo'], '<p></p>').'</h1>
 
-                    <form method="POST" action="edicao.php?ed=true&id='.$historia['id'].'" enctype="multipart/form-data" style="background-color: #95a5a6; padding: 10px;">
+                    <form method="POST" action="edicao.php?ed=true&id='.$historia['id'].'" enctype="multipart/form-data">
 
-                    <input type="file" name="arquivo[]">
-                    <label>Titulo</label>
+                    <input type="file" name="arquivo[]" accept=".png, .jpg">
+                    <h2>Titulo:</h2>
                     <div type="text" id="titulo">'.$historia['titulo'].'</div>
         
-                    <label>Descrição</label>
+                    <h2>Descrição:</h2>
                     <div type="text"  id="desc">'.$historia['desc'].'</div>
         
-                    <label>Texto</label>
+                    <h2>Texto:</h2>
                     <div type="text" id="texto">'.$historia['texto'].'</div>
         
-                    <label>Texto Inglês</label>
+                    <h2>Texto Inglês (opcional):</h2>
                     <div type="text" id="textoIn">'.$historia['textoIngles'].'</div>
         
-                    <label>Pdf</label>
-                    <input type="file" name="arquivo[]">
+                    <h2>Pdf:</h2>
+                    <input type="file" name="arquivo[]" accept=".pdf">
                     <center>
         
         
                     <input type="hidden" name="update_id" value="'.$historia['id'].'">
-                    <input type="submit" name="atualizar" id="criar" value="Atualizar" class="btn btn-primary hidden"></center>
+                    <input type="submit" name="atualizar" value="Atualizar" class="btn"></center>
                 
-                </form>
-                <button id="salvar" class="btn btn-primary">Salvar</button>';
+                </form>';
             }
         }    
     ?>
-
+    </div>
     <!--editor de texto tinymce-->
     <script src='https://cdn.tiny.cloud/1/m5k5p2iwalfnp6bt442au68lhsqaurzbdaqlt6a3pgkf7f38/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: '#titulo, #desc, #texto, #textoIn',
             menu: {Opções: {title: 'Opções', items: 'code searchreplace wordcount'}},
-            menubar: 'Opções file',
+            menubar: 'file Opções',
             toolbar: 'undo redo | styleselect',
             plugins: 'wordcount code searchreplace print preview'
         });
-
-        const salvar = document.querySelector('#salvar');
-        const criar = document.querySelector('#criar');
-        salvar.addEventListener('click', e => {
-            criar.style.display = "block";
-        });
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

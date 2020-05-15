@@ -6,6 +6,7 @@ if(isset($_GET['sair']) && $_GET['sair'] === 'true'){
     exit();
 }
 if (isset($_POST['login'])) {
+    $_SESSION['visitou'] = true;
     login();
     exit();
 }

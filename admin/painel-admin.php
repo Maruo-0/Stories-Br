@@ -1,10 +1,22 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['userid'])){
+        header("Location: /StoriesBr/");
+        exit();
+    }
+    elseif($_SESSION['isadmin'] === 1 || $_SESSION['isadmin'] === 0){
+        header("Location: /StoriesBr/");
+        exit();
+    }
+
     require('../config/db.php');
 
     $querymens = 'select * from mensagens order by created_at desc limit 0, 5';
+    $querycountmens = 'select count(*) from mensagens';
     $queryrevs = 'select * from historias where aprovado = 0 order by created_at desc limit 0, 5';
+    $querycountrevs = 'select count(*) from historias where aprovado = 0';
     $querymemb = 'select count(*) from usuarios where autenticado = 1';
-    $queryvist = 'select count(*) from ';
+    $queryvisit = 'select * from visitas';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -31,13 +43,15 @@
             <a class="botao" id="conteudo">Conteúdo</a>
             <a class="botao" id="revisao">Revisão</a>
             <a class="botao" id="reportes">Reportes</a>
-            <a class="botao" id="sugestoes">Sugestões</a><br>
+            <a class="botao" id="sugestoes">Sugestões</a>
+            <a class="botao" href="edicao">Criar</a><br>
             <form action="../config/login.inc.php?sair=true" method="post">
                 <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Logout</button>
             </form>
             <a class="botao" href="../">Voltar ao site</a><br><br><br>
         </div>
         <div id="overl" class="sidenavb" onclick="closeNav()"></div>
+        <div class="loader"><div class="spin"></div></div>
 
         <div id="views">
             <div class="view" style="display: block;">
@@ -50,10 +64,10 @@
                             <div>
                                 <h4>Visitantes</h4>
                                 <h5><?php 
-                                        $result = mysqli_query($conn, $querymemb);
+                                        $result = mysqli_query($conn, $queryvisit);
                                         $query = mysqli_fetch_assoc($result);
                                         mysqli_free_result($result);
-                                        echo $query['count(*)'];
+                                        echo $query['visitas'];
                                 ?></h5>
                             </div>
                             
@@ -91,17 +105,27 @@
                     <div class="quadro-mensagens">
                         <div class="quadro-mensagens-titulo">
                             <h4>Quadro de mensagens</h4>
-                            <p>Últimas atualizações recebidas</p>
+                            <div class="numerowrap">
+                                <p>Últimas atualizações recebidas</p>
+                                <div class="numeroatualizacao">
+                                    <?php $result = mysqli_query($conn, $querycountmens); 
+                                        $query = mysqli_fetch_assoc($result);
+                                        mysqli_free_result($result);
+                                        echo $query['count(*)'];
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                         <div id="quadromens" class="mensagens">
                             <?php
                                 $result = mysqli_query($conn, $querymens);
                                 while($query = mysqli_fetch_assoc($result)){
+                                    $data = $query['created_at'];
                                     echo '<div class="mensagem">
                                         <p>'.$query['assunto'].'</p>
                                         <p>'.$query['nome'].'</p>
-                                        <p>'.$query['created_at'].'</p>
-                                    </div>' ;
+                                        <p>'.date('d/m/Y',strtotime($data)).'</p>
+                                    </div>';
                                 }
                                 mysqli_free_result($result);
                             ?>
@@ -110,15 +134,25 @@
                     <div class="quadro-mensagens">
                         <div class="quadro-mensagens-titulo">
                             <h4>Quadro de revisão</h4>
-                            <p>Últimos conteúdos para revisão recebidos</p>
+                            <div class="numerowrap">
+                                <p>Últimos conteúdos para revisão recebidos</p>
+                                <div class="numeroatualizacao">                                    
+                                    <?php $result = mysqli_query($conn, $querycountrevs); 
+                                        $query = mysqli_fetch_assoc($result);
+                                        mysqli_free_result($result);
+                                        echo $query['count(*)'];
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                         <?php
                             $result = mysqli_query($conn, $queryrevs);
                             while($query = mysqli_fetch_assoc($result)){
+                                $data = $query['created_at'];
                                 echo '<div class="mensagem">
                                         <p>'.$query['id'].'</p>
                                         <p>'.trim($query['titulo'], '<p></p>').'</p>
-                                        <p>'.$query['created_at'].'</p>
+                                        <p>'.date('d/m/Y',strtotime($data)).'</p>
                                     </div>';
                             }
                             mysqli_free_result($result);
@@ -187,40 +221,20 @@
                     <div id="parent-modal">
                         <div id="modalopen" class="quadro-revisar">
                             <img src="../resources/src/caravela.jpg" width="100%">
-                            <h2>Titulo</h2>
-                            <p>descrição</p>
+                            <h2>Teste</h2>
+                            <p>Teste</p>
                         </div>
                         <div id="modal" class="modal">
                             <div class="modal-content">
                                 <span class="close">&times;</span>
-                                <span class="close" onclick="aprovar(1)">Aprovado</span>
-                                <span class="close" onclick="negar(1)">negado</span>
+                                <span class="close" onclick="aprovar(1)">Teste</span>
+                                <span class="close" onclick="negar(1)">Teste</span>
                                 <img src="../resources/src/caravela.jpg" width="100%">
-                                <h2>Titulo</h2>
-                                <h5>id</h5>
-                                <p>descrição</p>
-                                <p>texto</p>
-                                <a href="#">pdf</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="parent-modal">
-                        <div id="modalopen" class="quadro-revisar">
-                            <img src="../resources/src/caravela.jpg" width="100%">
-                            <h2>Titulo2</h2>
-                            <p>descrição</p>
-                        </div>
-                        <div id="modal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <span class="close">Aprovado</span>
-                                <span class="close">negado</span>
-                                <img src="../resources/src/caravela.jpg" width="100%">
-                                <h2>Titulo2</h2>
-                                <h5>id</h5>
-                                <p>descrição</p>
-                                <p>texto</p>
-                                <a href="#">pdf</a>
+                                <h2>Teste</h2>
+                                <h5>Teste</h5>
+                                <p>Teste</p>
+                                <p>Teste</p>
+                                <a href="#">Teste</a>
                             </div>
                         </div>
                     </div>
@@ -230,7 +244,7 @@
                 <a class="botao btn-link" href="../" >/Página Inicial</a><a class="botao btn-link" id="inicio">/Painel Inicio</a>
 
                 <h2 class="title">Reportes</h2>
-                <input type="text" id="procurar" class="procurar" onkeyup="procurarNome(procurar, tabela)" placeholder="Procurar por assunto..">
+                <input type="text" id="procurar" class="procurar" onkeyup="procurarNome(procurar, tabela)" placeholder="Procurar por assunto...">
                 <table id="tabela" class="quadro-usuarios">
                     <tr>
                         <th onclick="ordenarTabela(0, tabela)">Asssunto</th>
@@ -239,39 +253,20 @@
                         <th onclick="ordenarTabela(3, tabela)">Messagem</th>
                     </tr>
                     <tr id="parent-modal">
-                        <td>Ortografia</td>
-                        <td>Marcelo</td>
-                        <td>marcelo.e.jr@hotmail.com</td>
+                        <td>Teste</td>
+                        <td>Teste</td>
+                        <td>Teste</td>
                         <td>
                             <button id="modalopen">Abrir</button>
                             <div id="modal" class="modal">
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
-                                    <span class="close">Apagar</span>
-                                    <span class="close">Salvar</span>
-                                    <h2>Asssunto</h2>
-                                    <h5>Marcelo</h5>
-                                    <p>email</p>
-                                    <p>mensagem</p>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr id="parent-modal">
-                        <td>Ortografia</td>
-                        <td>Samuel</td>
-                        <td>samuelreis@gmail.com</td>
-                        <td>
-                            <button id="modalopen">Abrir</button>
-                            <div id="modal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <span class="close">Apagar</span>
-                                    <span class="close">Salvar</span>
-                                    <h2>Asssunto</h2>
-                                    <h5>Samuel</h5>
-                                    <p>email</p>
-                                    <p>mensagem</p>
+                                    <span class="close">Teste</span>
+                                    <span class="close">Teste</span>
+                                    <h2>Teste</h2>
+                                    <h5>Teste</h5>
+                                    <p>Teste</p>
+                                    <p>Teste</p>
                                 </div>
                             </div>
                         </td>

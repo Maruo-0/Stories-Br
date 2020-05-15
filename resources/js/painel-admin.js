@@ -2,12 +2,13 @@ let navOpen = false
 const sideMenu = document.getElementById("sideMenu")
 const mySidenav = document.getElementById("mySidenav")
 const overl = document.getElementById("overl")
+const loader = document.querySelector('.loader')
 const painel = document.getElementById("painel")
 const botoes = document.querySelectorAll('.botao')
 let botao_id
 
 for (const botao of botoes) { botao.addEventListener('click', () =>{
-    carregarPags(botao.id)
+    if(botao.id !== 'inicio')carregarPags(botao.id)    
 
     botao_id = botao.id //salva o id do botao
     const botoes_ativar = document.querySelectorAll('#mySidenav .botao')
@@ -189,6 +190,7 @@ function bindCliques(){
 }
 
 function CriaRequest() {
+    loader.style.display = 'flex'
     try{
         request = new XMLHttpRequest();        
     }catch (IEAtual){
@@ -205,8 +207,10 @@ function CriaRequest() {
         }
     }
     
-    if (!request) 
+    if (!request) {
         alert("Seu Navegador não suporta Ajax!");
+        loader.style.display = 'none'
+    }
     else
         return request;
 }
@@ -216,6 +220,7 @@ function carregarPags(id){
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
             if (xmlreq.status == 200) {
                 switch (id) {
                     case 'usuarios':
@@ -249,14 +254,16 @@ function carregarPags(id){
 }
 
 function aprovar(id){
-    url = 'servicosadmin.php?negar=true&id='+id
+    url = 'servicosadmin.php?aprovar=true&id='+id
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
             if (xmlreq.status == 200) {
-                console.log('aprovado')
                 new bindCliques().fecharModal()
+                carregarPags('revisao')
+                alert('aprovado')
             }else{
                 console.log(erro)
             }
@@ -265,14 +272,16 @@ function aprovar(id){
     xmlreq.send(null);
 }
 function negar(id){
-    url = 'servicosadmin.php?aprovar=true&id='+id
+    url = 'servicosadmin.php?negar=true&id='+id
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
             if (xmlreq.status == 200) {
-                console.log('negado')
                 new bindCliques().fecharModal()
+                carregarPags('revisao')
+                alert('negado')
             }else{
                 console.log(erro)
             }
@@ -280,3 +289,5 @@ function negar(id){
     }
     xmlreq.send(null);
 }
+
+//

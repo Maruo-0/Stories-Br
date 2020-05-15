@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <div class="card-title formatar-titulo"><p><?php echo $historia['titulo']; ?></p></div>
                         <div class="card-title formatar-desc"><p><?php echo $historia['desc']; ?></p></div>
-                        <div class="card-title formatar-data"><p><?php echo $historia['created_at']; ?></p></div>
+                        <div class="card-title formatar-data"><p><?php $data = $historia['created_at']; echo 'Postado em: '.date('d/m/Y',strtotime($data)) ?></p></div>
                     </div>
                 </div></a>
             </div>
