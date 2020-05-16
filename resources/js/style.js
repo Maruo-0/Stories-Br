@@ -28,9 +28,9 @@ function closeNav() {
 }
 function favoritar() {
     favorito = document.querySelector('#favorito');
-    if(this.favorito.innerText === 'favorite'){
-        this.favorito.innerText = 'favorite_border';
+    if(this.favorito.innerText === 'star'){
+        this.favorito.innerText = 'star_border';
     }else{
-    this.favorito.innerText = 'favorite';
+    this.favorito.innerText = 'star';
     }
 }

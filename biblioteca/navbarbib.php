@@ -9,6 +9,7 @@
             $query = "delete from historias where id = {$delete_id}";
             if(mysqli_query($conn, $query)){
                 header('Location: /StoriesBr/livros');
+                exit();
             }else{
                 header("Location: livro.php?error=sqlerror");
                 exit();
@@ -60,9 +61,8 @@
           echo  '<form action="/StoriesBr/config/login.inc.php?sair=true" method="post">
           <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Logout</button>
           </form>
-          <a href="/StoriesBr/usuario/perfil">Perfil</a>
-          <a href="#">Favoritos</a>
-          <a href="#">Histórico</a>';
+          <a href="/StoriesBr/perfil">Perfil</a>
+          <a href="/StoriesBr/favoritos">Favoritos</a>';
 
           if ($_SESSION['isadmin'] === 2 || $_SESSION['isadmin'] === 1) {//checar admin
             if ($_SESSION['isadmin'] === 2) echo  '<a href="/StoriesBr/admin/paineladmin">Painel Admin</a>';
@@ -74,7 +74,7 @@
           echo  '<a href="/StoriesBr/login">Login</a>';
         }
       ?>
-      <a href="#"></a><br><br><br><br><br><br><br><br><br><hr>
-      <a href="#">Compartilhe</a>
+      <br><br><br><hr>
+      <a href="#">Compartilhe</a><br><br>
   </div>
   <div id="overl" class="sidenavb" onclick="closeNav()"></div>

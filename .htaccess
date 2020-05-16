@@ -23,6 +23,7 @@ RewriteRule ^admin/edicao admin/edicao.php [NC,L]
 RewriteRule ^admin/paineladmin admin/painel-admin.php [NC,L]
 
 RewriteRule ^perfil usuario/perfil.php [NC,L]
+RewriteRule ^favoritos usuario/favoritos.php [NC,L]
 
 RewriteRule ^playground/atividades playground/index.php [NC,L]
 RewriteRule ^playground/jogo-da-memoria playground/jogomemoria-js/index.html [NC,L]

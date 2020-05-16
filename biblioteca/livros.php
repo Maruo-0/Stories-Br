@@ -99,18 +99,6 @@
 
 </div>
 
-<script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/StoriesBr/service-worker.js')
-        .then(function () {
-          console.log('service worker registered');
-        })
-        .catch(function () {
-          console.warn('service worker failed');
-        });
-    }
-</script>
-
-<script defer src="/StoriesBr/resources/js/style.js"></script>
+<script defer src="resources/js/style.js"></script>
 </body>
 </html>

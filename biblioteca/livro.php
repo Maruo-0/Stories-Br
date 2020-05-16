@@ -4,11 +4,11 @@
     <div class="row cont-wrap">
         <div class="col-md-3 cont-in">
             <div class="cont-img">
-                <img src="../resources/src/<?php echo $historia['img_capa']; ?>" class="cont-i-img">
-            </div><br>
+                <img src="../resources/src/<?php echo $historia['img_capa'] ?>" class="cont-i-img">
+            </div>
             <div class="row cont-row">
-                <a href="../resources/pdf/<?php echo $historia['pdf']; ?>" target="_blank"><button class="btn btn-clsm3">Leve o PDF</button></a>
-                <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">favorite_border</i>
+                <a href="../resources/pdf/<?php echo $historia['pdf'] ?>" target="_blank"><button class="btn btn-clsm3">Leve o PDF</button></a>
+                <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">star_border</i>
                 <!--favorite-->
                 <button class="btn btn-clsm3" type="button" value="Play" id="play">Escutar</button>
                 <select id="voiceSelection">
@@ -31,7 +31,6 @@
             </div>
         </div>
          <div class="col-md-9 cont-card">
-            <h1><?php echo trim($historia['titulo'], '<p></p>'); ?></h1>
             <p id="texto"></p>
             <button class="btn btn-danger" type="button" value="<?php echo $historia['id']; ?>" id="reportar">Reportar erro</button>
         </div>
@@ -41,7 +40,6 @@
 <div id="text-en" class="hidden select"><?php echo $historia['textoIngles']; ?></div>
 
 <script>
-    //window.location.href = 'http://localhost/StoriesBr/fale-conosco'
     const reportarBtn = document.querySelector('#reportar')
     const titulo = '<?php echo trim($historia['titulo'], '<p></p>'); ?>'
     reportarBtn.addEventListener('click', () =>{
@@ -103,18 +101,6 @@
 
 <!--Texto para voz-->
 
-<script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/StoriesBr/service-worker.js')
-        .then(function () {
-          console.log('service worker registered');
-        })
-        .catch(function () {
-          console.warn('service worker failed');
-        });
-    }
-</script>
-
-<script defer src="/StoriesBr/resources/js/style.js"></script>
+<script defer src="../resources/js/style.js"></script>
 </body>
 </html>

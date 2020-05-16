@@ -225,27 +225,25 @@ hr{
 }
 
 .cont-all{
-    margin-top: 200px;
-    background-color: #ccc316;
+    margin-top: 150px;
+    background-color: #ffdb59;
 }
 .cont-in{
-    margin-top: 50px;
+    position: unset;
     min-width: 242px;
+    display: grid;
+    row-gap: 20px;
+    grid-template-rows: 350px 100px;
 }
 .cont-in .cont-img{
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    bottom: 100%;
-    margin: 10px;
     min-width: 240px;
     max-width: 360px;
-    border-radius: 2%;
 }
 .cont-img .cont-i-img{
     width: 100%;
     border-radius: 2%;
-    box-shadow: 5px 5px 10px #3d4861;
+    border: solid 1px #5c5c5c;
+    box-shadow: 0px 3px 9px 0px #424242;
 }
 @media screen and (max-width: 770px){
     .cont-in .cont-img{
@@ -253,24 +251,32 @@ hr{
     }
 }
 .cont-in .cont-row{
+    display: grid;
     justify-content: center;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
 }
 .cont-row .cont-r-f{
-    padding-top: 5px;
-    margin-left: 15px;
-    margin-right: 15px;
     cursor: pointer;
-    color: #b92828;
+    color: #272727;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
 }
 .cont-wrap{
     padding: 15px 20px;
+    display: grid;
+    grid-template-columns: 300px auto;
 }
 .cont-card{
     padding: 45px;
     margin-top: 70px;
-    border-radius: 0.5%;
-    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px #424242;
+    background-color: #f9f9f9;
     font-size: 15px;
+    max-width: unset;
 }
 
 @media screen and (max-width: 940px){
@@ -278,11 +284,27 @@ hr{
         flex: 0 0 100%;
         max-width: 100%;
     }
+    .cont-wrap{
+        grid-template-columns: auto;
+    }
+    .cont-in{
+        column-gap: 50px;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto;
+    }      
 }
 @media screen and (max-width: 425px){
     .cont-card{
         padding: 20px;
     }
+    .cont-wrap{
+        padding: 0;
+    }
+    .cont-in{
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        justify-content: center;
+    }      
 }
 
 .tiny{
