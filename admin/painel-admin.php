@@ -175,6 +175,7 @@
             <div class="view" id="usuariospag">
                 <a class="botao btn-link" href="../" >/Página Inicial</a><a class="botao btn-link" id="inicio">/Painel Inicio</a>
                 <h2 class="title">Usuários</h2>
+                <input type="text" id="procurarusuarios" class="procurar" onkeyup="procurarNome(procurarusuarios, quadrousuarios)" placeholder="Procurar por email...">
                 <table id="quadrousuarios" class="quadro-usuarios">
                     <tr>
                         <th onclick="ordenarTabela(0, quadro-usuarios)">ID</th>
