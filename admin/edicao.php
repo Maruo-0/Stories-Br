@@ -145,15 +145,42 @@
             font-size: large;
         }
         .content{
-            padding: 20px;
-            background-color: rgb(228, 228, 228);
+            background: rgb(255, 238, 217);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin: 26px auto 0;
+            max-width: 100%;
+            min-height: 300px;
+            padding: 24px;
+            position: relative;
+            width: 85%;
+        }
+        .content:before, .content:after{
+            content: "";
+            height: 98%;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        .content:before{
+            background: rgb(255, 244, 230);
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            left: -5px;
+            top: 4px;
+            transform: rotate(-2.5deg);
+        }
+        .content:after{
+            background: rgb(216, 211, 204);
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            right: -3px;
+            top: 1px;
+            transform: rotate(1.4deg);
         }
         h1, h2{
             font-weight: 500;
             margin: 20px 0 10px 0 ;
         }
         form{
-            background-color: rgb(221, 194, 161);
+            background-color: rgb(221, 204, 191);
             padding: 20px;
             border: solid 1px #000000;
             border-radius: 0 5px 5px 0;

@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../resources/css/style.css">
     <link rel="stylesheet" href="../resources/css/painel-admin.css">
+    <script src="https://kit.fontawesome.com/57b737a7cf.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav id="nav" class="navbar sticky-top  navbar-dark bg-ligh">
@@ -135,7 +136,7 @@
                         <div class="quadro-mensagens-titulo">
                             <h4>Quadro de revisão</h4>
                             <div class="numerowrap">
-                                <p>Últimos conteúdos para revisão recebidos</p>
+                                <p>Últimos postagens recebidas</p>
                                 <div class="numeroatualizacao">                                    
                                     <?php $result = mysqli_query($conn, $querycountrevs); 
                                         $query = mysqli_fetch_assoc($result);
@@ -245,85 +246,136 @@
 
                 <h2 class="title">Reportes</h2>
                 <input type="text" id="procurar" class="procurar" onkeyup="procurarNome(procurar, tabela)" placeholder="Procurar por assunto...">
-                <table id="tabela" class="quadro-usuarios">
-                    <tr>
-                        <th onclick="ordenarTabela(0, tabela)">Asssunto</th>
-                        <th onclick="ordenarTabela(1, tabela)">nome</th>
-                        <th onclick="ordenarTabela(2, tabela)">email</th>
-                        <th onclick="ordenarTabela(3, tabela)">Messagem</th>
-                    </tr>
-                    <tr id="parent-modal">
-                        <td>Teste</td>
-                        <td>Teste</td>
-                        <td>Teste</td>
-                        <td>
-                            <button id="modalopen">Abrir</button>
-                            <div id="modal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <span class="close">Teste</span>
-                                    <span class="close">Teste</span>
-                                    <h2>Teste</h2>
-                                    <h5>Teste</h5>
-                                    <p>Teste</p>
-                                    <p>Teste</p>
+                <input type="text" id="procurarB" class="procurar hidden" onkeyup="procurarNome(procurarB, tabelaB)" placeholder="Procurar por assunto...">
+                <div class="mudar-tabela">
+                    <div id="iconTabela1" class="icon icon-left" onclick="alternarTabelas('reportespag', '#tabela', 'novas')"><i class="fas fa-angle-left fa-2x"></i></div>
+                    <h4 id="tabelaTitulo">Mensagens salvas</h4>
+                    <div id="iconTabela2" class="icon icon-right" onclick="alternarTabelas('reportespag', '#tabela', 'salvas')"><i class="fas fa-angle-right fa-2x"></i></div>
+                </div>
+                <div id="reportespagbox">
+                    <table id="tabela" class="quadro-usuarios">
+                        <tr>
+                            <th onclick="ordenarTabela(0, tabela)">Asssunto</th>
+                            <th onclick="ordenarTabela(1, tabela)">nome</th>
+                            <th onclick="ordenarTabela(2, tabela)">email</th>
+                            <th onclick="ordenarTabela(3, tabela)">Messagem</th>
+                        </tr>
+                        <!-- <tr id="parent-modal">
+                            <td>Teste</td>
+                            <td>Teste</td>
+                            <td>Teste</td>
+                            <td>
+                                <button id="modalopen">Abrir</button>
+                                <div id="modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <span class="close">Teste</span>
+                                        <span class="close">Teste</span>
+                                        <h2>Teste</h2>
+                                        <h5>Teste</h5>
+                                        <p>Teste</p>
+                                        <p>Teste</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                            </td>
+                        </tr> -->
+                    </table>
+                    <table id="tabelaB" class="quadro-usuarios hidden">
+                        <tr>
+                            <th onclick="ordenarTabela(0, tabelaB)">Asssunto</th>
+                            <th onclick="ordenarTabela(1, tabelaB)">nome</th>
+                            <th onclick="ordenarTabela(2, tabelaB)">email</th>
+                            <th onclick="ordenarTabela(3, tabelaB)">Messagem</th>
+                        </tr>
+                        <!-- <tr id="parent-modal">
+                            <td>Teste</td>
+                            <td>Teste</td>
+                            <td>Teste</td>
+                            <td>
+                                <button id="modalopen">Abrir</button>
+                                <div id="modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <span class="close">Teste</span>
+                                        <span class="close">Teste</span>
+                                        <h2>Teste</h2>
+                                        <h5>Teste</h5>
+                                        <p>Teste</p>
+                                        <p>Teste</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr> -->
+                    </table>
+                </div>
             </div>
             <div class="view" id="sugestoespag">
                 <a class="botao btn-link" href="../" >/Página Inicial</a><a class="botao btn-link" id="inicio">/Painel Inicio</a>
 
                 <h2 class="title">Sugestões</h2>
                 <input type="text" id="procurar2" class="procurar" onkeyup="procurarNome(procurar2, tabela2)" placeholder="Procurar por assunto..">
-                <table id="tabela2" class="quadro-usuarios">
-                    <tr>
-                        <th onclick="ordenarTabela(0, tabela2)">Asssunto</th>
-                        <th onclick="ordenarTabela(1, tabela2)">nome</th>
-                        <th onclick="ordenarTabela(2, tabela2)">email</th>
-                        <th onclick="ordenarTabela(3, tabela2)">Messagem</th>
-                    </tr>
-                    <tr id="parent-modal">
-                        <td>Sugestão</td>
-                        <td>Marcelo</td>
-                        <td>marcelo.e.jr@hotmail.com</td>
-                        <td>
-                            <button id="modalopen">Abrir</button>
-                            <div id="modal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <span class="close">Apagar</span>
-                                    <span class="close">Salvar</span>
-                                    <h2>Asssunto</h2>
-                                    <h5>Marcelo</h5>
-                                    <p>email</p>
-                                    <p>mensagem</p>
+                <input type="text" id="procurar2B" class="procurar hidden" onkeyup="procurarNome(procurar2B, tabela2B)" placeholder="Procurar por assunto..">
+                <div class="mudar-tabela">
+                    <div id="iconTabela1" class="icon icon-left" onclick="alternarTabelas('sugestoespag', '#tabela2', 'novas')"><i class="fas fa-angle-left fa-2x"></i></div>
+                    <h4 id="tabelaTitulo">Mensagens salvas</h4>
+                    <div id="iconTabela2" class="icon icon-right" onclick="alternarTabelas('sugestoespag', '#tabela2', 'salvas')"><i class="fas fa-angle-right fa-2x"></i></div>
+                </div>
+                <div id="sugestoespagbox">
+                    <table id="tabela2" class="quadro-usuarios">
+                        <tr>
+                            <th onclick="ordenarTabela(0, tabela2)">Asssunto</th>
+                            <th onclick="ordenarTabela(1, tabela2)">nome</th>
+                            <th onclick="ordenarTabela(2, tabela2)">email</th>
+                            <th onclick="ordenarTabela(3, tabela2)">Messagem</th>
+                        </tr>
+                        <!-- <tr id="parent-modal">
+                            <td>Sugestão</td>
+                            <td>Marcelo</td>
+                            <td>marcelo.e.jr@hotmail.com</td>
+                            <td>
+                                <button id="modalopen">Abrir</button>
+                                <div id="modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <span class="close">Apagar</span>
+                                        <span class="close">Salvar</span>
+                                        <h2>Asssunto</h2>
+                                        <h5>Marcelo</h5>
+                                        <p>email</p>
+                                        <p>mensagem</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr id="parent-modal">
-                        <td>Erro</td>
-                        <td>Daniel</td>
-                        <td>danieljose@gmail.com</td>
-                        <td>
-                            <button id="modalopen">Abrir</button>
-                            <div id="modal" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <span class="close">Apagar</span>
-                                    <span class="close">Salvar</span>
-                                    <h2>Asssunto</h2>
-                                    <h5>Daniel</h5>
-                                    <p>email</p>
-                                    <p>mensagem</p>
+                            </td>
+                        </tr> -->
+                    </table>
+                    <table id="tabela2B" class="quadro-usuarios  hidden">
+                        <tr>
+                            <th onclick="ordenarTabela(0, tabela2B)">Asssunto</th>
+                            <th onclick="ordenarTabela(1, tabela2B)">nome</th>
+                            <th onclick="ordenarTabela(2, tabela2B)">email</th>
+                            <th onclick="ordenarTabela(3, tabela2B)">Messagem</th>
+                        </tr>
+                        <!-- <tr id="parent-modal">
+                            <td>Sugestão</td>
+                            <td>Marcelo</td>
+                            <td>marcelo.e.jr@hotmail.com</td>
+                            <td>
+                                <button id="modalopen">Abrir</button>
+                                <div id="modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <span class="close">Apagar</span>
+                                        <span class="close">Salvar</span>
+                                        <h2>Asssunto</h2>
+                                        <h5>Marcelo</h5>
+                                        <p>email</p>
+                                        <p>mensagem</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                            </td>
+                        </tr> -->
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -45,8 +45,13 @@
                         <td>'.$query['id'].'</td>
                         <td>'.$query['nome'].'</td>
                         <td>'.$query['email'].'</td>
-                        <td>'.$query['admin'].'<button>Promover</button><button>Retirar</button></td>
-                    </tr>';
+                        <td>'.$query['admin'];
+                        $queryBuscarUsuario = "select admin from usuarios where id = {$query['id']}";
+                        $resultAdmin = mysqli_query($conn, $queryBuscarUsuario);
+                        $resultBuscarUsuario = mysqli_fetch_assoc($resultAdmin);
+                        if($resultBuscarUsuario['admin'] >= '2') echo '<button onclick="rebaixarUsuario('.$query['id'].')">Rebaixar</button></td></tr>';
+                        elseif($resultBuscarUsuario['admin'] === '1') echo '<button onclick="promoverUsuario('.$query['id'].')">Promover</button><button onclick="rebaixarUsuario('.$query['id'].')">Rebaixar</button></td></tr>';
+                        elseif($resultBuscarUsuario['admin'] === '0') echo '<button onclick="promoverUsuario('.$query['id'].')">Promover</button></td></tr>';
                 }
                 break;
             case 'conteudo':
@@ -70,7 +75,7 @@
                         <td>'.$query['desc'].'</td>
                         <td>'.$data.'</td>
                         <td>'.$resultquerynome['nome'].'</td>
-                        <td class="alinhar"><a target="_blank" href="/StoriesBr/livro/'.$query['id'].'">Ler</a><a href="edicao.php?id='.$query['id'].'" target="_blank"><button>Editar</button></a><button>Excluir</button></td>
+                        <td class="alinhar"><a target="_blank" href="/StoriesBr/livro/'.$query['id'].'">Ler</a><a href="edicao.php?id='.$query['id'].'" target="_blank"><button>Editar</button></a><button onclick="apagarConteudo('.$query['id'].')">Excluir</button></td>
                     </tr>';
                 }
 
@@ -106,9 +111,10 @@
                 }
                 break;
             case 'reportes':
-                $queryReportes = 'select * from mensagens where pag_erro_id is not null order by created_at desc';
+                $queryReportes = 'select * from mensagens where pag_erro_id is not null AND salvar = 0 order by created_at desc';
                 $result = mysqli_query($conn, $queryReportes);
-                echo '<tr>
+                echo '<table id="tabela" class="quadro-usuarios">
+                <tr>
                     <th onclick="ordenarTabela(0, tabela)">Asssunto</th>
                     <th onclick="ordenarTabela(1, tabela)">nome</th>
                     <th onclick="ordenarTabela(2, tabela)">email</th>
@@ -125,8 +131,8 @@
                             <div id="modal" class="modal">
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
-                                    <span class="apagar">Apagar</span>
-                                    <span class="salvar">Salvar</span>
+                                    <span class="apagar" onclick="apagarMensagem('.$query['id'].')">Apagar</span>
+                                    <span class="salvar" onclick="salvarMensagem('.$query['id'].')">Salvar</span>
                                     <h2>Assunto: '.$query['assunto'].'</h2>
                                     <h2>Página do reporte :<a target="_blank" href="/StoriesBr/livro/'.$query['pag_erro_id'].'">'.$query['pag_erro_id'].'</a></h2>
                                     <h5>'.$query['nome'].'</h5>
@@ -137,11 +143,46 @@
                         </td>
                     </tr>';
                 }
+                echo '</table>';
+
+                mysqli_free_result($result);                
+                $queryReportesSalvos = 'select * from mensagens where pag_erro_id is not null AND salvar = 1 order by created_at desc';
+                $result = mysqli_query($conn, $queryReportesSalvos);
+                echo '<table id="tabelaB" class="quadro-usuarios hidden">
+                <tr>
+                    <th onclick="ordenarTabela(0, tabelaB)">Asssunto</th>
+                    <th onclick="ordenarTabela(1, tabelaB)">nome</th>
+                    <th onclick="ordenarTabela(2, tabelaB)">email</th>
+                    <th onclick="ordenarTabela(3, tabelaB)">Messagem</th>
+                </tr>';
+                while($query = mysqli_fetch_assoc($result)){
+                    echo '<tr id="parent-modal">
+                            <td>'.$query['assunto'].'</td>
+                            <td>'.$query['nome'].'</td>
+                            <td>'.$query['email'].'</td>
+                            <td>
+                                <button id="modalopen">Abrir</button>
+                                <div id="modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <span class="apagar" onclick="apagarMensagem('.$query['id'].')">Apagar</span>
+                                        <h2>Assunto: '.$query['assunto'].'</h2>
+                                        <h2>Página do reporte :<a target="_blank" href="/StoriesBr/livro/'.$query['pag_erro_id'].'">'.$query['pag_erro_id'].'</a></h2>
+                                        <h5>'.$query['nome'].'</h5>
+                                        <p>'.$query['email'].'</p>
+                                        <p>'.$query['mens'].'</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>';
+                }
+                echo '</table>';
                 break;
             case 'sugestoes':
-                $querySugestões = 'select * from mensagens where pag_erro_id is null order by created_at desc';
+                $querySugestões = 'select * from mensagens where pag_erro_id is null AND salvar = 0 order by created_at desc';
                 $result = mysqli_query($conn, $querySugestões);
-                echo '<tr>
+                echo '<table id="tabela2" class="quadro-usuarios">
+                <tr>
                     <th onclick="ordenarTabela(0, tabela2)">Asssunto</th>
                     <th onclick="ordenarTabela(1, tabela2)">nome</th>
                     <th onclick="ordenarTabela(2, tabela2)">email</th>
@@ -157,8 +198,8 @@
                             <div id="modal" class="modal">
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
-                                    <span class="apagar">Apagar</span>
-                                    <span class="salvar">Salvar</span>
+                                    <span class="apagar" onclick="apagarMensagem('.$query['id'].')">Apagar</span>
+                                    <span class="salvar" onclick="salvarMensagem('.$query['id'].')">Salvar</span>
                                     <h2>Assunto: '.$query['assunto'].'</h2>
                                     <h5>'.$query['nome'].'</h5>
                                     <p>'.$query['email'].'</p>
@@ -168,12 +209,44 @@
                         </td>
                     </tr>';
                 }
+                mysqli_free_result($result);
+                echo '</table>';
+                $queryReportesSalvos = 'select * from mensagens where pag_erro_id is null AND salvar = 1 order by created_at desc';
+                $result = mysqli_query($conn, $queryReportesSalvos);
+                echo '<table id="tabela2B" class="quadro-usuarios hidden">
+                <tr>
+                    <th onclick="ordenarTabela(0, tabela2B)">Asssunto</th>
+                    <th onclick="ordenarTabela(1, tabela2B)">nome</th>
+                    <th onclick="ordenarTabela(2, tabela2B)">email</th>
+                    <th onclick="ordenarTabela(3, tabela2B)">Messagem</th>
+                </tr>';
+                while($query = mysqli_fetch_assoc($result)){
+                    echo '<tr id="parent-modal">
+                            <td>'.$query['assunto'].'</td>
+                            <td>'.$query['nome'].'</td>
+                            <td>'.$query['email'].'</td>
+                            <td>
+                                <button id="modalopen">Abrir</button>
+                                <div id="modal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <span class="salvar" onclick="salvarMensagem('.$query['id'].')">Salvar</span>
+                                        <h2>Assunto: '.$query['assunto'].'</h2>
+                                        <h2>Página do reporte :<a target="_blank" href="/StoriesBr/livro/'.$query['pag_erro_id'].'">'.$query['pag_erro_id'].'</a></h2>
+                                        <h5>'.$query['nome'].'</h5>
+                                        <p>'.$query['email'].'</p>
+                                        <p>'.$query['mens'].'</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>';
+                }
+                echo '</table>';
                 break;
         }
-
         mysqli_close($conn);
         exit();
-    }    //fazer processos de aprovação e negação
+    }    //processos de aprovação e negação
     elseif (isset($_GET['aprovar']) && isset($_GET['id'])) {
         if (is_numeric($_GET['id']) == true){
             $id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -184,6 +257,7 @@
         else{
             header('Location: paineladmin?erroSQL');
         }
+        exit();
     }
     elseif (isset($_GET['negar']) && isset($_GET['id'])) {
         if (is_numeric($_GET['id']) == true){
@@ -195,4 +269,85 @@
         else{
             header('Location: paineladmin?erroSQL');
         }
+        exit();
+    }  //processos de promover e rebaixar
+    elseif (isset($_GET['promover']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $queryBuscarUsuario = "select admin from usuarios where id = {$id}";
+            $resultAdmin = mysqli_query($conn, $queryBuscarUsuario);
+            $resultBuscarUsuario = mysqli_fetch_assoc($resultAdmin);
+            if($resultBuscarUsuario['admin'] < 2){
+                switch ($resultBuscarUsuario['admin']) {
+                    case 0:
+                        $admin = 1;
+                        break;
+                    case 1:
+                        $admin = 2;
+                        break;
+                }
+                $queryPromover = "update usuarios set admin = {$admin} where id = {$id}";
+                mysqli_query($conn, $queryPromover );
+                mysqli_close($conn);
+            }
+        }
+        else{
+            header('Location: paineladmin?erroSQL');
+        }
+        exit();
+    }
+    elseif (isset($_GET['rebaixar']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $queryBuscarUsuario = "select admin from usuarios where id = {$id}";
+            $resultAdmin = mysqli_query($conn, $queryBuscarUsuario);
+            $resultBuscarUsuario = mysqli_fetch_assoc($resultAdmin);
+            if($resultBuscarUsuario['admin'] >= 1){
+                switch ($resultBuscarUsuario['admin']) {
+                    case 1:
+                        $admin = 0;
+                        break;
+                    case 2:
+                        $admin = 1;
+                        break;
+                }
+                $queryRebaixar = "update usuarios set admin = {$admin} where id = {$id}";
+                mysqli_query($conn, $queryRebaixar);
+                mysqli_close($conn);    
+            }
+        }
+        else{
+            header('Location: paineladmin?erroSQL');
+        }
+        exit();
+    } //processo de apagar conteúdo
+    elseif (isset($_GET['apagar']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $queryApagar = "delete from historias where id = {$id}";
+            mysqli_query($conn, $queryApagar);
+            mysqli_close($conn);
+        }
+        else{
+            header('Location: paineladmin?erroSQL');
+        }
+        exit();
+    } //processos de salvar e apagar mensagens
+    elseif (isset($_GET['salvarMensagem']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $querySalvarMensagem = "update mensagens set salvar = 1 where id = {$id}";
+            mysqli_query($conn, $querySalvarMensagem);
+            mysqli_close($conn);
+        }
+        exit();
+    }
+    elseif (isset($_GET['apagarMensagem']) && isset($_GET['id'])) {
+        if (is_numeric($_GET['id']) == true){
+            $id = mysqli_real_escape_string($conn, $_GET['id']);
+            $queryApagar = "delete from mensagens where id = {$id}";
+            mysqli_query($conn, $queryApagar);
+            mysqli_close($conn);
+        }
+        exit();
     }

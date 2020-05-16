@@ -8,9 +8,10 @@ const botoes = document.querySelectorAll('.botao')
 let botao_id
 
 for (const botao of botoes) { botao.addEventListener('click', () =>{
-    if(botao.id !== 'inicio')carregarPags(botao.id)    
+    if(botao.id !== 'inicio')carregarPags(botao.id)
 
     botao_id = botao.id //salva o id do botao
+    console.log(botao_id)   
     const botoes_ativar = document.querySelectorAll('#mySidenav .botao')
     // remove a class de todos e coloca no clicado
     botoes_ativar.forEach(botao_ativo => { 
@@ -131,7 +132,7 @@ function procurarNome(id, tabelaId) {
     tr = tabelaId.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
-    if(id.id === 'procurarUser' || id.id === 'procurar2' || id.id === 'procurar'){
+    if(id.id === 'procurarUser' || id.id === 'procurar2' || id.id === 'procurar'|| id.id === 'procurar2B' || id.id === 'procurarB'){
         for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
                 if (td) {
@@ -157,6 +158,52 @@ function procurarNome(id, tabelaId) {
             }
         }
     }
+}
+let tabelaTroca = false
+function alternarTabelas(viewId, tabelaId, condicao){
+    let icon1
+    let icon2
+    let tabelaTitulo
+    let tabelaSalvo
+    let procurar
+    let procurarB
+    if(viewId === 'reportespag'){
+        icon1 = document.querySelector('#reportespag #iconTabela1')
+        icon2 = document.querySelector('#reportespag #iconTabela2')
+        tabelaTitulo = document.querySelector('#reportespag #tabelaTitulo')
+        tabelaSalvo = document.querySelector('#tabelaB')
+        procurar = document.querySelector('#procurar')
+        procurarB = document.querySelector('#procurarB')
+    }
+    else{
+        icon1 = document.querySelector('#sugestoespag #iconTabela1')
+        icon2 = document.querySelector('#sugestoespag #iconTabela2')
+        tabelaTitulo = document.querySelector('#sugestoespag #tabelaTitulo')
+        tabelaSalvo = document.querySelector('#tabela2B')
+        procurar = document.querySelector('#procurar2')
+        procurarB = document.querySelector('#procurar2B')
+    }
+    const tabela = document.querySelector(tabelaId)
+    if(tabelaTroca === false) {
+        tabelaTroca = true
+        icon2.style.display = 'none'
+        icon1.style.display = 'flex'
+        tabelaTitulo.textContent = 'Mensagens novas'
+        procurar.style.display = 'none'
+        procurarB.style.display = 'inline-block'
+        tabela.style.display = 'none'
+        tabelaSalvo.style.display = 'table'
+    }else{
+        tabelaTroca = false
+        icon1.style.display = 'none'
+        icon2.style.display = 'flex'
+        tabelaTitulo.textContent = 'Mensagens salvas'
+        procurar.style.display = 'inline-block'
+        procurarB.style.display = 'none'
+        tabela.style.display = 'table'
+        tabelaSalvo.style.display = 'none'
+    }
+
 }
 
 //refaz a seleção para adicionar funções de clique aos elementos novos
@@ -222,6 +269,8 @@ function carregarPags(id){
         if (xmlreq.readyState == 4) {
             loader.style.display = 'none'
             if (xmlreq.status == 200) {
+                let view
+                let tabelaSalvo
                 switch (id) {
                     case 'usuarios':
                             const tabelaUsuarios = document.querySelector('#quadrousuarios tbody')
@@ -236,12 +285,12 @@ function carregarPags(id){
                             quadroRevisao.innerHTML = xmlreq.responseText    
                         break;
                     case 'reportes':
-                            const tabelaReportes = document.querySelector('#tabela tbody')
-                            tabelaReportes.innerHTML = xmlreq.responseText
+                            view = document.querySelector('#reportespagbox')
+                            view.innerHTML = xmlreq.response
                         break;
                     case 'sugestoes':
-                        const tabelaSugestoes = document.querySelector('#tabela2 tbody')
-                        tabelaSugestoes.innerHTML = xmlreq.responseText
+                            view = document.querySelector('#sugestoespagbox')
+                            view.innerHTML = xmlreq.response
                         break;
                 }
                 bindCliques() //refaz a seleção para adicionar funções de clique aos elementos novos
@@ -289,5 +338,90 @@ function negar(id){
     }
     xmlreq.send(null);
 }
-
-//
+function apagarConteudo(id){
+    url = 'servicosadmin.php?apagar=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
+            if (xmlreq.status == 200) {
+                carregarPags('conteudo')
+                alert('apagado')
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
+}
+function promoverUsuario(id){
+    url = 'servicosadmin.php?promover=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
+            if (xmlreq.status == 200) {
+                carregarPags('usuarios')
+                alert('promovido')
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
+}
+function rebaixarUsuario(id){
+    url = 'servicosadmin.php?rebaixar=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
+            if (xmlreq.status == 200) {
+                carregarPags('usuarios')
+                alert('rebaixado')
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
+}
+function salvarMensagem(id){
+    url = 'servicosadmin.php?salvarMensagem=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
+            if (xmlreq.status == 200) {
+                carregarPags('reportes')
+                carregarPags('sugestoes')
+                alert('mensagem salva')
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
+}
+function apagarMensagem(id){
+    url = 'servicosadmin.php?apagarMensagem=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            loader.style.display = 'none'
+            if (xmlreq.status == 200) {
+                carregarPags('reportes')
+                carregarPags('sugestoes')
+                alert('mensagem apagada')
+            }else{
+                console.log(erro)
+            }
+        }
+    }
+    xmlreq.send(null);
+}

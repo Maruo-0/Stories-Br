@@ -220,10 +220,34 @@ h1, h2, h3, h4, h5{
     border: 0;
     border-top: 1px solid rgba(90, 90, 90, 0.534);
 }
+.mudar-tabela{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tabela-titulo{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: x-large;
+}
+.icon{
+    background-color: #212529;
+    border-radius: 10%;
+    color: white;
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-left{
+    display: none;
+}
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
@@ -307,7 +331,7 @@ h1, h2, h3, h4, h5{
 .loader{
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 10030;
     left: 0;
     top: 0;
     width: 100%;
@@ -319,7 +343,7 @@ h1, h2, h3, h4, h5{
     justify-content: center;
 }
 .loader .spin{
-    z-index: 2;
+    z-index: 10032;
     border: 12px solid #ddd;
     border-top: 12px solid #21ABA5;
     border-right: 12px solid #21ABA5;
@@ -349,4 +373,10 @@ h1, h2, h3, h4, h5{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.hidden{
+    display: none;
+}
+.btn:focus{
+    box-shadow: 0 0 0 0.2rem rgba(82, 214, 128, 0.24);
 }
