@@ -314,7 +314,7 @@ function aprovar(id){
                 carregarPags('revisao')
                 alert('aprovado')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }
@@ -332,7 +332,7 @@ function negar(id){
                 carregarPags('revisao')
                 alert('negado')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }
@@ -349,7 +349,7 @@ function apagarConteudo(id){
                 carregarPags('conteudo')
                 alert('apagado')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }
@@ -366,7 +366,7 @@ function promoverUsuario(id){
                 carregarPags('usuarios')
                 alert('promovido')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }
@@ -383,7 +383,7 @@ function rebaixarUsuario(id){
                 carregarPags('usuarios')
                 alert('rebaixado')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }
@@ -401,7 +401,7 @@ function salvarMensagem(id){
                 carregarPags('sugestoes')
                 alert('mensagem salva')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }
@@ -419,7 +419,7 @@ function apagarMensagem(id){
                 carregarPags('sugestoes')
                 alert('mensagem apagada')
             }else{
-                console.log(erro)
+                console.log('erro')
             }
         }
     }

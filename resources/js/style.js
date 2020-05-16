@@ -30,7 +30,62 @@ function favoritar() {
     favorito = document.querySelector('#favorito');
     if(this.favorito.innerText === 'star'){
         this.favorito.innerText = 'star_border';
+        desfavoritarConteudo(id)
     }else{
-    this.favorito.innerText = 'star';
+        this.favorito.innerText = 'star';
+        favoritarConteudo(id)
     }
+}
+
+function CriaRequest() {
+    try{
+        request = new XMLHttpRequest();        
+    }catch (IEAtual){
+        
+        try{
+            request = new ActiveXObject("Msxml2.XMLHTTP");       
+        }catch(IEAntigo){
+        
+            try{
+                request = new ActiveXObject("Microsoft.XMLHTTP");          
+            }catch(falha){
+                request = false;
+            }
+        }
+    }
+    
+    if (!request) {
+        alert("Seu Navegador não suporta Ajax!");
+    }
+    else return request;
+}
+function favoritarConteudo(id){
+    url = '../biblioteca/funcoes-leitura.php?favoritar=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                alert('Favoritado')
+            }else{
+                console.log('erro')
+            }
+        }
+    }
+    xmlreq.send(null);
+}
+function desfavoritarConteudo(id){
+    url = '../biblioteca/funcoes-leitura.php?desfavoritar=true&id='+id
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                alert('Desfavoritado')
+            }else{
+                console.log('erro')
+            }
+        }
+    }
+    xmlreq.send(null);
 }

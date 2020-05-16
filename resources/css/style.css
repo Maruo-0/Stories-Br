@@ -1,3 +1,35 @@
+:root{
+    --darkblue: #263e73;
+    --darkblue2: #3d4861;
+    --yellow: #ffdb59;
+    --green: #4CAF50;
+    --white: #fff;
+    --black: #000;
+    --gray0: #f1f1f1;
+    --gray1: #b1b1b1;
+    --gray2: #5c5c5c;
+    --gray3: #424242;
+    --gray4: #333333;
+    --gray5: #272727;
+    --grayblue: #495057;
+    --graygreen: #a1bbb1;
+}
+.light{
+    --bgleitura: var(--yellow);
+    --imgshboxleitura: var(--gray3);
+    --btnleitura: var(--white);
+    --leitura: var(--gray0);
+    --colorleitura: var(--black);
+    --colorborda: var(--black);
+}
+.dark{
+    --bgleitura: var(--grayblue);
+    --imgshboxleitura: var(--gray0);
+    --btnleitura: var(--gray5);
+    --leitura: var(--gray4);
+    --colorleitura: var(--white);
+    --colorborda: var(--white);
+}
 .divisao{
     position: relative;
 }
@@ -29,9 +61,9 @@
     font-size: 18px;
 }
 .btn-clsm3{
-    background-color: #ffffff;
-    border-color: #ffffff;
-    color: #000000;
+    background-color: var(--btnleitura);
+    border-color: var(--colorborda);
+    color: var(--colorleitura);
     font-size: 18px;
     font-weight: 500;
 }
@@ -226,7 +258,7 @@ hr{
 
 .cont-all{
     margin-top: 150px;
-    background-color: #ffdb59;
+    background-color: var(--bgleitura);
 }
 .cont-in{
     position: unset;
@@ -242,8 +274,8 @@ hr{
 .cont-img .cont-i-img{
     width: 100%;
     border-radius: 2%;
-    border: solid 1px #5c5c5c;
-    box-shadow: 0px 3px 9px 0px #424242;
+    border: solid 1px var(--colorborda);
+    box-shadow: 0px 3px 9px 0px var(--imgshboxleitura);
 }
 @media screen and (max-width: 770px){
     .cont-in .cont-img{
@@ -258,7 +290,7 @@ hr{
 }
 .cont-row .cont-r-f{
     cursor: pointer;
-    color: #272727;
+    color: var(--colorleitura);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -273,8 +305,9 @@ hr{
     padding: 45px;
     margin-top: 70px;
     border-radius: 5px;
-    border: solid 1px #424242;
-    background-color: #f9f9f9;
+    border: solid 1px var(--colorleitura);
+    background-color: var(--leitura);
+    color: var(--colorleitura);
     font-size: 15px;
     max-width: unset;
 }
@@ -375,4 +408,11 @@ a .logo{
 
 h1, h2, h3, h4, h5{
     overflow-y: hidden;
+}
+
+.selection{
+    color: var(--colorleitura);
+    background: var(--btnleitura);
+    border: solid 1px var(--colorborda);
+    border-radius: .25rem;
 }

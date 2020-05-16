@@ -45,7 +45,7 @@
                     <a class="nav-link" href="livros">Biblioteca</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Saiba mais</a>
+                    <a class="nav-link" href="#saibamais">Saiba mais</a>
                   </li>
               
             <?php 
@@ -191,7 +191,7 @@
             </a>
         </div>  
       </section>
-      <div class="container">
+      <div id="saibamais" class="container">
         <section class="row descricao" style="margin-left: 0;margin-right: 0;">
 
           <div class="col-md-12" style="margin-bottom: 40px">

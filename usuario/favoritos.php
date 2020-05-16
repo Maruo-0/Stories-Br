@@ -14,19 +14,8 @@
     $inicio = ($quantidade * $pagina) - $quantidade;
 
 
-    if(isset($_POST['search'])){  //PESQUISA
-        $search_title = mysqli_real_escape_string($conn, $_POST['search_title']);
-
-        $sql = "select * from historias where titulo like '%".$search_title."%' order by created_at desc limit $inicio, $quantidade";
-
-        $query = mysqli_query($conn, $sql);
-    }
-    else{
-        //Monta o SQL com LIMIT para exibição dos dados  
-        $sql = "select * from historias where aprovado like '1' order by created_at desc limit $inicio, $quantidade";
-        //Executa o SQL
-        $query = mysqli_query($conn, $sql);
-    }
+    $sql = "select * from ler_depois where id_usuario = {$_SESSION['userid']}  order by created_at desc limit $inicio, $quantidade";
+    $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -78,9 +67,13 @@
     <div id="main">
         <div class="rows padding-xl">
 
-        <?php while($historia = mysqli_fetch_assoc($query)){?>
+        <?php while($favorito = mysqli_fetch_assoc($query)){            
+            $sql_historia = "select * from historias where id = {$favorito['id_historia']}";
+            $query_historia = mysqli_query($conn, $sql_historia);
+            $historia = mysqli_fetch_assoc($query_historia)?>
+            
             <div class="col-sm-4">
-                    <a href="livro/<?php echo $historia['id']; ?>">
+                <a href="livro/<?php echo $historia['id']; ?>">
                     <div class="card-b mb-5">
                         <img src="resources/src/<?php echo $historia['img_capa']; ?>" class="card-img-top" width="300px">
                         <div class="card-body">
@@ -88,10 +81,14 @@
                             <div class="card-title formatar-desc"><p><?php echo $historia['desc']; ?></p></div>
                             <div class="card-title formatar-data"><p><?php $data = $historia['created_at']; echo 'Postado em: '.date('d/m/Y',strtotime($data)) ?></p></div>
                         </div>
-                    </div></a>
-                </div>
-
-        <?php }?>
+                    </div>
+                </a>
+            </div>
+        <?php }
+            if(mysqli_num_rows($query) === 0){
+                echo '<h2>Nenhum favorito encrontado...</h2>';
+            }
+        ?>
         </div><br><center>
         <?php
             //SQL para saber o total

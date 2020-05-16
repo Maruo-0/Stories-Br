@@ -1,4 +1,8 @@
-<?php include('navbarbib.php'); mysqli_close($conn);?>
+<?php include('navbarbib.php'); 
+$query_favorito = "select count(*) from ler_depois where id_historia = {$historia['id']} and id_usuario = {$_SESSION['userid']}";
+$resultado_favorito = mysqli_query($conn, $query_favorito);
+$result_final = mysqli_fetch_assoc($resultado_favorito);
+mysqli_close($conn); ?>
 
 <section class="container-fluid cont-all">
     <div class="row cont-wrap">
@@ -8,12 +12,17 @@
             </div>
             <div class="row cont-row">
                 <a href="../resources/pdf/<?php echo $historia['pdf'] ?>" target="_blank"><button class="btn btn-clsm3">Leve o PDF</button></a>
-                <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">star_border</i>
-                <!--favorite-->
+                <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">
+                <?php if($result_final['count(*)'] > 0) echo '<div id="0"></div>star';
+                    else echo '<div id="'.$historia['id'].'"></div>star_border';?></i>
                 <button class="btn btn-clsm3" type="button" value="Play" id="play">Escutar</button>
-                <select id="voiceSelection">
+                <select id="voiceSelection" class="selection">
                     <option value="Brazilian Portuguese Female">Português</option>
                     <option value="US English Male">Inglês</option>
+                </select>
+                <select id="themeSelection" class="selection">
+                    <option value="light">Claro</option>
+                    <option value="dark">Escuro</option>
                 </select>
                 <a href="../livros" class="btn btn-clsm3 float-right">Voltar</a>
                 <?php
@@ -31,13 +40,12 @@
             </div>
         </div>
          <div class="col-md-9 cont-card">
-            <p id="texto"></p>
+            <div class="id" id="<?php echo $historia['id']; ?>"></div>
+            <div id="texto"></div>
             <button class="btn btn-danger" type="button" value="<?php echo $historia['id']; ?>" id="reportar">Reportar erro</button>
         </div>
     </div>
 </section>
-<div id="text-ptbr" class="hidden select"><?php echo $historia['texto']; ?></div>
-<div id="text-en" class="hidden select"><?php echo $historia['textoIngles']; ?></div>
 
 <script>
     const reportarBtn = document.querySelector('#reportar')
@@ -56,8 +64,7 @@
 <script>
     //pega todos os campos que serão usados
     const texto = document.querySelector('#texto');//texto exibido
-    const ingles = document.querySelector('#text-en');//texto inglês
-    const pt = document.querySelector('#text-ptbr');//texto português
+    const id = document.querySelector('.id').id
     const voice = document.querySelector('#voiceSelection');//seleção de lingua
     const play = document.querySelector('#play');//botão escutar
     
@@ -76,13 +83,12 @@
             play.textContent = 'Pausar';
         }
     }
-
     function trocarLingua(){
         if(voice.value === 'Brazilian Portuguese Female'){
-            texto.innerHTML = pt.innerHTML;
+            buscarTexto(id, voice.value)
         }
         else{
-            texto.innerHTML = ingles.innerHTML;
+            buscarTexto(id, voice.value)
         }
     }
     trocarLingua();
@@ -97,8 +103,72 @@
 
         trocarLingua();
     });
-</script>
 
+    function CriaRequest() {
+        try{
+            request = new XMLHttpRequest();        
+        }catch (IEAtual){
+            
+            try{
+                request = new ActiveXObject("Msxml2.XMLHTTP");       
+            }catch(IEAntigo){
+            
+                try{
+                    request = new ActiveXObject("Microsoft.XMLHTTP");          
+                }catch(falha){
+                    request = false;
+                }
+            }
+        }
+        
+        if (!request) {
+            alert("Seu Navegador não suporta Ajax!");
+        }
+        else return request;
+    }
+    function buscarTexto(id, lingua){
+        url = '../biblioteca/funcoes-leitura.php?buscarTexto=true&id='+id+'&lingua='+lingua
+        const xmlreq = CriaRequest();
+        xmlreq.open("GET", url, true);
+        xmlreq.onreadystatechange = function(){
+            if (xmlreq.readyState == 4) {
+                if (xmlreq.status == 200) {
+                    texto.innerHTML =  xmlreq.responseText
+                }else{
+                    console.log('erro')
+                }
+            }
+        }
+        xmlreq.send(null);
+    }
+
+</script>
+<script>
+    const themeSelection = document.querySelector('#themeSelection')
+    const body = document.body
+    themeSelection.addEventListener('change', salvarTema)
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+        body.classList.add(theme);
+        if(theme === 'light'){
+            themeSelection.selectedIndex = [0]
+        }
+        else{
+            themeSelection.selectedIndex = [1]
+        }
+    }
+
+    function salvarTema(){
+        if(themeSelection.value === 'light'){
+            body.classList.replace('dark', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+        else{
+            body.classList.replace('light', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+</script>
 <!--Texto para voz-->
 
 <script defer src="../resources/js/style.js"></script>
