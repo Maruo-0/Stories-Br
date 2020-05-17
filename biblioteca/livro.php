@@ -1,7 +1,9 @@
 <?php include('navbarbib.php'); 
-$query_favorito = "select count(*) from ler_depois where id_historia = {$historia['id']} and id_usuario = {$_SESSION['userid']}";
-$resultado_favorito = mysqli_query($conn, $query_favorito);
-$result_final = mysqli_fetch_assoc($resultado_favorito);
+if(isset($_SESSION['userid'])){
+    $query_favorito = "select count(*) from ler_depois where id_historia = {$historia['id']} and id_usuario = {$_SESSION['userid']}";
+    $resultado_favorito = mysqli_query($conn, $query_favorito);
+    $result_final = mysqli_fetch_assoc($resultado_favorito);
+}
 mysqli_close($conn); ?>
 
 <section class="container-fluid cont-all">
@@ -12,9 +14,12 @@ mysqli_close($conn); ?>
             </div>
             <div class="row cont-row">
                 <a href="../resources/pdf/<?php echo $historia['pdf'] ?>" target="_blank"><button class="btn btn-clsm3">Leve o PDF</button></a>
-                <i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">
-                <?php if($result_final['count(*)'] > 0) echo '<div id="0"></div>star';
-                    else echo '<div id="'.$historia['id'].'"></div>star_border';?></i>
+                <?php if(isset($_SESSION['userid'])){
+                    echo '<i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">';
+                    if($result_final['count(*)'] > 0) echo '<div id="0"></div>star';
+                    else echo '<div id="'.$historia['id'].'"></div>star_border';
+                    echo '</i>';
+                }?>
                 <button class="btn btn-clsm3" type="button" value="Play" id="play">Escutar</button>
                 <select id="voiceSelection" class="selection">
                     <option value="Brazilian Portuguese Female">Português</option>
@@ -38,6 +43,11 @@ mysqli_close($conn); ?>
                     }                    
                 ?>
             </div>
+            <div class="fonte">
+                <i class="small material-icons" id="diminuir">remove</i>
+                <div>Fonte</div>
+                <i class="small material-icons" id="aumentar">add</i>
+            </div>
         </div>
          <div class="col-md-9 cont-card">
             <div class="id" id="<?php echo $historia['id']; ?>"></div>
@@ -56,6 +66,23 @@ mysqli_close($conn); ?>
         window.location.href = '../fale-conosco'
     })
 
+    const diminuir = document.querySelector('#diminuir')
+    const aumentar = document.querySelector('#aumentar')
+    let fontSize = 16
+    diminuir.onclick = () => {
+        const fonte = document.querySelectorAll('#texto p')
+        fontSize = fontSize-2
+        fonte.forEach(font => {
+            font.style.fontSize = fontSize+'px'
+        });
+    }
+    aumentar.onclick = () => {
+        const fonte = document.querySelectorAll('#texto p')
+        fontSize = fontSize+2
+        fonte.forEach(font => {
+            font.style.fontSize = fontSize+'px'
+        });
+    }
 </script>
 
 <!--Texto para voz-->
