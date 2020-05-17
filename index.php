@@ -184,7 +184,7 @@
                 <div data-aos="fade-right" class="contentBx">
                     <div class="content">
                         <h2>Divirta-se com nossos quadrinhos</h2><br><br>
-                        <p>Acha história muito dificil? Aprenda lendo nossos quadrinhos, ou jogando jogos.</p>
+                        <p>Acha história muito dificil? Aprenda assistindo nossas histórias animadas ou jogando jogos.</p>
                     </div>
                 </div>
               </div>

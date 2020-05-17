@@ -12,7 +12,8 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+	<link rel="shortcut icon" type="image/png" href="resources/favicon.png"/>
+  <link rel="manifest" href="manifest.json"> 
 	<title>Entrar - Stories Br</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/login.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">

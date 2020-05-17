@@ -272,7 +272,12 @@
             menu: {Opções: {title: 'Opções', items: 'code searchreplace wordcount'}},
             menubar: 'file Opções',
             toolbar: 'undo redo | styleselect',
-            plugins: 'wordcount code searchreplace print preview'
+            plugins: 'wordcount code searchreplace print preview paste',
+            paste_auto_cleanup_on_paste : true,
+            paste_remove_styles: true,
+            paste_remove_styles_if_webkit: true,
+            paste_retain_style_properties: false,
+            paste_strip_class_attributes: true,
         });
     </script>
 </body>

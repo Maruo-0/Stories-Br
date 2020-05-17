@@ -10,25 +10,59 @@ define("MAIL", [
     "port" => "587",
     "user" => "zeronsama5@gmail.com",
     "passwd" => "159+357456",
-    "from_name" => "marcelo",
+    "from_name" => "Stories Br",
     "from_email" => "zeronsama5@gmail.com",
 ]);
 
 ///passar as varieaveis dentro da () da função
-function enviar(string $autsenha){
+function enviar($autsenha, $nome){
     if($_GET["processo"] === 'autenticacao'){
         $_POST = $_SESSION['POST'];
         $endereço = $_POST['email'];
         //$endereço = 'marceloescobarjunior@gmail.com';
         $assunto = 'Ative sua conta';
-        $corpo = '<h2>link de ativação de conta</h2> <a href="http://localhost/StoriesBr/config/autenticar.inc.php?aut='.$autsenha.'">autenticar</a>';
-        $corpoAlt = 'link de ativação de conta';
+        $corpo = '<div>
+                <div style="display: flex; justify-content: center; align-items: center; padding: 20px; background: #263e73;">
+                    <a href="https://stories-br.000webhostapp.com/" style="display: flex; align-items: center; font-size:40px; text-decoration:none; color:white">Stories<img  width="50px" src="https://stories-br.000webhostapp.com/img/br.svg" alt="Br"></a>
+                </div>
+                <div style="margin:0 20px; padding: 25px; font-size: 1.3em; background: #f1f1f1; border-left: solid 2px; border-right: solid 2px;">
+                    <p>Olá '.$nome.'</p>
+                    <p>Você solicitou a autenticação da sua conta, clique no link abaixo para 
+                        autenticar sua conta e poder utilizar todas as funcionalidades do Stories Br.</p>
+                    <a href="http://localhost/StoriesBr/config/autenticar.inc.php?aut='.$autsenha.'"><h3>Autenticar Conta</h3></a>
+                </div>
+                <div style="padding: 10px 40px; color:white; background: #263e73;">
+                    <p style="font-size: 1.1em;">Atenção: Não responda a esta mensagem. 
+                        Esta e-mail foi enviado por um sistema automático que não processa respostas. 
+                        Para obter ajuda acesse nossa página de <a href="http://localhost/StoriesBr/fale-conosco" style="color:rgb(247, 244, 75)">Contato</a>
+                        e nos deixe uma mensagem.
+                    </p>
+                </div>
+            </div>';
+        $corpoAlt = 'link de ativação de conta http://localhost/StoriesBr/config/autenticar.inc.php?aut='.$autsenha;
         }
     elseif($_GET["processo"] === 'recuperar'){
         $endereço = $_POST["email"];
         $assunto = 'Faça sua nova senha aqui';
-        $corpo = '<h2>link de nova senha</h2> <a href="http://localhost/StoriesBr/config/recuperar.inc.php?rec='.$autsenha.'">trocar senha</a>';
-        $corpoAlt = 'Link de nova senha';
+        $corpo = '<div>
+                <div style="display: flex; justify-content: center; align-items: center; padding: 20px; background: #263e73;">
+                    <a href="https://stories-br.000webhostapp.com/" style="display: flex; align-items: center; font-size:40px; text-decoration:none; color:white">Stories<img  width="50px" src="https://stories-br.000webhostapp.com/img/br.svg" alt="Br"></a>
+                </div>
+                <div style="margin:0 20px; padding: 25px; font-size: 1.3em; background: #f1f1f1; border-left: solid 2px; border-right: solid 2px;">
+                    <p>Olá '.$nome.'</p>
+                    <p>Você solicitou a recuperação de senha da sua conta, clique no link abaixo para 
+                        mudar sua senha e poder voltar a utilizar todas as funcionalidades do Stories Br.</p>
+                    <a href="http://localhost/StoriesBr/config/recuperar.inc.php?aut='.$autsenha.'"><h3>Recuperar Senha</h3></a>
+                </div>
+                <div style="padding: 10px 40px; color:white; background: #263e73;">
+                    <p style="font-size: 1.1em;">Atenção: Não responda a esta mensagem. 
+                        Esta e-mail foi enviado por um sistema automático que não processa respostas. 
+                        Para obter ajuda acesse nossa página de <a href="http://localhost/StoriesBr/fale-conosco" style="color:rgb(247, 244, 75)">Contato</a>
+                        e nos deixe uma mensagem.
+                    </p>
+                </div>
+            </div>';
+        $corpoAlt = 'Link de nova senha http://localhost/StoriesBr/config/recuperar.inc.php?aut='.$autsenha;
     }
     
     $mail = new PHPMailer(true);
@@ -65,23 +99,22 @@ function enviar(string $autsenha){
     }
 }
 
-$senha;
+$usuario;
 function criarLinkAutent(){
     require 'db.php';
-    global $senha;
+    global $usuario;
     if(isset($_GET["processo"]) && !isset($_POST['recuperar'])){
         $_POST = $_SESSION['POST'];
     }
     $email = $_POST['email'];
 
-    $sql = "select * from usuarios where email=?;";
+    $sql_senha = "select * from usuarios where email=?;";
     $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
-
+    mysqli_stmt_prepare($stmt, $sql_senha);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $senha = mysqli_fetch_assoc($result);
+    $usuario = mysqli_fetch_assoc($result);
     mysqli_close($conn);
 }
 //criarLinkAutent();
@@ -92,8 +125,9 @@ function criarLinkAutent(){
 if(isset($_GET["processo"]) && $_GET["processo"] === 'autenticacao'){
     if (session_status()!==PHP_SESSION_ACTIVE)session_start();
     criarLinkAutent();
-    $autsenha =  $senha['senha'];
-    enviar($autsenha);
+    $autsenha =  $usuario['senha'];
+    $nome =  $usuario['nome'];
+    enviar($autsenha, $nome);
     header("Location: ../inscricao");//confirme através do seu email
     exit();
 }
@@ -101,8 +135,9 @@ elseif(isset($_GET["processo"]) && $_GET["processo"] === 'recuperar'){
     if (session_status()!==PHP_SESSION_ACTIVE)session_start();
     $_SESSION['POST'] = $_POST;
     criarLinkAutent();
-    $autsenha =  $senha['senha'];
-    enviar($autsenha);
+    $autsenha =  $usuario['senha'];
+    $nome =  $usuario['nome'];
+    enviar($autsenha, $nome);
     header("Location: ../login?senha=esqueceu");//confirme através do seu email
     exit();
 }

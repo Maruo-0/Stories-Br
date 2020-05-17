@@ -1,6 +1,24 @@
-<?php include('header.php') ?>
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="../resources/favicon.png"/>
+    <link rel="manifest" href="../manifest.json"> 
+    <title>Stores BR</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/playground.css">
+</head>
 <body class="bg-play">
     <a href="../" class="btn btn-cl">Voltar</a>
+    <?php
+        if (isset($_SESSION['userid']) && $_SESSION['isadmin'] === 2){
+            echo '<a href="video.php" class="btn btn-cl float-right">Postar</a>';
+        }               
+    ?>
     <center>
     <div class="container">
         <h1 class="float-right" style="color: #263e73;">Playground</h1>
