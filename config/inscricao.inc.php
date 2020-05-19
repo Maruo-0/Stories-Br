@@ -55,12 +55,8 @@ if (isset($_POST['registrar'])) {
                     
                     if (session_status()!==PHP_SESSION_ACTIVE){
                         session_start();
-                        $_SESSION['POST'] = $_POST;///////direcionar pra pagina 
+                        $_SESSION['POST'] = $_POST;
                     }
-
-
-                    //header("Location: login.inc.php");
-                    //header("Location: ../inscricao");//confirme através do seu email
                     header("Location: email.inc.php?processo=autenticacao");
                     exit();
                 }

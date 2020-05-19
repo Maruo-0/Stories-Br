@@ -32,7 +32,7 @@
 					$_POST = $_SESSION['POST'];
 					echo '<form>
 						<img src="resources/src/brazil-.png">
-						<h4	 class="title">Email de recuperação enviado enviado para '.$_POST['email'].'</h4>
+						<h4 class="title">Email de recuperação enviado enviado para '.$_POST['email'].' Pode demorar alguns minutos</h4>
 						<input type="submit" href"login" class="btn" value="voltar">
 						</form>
 						</div>

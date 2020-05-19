@@ -1,11 +1,12 @@
 {
     "name": "Stories BR",
-    "short_name": "StoriesBR",
+    "short_name": "SBR",
     "start_url": "https://stories-br.000webhostapp.com/",
-    "theme_color": "white",
+    "theme_color": "#263e73",
     "background_color": "white",
+    "orientation": "any",
     "display": "standalone",
-    "description": "Aprendendo a história do Brasil",
+    "description": "Aprendendo a história do Brasil de forma divertida",
     "icons": [
         {
             "src": "resources/favicon.png",

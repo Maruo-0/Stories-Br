@@ -47,7 +47,7 @@
             <a class="botao" id="sugestoes">Sugestões</a>
             <a class="botao" href="edicao">Criar</a><br>
             <form action="../config/login.inc.php?sair=true" method="post">
-                <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Logout</button>
+                <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Sair</button>
             </form>
             <a class="botao" href="../">Voltar ao site</a><br><br><br>
         </div>

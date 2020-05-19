@@ -59,7 +59,7 @@
       <?php
         if (isset($_SESSION['userid'])) {
           echo  '<form action="/StoriesBr/config/login.inc.php?sair=true" method="post">
-          <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Logout</button>
+          <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Sair</button>
           </form>
           <a href="/StoriesBr/perfil">Perfil</a>
           <a href="/StoriesBr/favoritos">Favoritos</a>';
@@ -71,7 +71,7 @@
           }  
         }
         else{
-          echo  '<a href="/StoriesBr/login">Login</a>';
+          echo  '<a href="/StoriesBr/login">Entrar</a>';
         }
       ?>
       <br><br><br><hr>
