@@ -230,7 +230,7 @@
                                 <div id="modal" class="modal">
                                     <div class="modal-content">
                                         <span class="close">&times;</span>
-                                        <span class="salvar" onclick="salvarMensagem('.$query['id'].')">Salvar</span>
+                                        <span class="apagar" onclick="apagarMensagem('.$query['id'].')">Apagar</span>
                                         <h2>Assunto: '.$query['assunto'].'</h2>
                                         <h2>Página do reporte :<a target="_blank" href="/StoriesBr/livro/'.$query['pag_erro_id'].'">'.$query['pag_erro_id'].'</a></h2>
                                         <h5>'.$query['nome'].'</h5>

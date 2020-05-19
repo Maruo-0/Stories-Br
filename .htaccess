@@ -26,5 +26,6 @@ RewriteRule ^perfil usuario/perfil.php [NC,L]
 RewriteRule ^favoritos usuario/favoritos.php [NC,L]
 
 RewriteRule ^playground/atividades playground/index.php [NC,L]
-RewriteRule ^playground/atividades/([a-z]+)/([0-9]+) playground/index.php?video=$1&id=$2 [NC,L]
+RewriteRule ^playground/videos playground/todos-videos.php [NC,L]
+RewriteRule ^playground/video/([0-9]+) playground/todos-videos.php?&id=$1 [NC,L]
 RewriteRule ^playground/jogo-da-memoria playground/jogomemoria-js/index.html [NC,L]

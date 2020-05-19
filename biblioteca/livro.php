@@ -15,7 +15,7 @@ mysqli_close($conn); ?>
             <div class="row cont-row">
                 <a href="../resources/pdf/<?php echo $historia['pdf'] ?>" target="_blank"><button class="btn btn-clsm3">Leve o PDF</button></a>
                 <?php if(isset($_SESSION['userid'])){
-                    echo '<i class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">';
+                    echo '<i title="Favoritar" class="small material-icons cont-r-f" id="favorito" onclick="favoritar()">';
                     if($result_final['count(*)'] > 0) echo '<div id="0"></div>star';
                     else echo '<div id="'.$historia['id'].'"></div>star_border';
                     echo '</i>';
@@ -44,9 +44,9 @@ mysqli_close($conn); ?>
                 ?>
             </div>
             <div class="fonte">
-                <i class="small material-icons" id="diminuir">remove</i>
+                <i title="Diminuir" class="small material-icons" id="diminuir">remove</i>
                 <div>Fonte</div>
-                <i class="small material-icons" id="aumentar">add</i>
+                <i title="Aumentar" class="small material-icons" id="aumentar">add</i>
             </div>
         </div>
          <div class="col-md-9 cont-card">
@@ -68,17 +68,18 @@ mysqli_close($conn); ?>
 
     const diminuir = document.querySelector('#diminuir')
     const aumentar = document.querySelector('#aumentar')
-    let fontSize = 16
+    let fontSize = 15
+    let size = 3
     diminuir.onclick = () => {
         const fonte = document.querySelectorAll('#texto p')
-        fontSize = fontSize-2
+        fontSize = fontSize-size
         fonte.forEach(font => {
             font.style.fontSize = fontSize+'px'
         });
     }
     aumentar.onclick = () => {
         const fonte = document.querySelectorAll('#texto p')
-        fontSize = fontSize+2
+        fontSize = fontSize+size
         fonte.forEach(font => {
             font.style.fontSize = fontSize+'px'
         });

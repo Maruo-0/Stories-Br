@@ -1,18 +1,18 @@
-let navOpen = false
-const sideMenu = document.getElementById("sideMenu")
-const mySidenav = document.getElementById("mySidenav")
-const overl = document.getElementById("overl")
-const loader = document.querySelector('.loader')
-const painel = document.getElementById("painel")
-const botoes = document.querySelectorAll('.botao')
-let botao_id
+let navOpen = false;
+const sideMenu = document.getElementById("sideMenu");
+const mySidenav = document.getElementById("mySidenav");
+const overl = document.getElementById("overl");
+const loader = document.querySelector('.loader');
+const painel = document.getElementById("painel");
+const botoes = document.querySelectorAll('.botao');
+let botao_id;
 
 for (const botao of botoes) { botao.addEventListener('click', () =>{
-    if(botao.id !== 'inicio')carregarPags(botao.id)
+    if(botao.id !== 'inicio')carregarPags(botao.id);
 
-    botao_id = botao.id //salva o id do botao
-    console.log(botao_id)   
-    const botoes_ativar = document.querySelectorAll('#mySidenav .botao')
+    botao_id = botao.id; //salva o id do botao
+    console.log(botao_id);  
+    const botoes_ativar = document.querySelectorAll('#mySidenav .botao');
     // remove a class de todos e coloca no clicado
     botoes_ativar.forEach(botao_ativo => { 
         botao_ativo.classList.remove('active');
@@ -20,7 +20,7 @@ for (const botao of botoes) { botao.addEventListener('click', () =>{
             botao_ativo.classList.add('active');
         }
     })
-    mudarJanela()
+    mudarJanela();
 })}
 
 function openNav() {
@@ -30,48 +30,48 @@ function openNav() {
     if(document.getElementById('nav').offsetWidth < "460"){
         painel.style.display = "none";
     }
-    if(navOpen === false)navOpen = true
-    else closeNav()
+    if(navOpen === false)navOpen = true;
+    else closeNav();
 }
 function closeNav() {
     sideMenu.style.marginLeft = "0";
     mySidenav.style.width = "0";
     overl.style.width = "0%";
-    navOpen = false
+    navOpen = false;
     painel.style.display = "block";
 }
 function mudarJanela(){
-    const view = document.querySelectorAll('.view')      
+    const view = document.querySelectorAll('.view')   ;   
     for(i = 0; i <= 5; i++){
-        view[i].style.display = 'none'
+        view[i].style.display = 'none';
     }
     switch(botao_id){
         case 'inicio':
-            view[0].style.display = 'block'
+            view[0].style.display = 'block';
             break;
         case 'usuarios':
-            view[1].style.display = 'block'        
+            view[1].style.display = 'block';       
             break;
         case 'conteudo':
-            view[2].style.display = 'block'
+            view[2].style.display = 'block';
             break;
         case 'revisao':
-            view[3].style.display = 'block'
+            view[3].style.display = 'block';
             break;
         case 'reportes':
-            view[4].style.display = 'block'
+            view[4].style.display = 'block';
             break;
         case 'sugestoes':
-            view[5].style.display = 'block'
+            view[5].style.display = 'block';
             break;
     }
     closeNav()
 }
 function showTime(){
     var date = new Date();
-    var d = date.getDate()
-    var me = date.getMonth()
-    var a = date.getFullYear()
+    var d = date.getDate();
+    var me = date.getMonth();
+    var a = date.getFullYear();
     var h = date.getHours();
     var mi = date.getMinutes();
     var s = date.getSeconds();
@@ -172,49 +172,49 @@ function procurarNome(id, tabelaId) {
         }
     }
 }
-let tabelaTroca = false
+let tabelaTroca = false;
 function alternarTabelas(viewId, tabelaId, condicao){
-    let icon1
-    let icon2
-    let tabelaTitulo
-    let tabelaSalvo
-    let procurar
-    let procurarB
+    let icon1;
+    let icon2;
+    let tabelaTitulo;
+    let tabelaSalvo;
+    let procurar;
+    let procurarB;
     if(viewId === 'reportespag'){
-        icon1 = document.querySelector('#reportespag #iconTabela1')
-        icon2 = document.querySelector('#reportespag #iconTabela2')
-        tabelaTitulo = document.querySelector('#reportespag #tabelaTitulo')
-        tabelaSalvo = document.querySelector('#tabelaB')
-        procurar = document.querySelector('#procurar')
-        procurarB = document.querySelector('#procurarB')
+        icon1 = document.querySelector('#reportespag #iconTabela1');
+        icon2 = document.querySelector('#reportespag #iconTabela2');
+        tabelaTitulo = document.querySelector('#reportespag #tabelaTitulo');
+        tabelaSalvo = document.querySelector('#tabelaB');
+        procurar = document.querySelector('#procurar');
+        procurarB = document.querySelector('#procurarB');
     }
     else{
-        icon1 = document.querySelector('#sugestoespag #iconTabela1')
-        icon2 = document.querySelector('#sugestoespag #iconTabela2')
-        tabelaTitulo = document.querySelector('#sugestoespag #tabelaTitulo')
-        tabelaSalvo = document.querySelector('#tabela2B')
-        procurar = document.querySelector('#procurar2')
-        procurarB = document.querySelector('#procurar2B')
+        icon1 = document.querySelector('#sugestoespag #iconTabela1');
+        icon2 = document.querySelector('#sugestoespag #iconTabela2');
+        tabelaTitulo = document.querySelector('#sugestoespag #tabelaTitulo');
+        tabelaSalvo = document.querySelector('#tabela2B');
+        procurar = document.querySelector('#procurar2');
+        procurarB = document.querySelector('#procurar2B');
     }
-    const tabela = document.querySelector(tabelaId)
+    const tabela = document.querySelector(tabelaId);
     if(tabelaTroca === false) {
-        tabelaTroca = true
-        icon2.style.display = 'none'
-        icon1.style.display = 'flex'
-        tabelaTitulo.textContent = 'Mensagens novas'
-        procurar.style.display = 'none'
-        procurarB.style.display = 'inline-block'
-        tabela.style.display = 'none'
-        tabelaSalvo.style.display = 'table'
+        tabelaTroca = true;
+        icon2.style.display = 'none';
+        icon1.style.display = 'flex';
+        tabelaTitulo.textContent = 'Mensagens novas';
+        procurar.style.display = 'none';
+        procurarB.style.display = 'inline-block';
+        tabela.style.display = 'none';
+        tabelaSalvo.style.display = 'table';
     }else{
-        tabelaTroca = false
-        icon1.style.display = 'none'
-        icon2.style.display = 'flex'
-        tabelaTitulo.textContent = 'Mensagens salvas'
-        procurar.style.display = 'inline-block'
-        procurarB.style.display = 'none'
-        tabela.style.display = 'table'
-        tabelaSalvo.style.display = 'none'
+        tabelaTroca = false;
+        icon1.style.display = 'none';
+        icon2.style.display = 'flex';
+        tabelaTitulo.textContent = 'Mensagens salvas';
+        procurar.style.display = 'inline-block';
+        procurarB.style.display = 'none';
+        tabela.style.display = 'table';
+        tabelaSalvo.style.display = 'none';
     }
 
 }
@@ -245,12 +245,12 @@ function bindCliques(){
     })}
     //fechar modal
     for (const span of spans) { span.addEventListener('click', () =>{
-        this.fecharModal()
+        this.fecharModal();
     })}
 }
 
 function CriaRequest() {
-    loader.style.display = 'flex'
+    loader.style.display = 'flex';
     try{
         request = new XMLHttpRequest();        
     }catch (IEAtual){
@@ -269,46 +269,46 @@ function CriaRequest() {
     
     if (!request) {
         alert("Seu Navegador não suporta Ajax!");
-        loader.style.display = 'none'
+        loader.style.display = 'none';
     }
     else
         return request;
 }
 function carregarPags(id){
-    url = 'servicosadmin.php?'+id+'='+id
+    url = 'servicosadmin.php?'+id+'='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                let view
-                let tabelaSalvo
+                let view;
+                let tabelaSalvo;
                 switch (id) {
                     case 'usuarios':
-                            const tabelaUsuarios = document.querySelector('#quadrousuarios tbody')
-                            tabelaUsuarios.innerHTML = xmlreq.responseText
+                            const tabelaUsuarios = document.querySelector('#quadrousuarios tbody');
+                            tabelaUsuarios.innerHTML = xmlreq.responseText;
                         break;
                     case 'conteudo':
-                            const tabelaConteudos = document.querySelector('#tabelaUser tbody')
-                            tabelaConteudos.innerHTML = xmlreq.responseText
+                            const tabelaConteudos = document.querySelector('#tabelaUser tbody');
+                            tabelaConteudos.innerHTML = xmlreq.responseText;
                         break;
                     case 'revisao':
-                            const quadroRevisao = document.querySelector('#quadro-conteudo')
-                            quadroRevisao.innerHTML = xmlreq.responseText    
+                            const quadroRevisao = document.querySelector('#quadro-conteudo');
+                            quadroRevisao.innerHTML = xmlreq.responseText;
                         break;
                     case 'reportes':
-                            view = document.querySelector('#reportespagbox')
-                            view.innerHTML = xmlreq.response
+                            view = document.querySelector('#reportespagbox');
+                            view.innerHTML = xmlreq.response;
                         break;
                     case 'sugestoes':
-                            view = document.querySelector('#sugestoespagbox')
-                            view.innerHTML = xmlreq.response
+                            view = document.querySelector('#sugestoespagbox');
+                            view.innerHTML = xmlreq.response;
                         break;
                 }
                 bindCliques() //refaz a seleção para adicionar funções de clique aos elementos novos
             }else{
-                console.log(erro)
+                console.log(erro);
             }
         }
     };
@@ -316,123 +316,123 @@ function carregarPags(id){
 }
 
 function aprovar(id){
-    url = 'servicosadmin.php?aprovar=true&id='+id
+    url = 'servicosadmin.php?aprovar=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                new bindCliques().fecharModal()
-                carregarPags('revisao')
-                alert('aprovado')
+                new bindCliques().fecharModal();
+                carregarPags('revisao');
+                alert('aprovado');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }
     xmlreq.send(null);
 }
 function negar(id){
-    url = 'servicosadmin.php?negar=true&id='+id
+    url = 'servicosadmin.php?negar=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                new bindCliques().fecharModal()
-                carregarPags('revisao')
-                alert('negado')
+                new bindCliques().fecharModal();
+                carregarPags('revisao');
+                alert('negado');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }
     xmlreq.send(null);
 }
 function apagarConteudo(id){
-    url = 'servicosadmin.php?apagar=true&id='+id
+    url = 'servicosadmin.php?apagar=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                carregarPags('conteudo')
-                alert('apagado')
+                carregarPags('conteudo');
+                alert('apagado');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }
     xmlreq.send(null);
 }
 function promoverUsuario(id){
-    url = 'servicosadmin.php?promover=true&id='+id
+    url = 'servicosadmin.php?promover=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                carregarPags('usuarios')
-                alert('promovido')
+                carregarPags('usuarios');
+                alert('promovido');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }
     xmlreq.send(null);
 }
 function rebaixarUsuario(id){
-    url = 'servicosadmin.php?rebaixar=true&id='+id
+    url = 'servicosadmin.php?rebaixar=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                carregarPags('usuarios')
-                alert('rebaixado')
+                carregarPags('usuarios');
+                alert('rebaixado');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }
     xmlreq.send(null);
 }
 function salvarMensagem(id){
-    url = 'servicosadmin.php?salvarMensagem=true&id='+id
+    url = 'servicosadmin.php?salvarMensagem=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                carregarPags('reportes')
-                carregarPags('sugestoes')
-                alert('mensagem salva')
+                carregarPags('reportes');
+                carregarPags('sugestoes');
+                alert('mensagem salva');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }
     xmlreq.send(null);
 }
 function apagarMensagem(id){
-    url = 'servicosadmin.php?apagarMensagem=true&id='+id
+    url = 'servicosadmin.php?apagarMensagem=true&id='+id;
     const xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (xmlreq.status == 200) {
-                carregarPags('reportes')
-                carregarPags('sugestoes')
-                alert('mensagem apagada')
+                carregarPags('reportes');
+                carregarPags('sugestoes');
+                alert('mensagem apagada');
             }else{
-                console.log('erro')
+                console.log('erro');
             }
         }
     }

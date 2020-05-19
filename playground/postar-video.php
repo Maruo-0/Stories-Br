@@ -114,7 +114,7 @@
                 echo '<h3>Erro Campos Vazios</h3>';
             }
             echo '<h1>Postar novo vídeo</h1>
-            <form method="POST" action="video.php">
+            <form method="POST" action="postar-video.php">
                 <h2>Titulo:</h2>
                 <input type="text" name="titulo" id="titulo"></input>
 

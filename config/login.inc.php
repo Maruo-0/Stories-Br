@@ -50,7 +50,7 @@ function login(){
                     $_SESSION['useremail'] = $row['email'];
                     $_SESSION['isadmin'] = $row['admin'];
 
-                    header("Location: ../perfil.php?login=sucedido");
+                    header("Location: ../index.php?login=sucedido");
                     exit();                    
                 }
                 elseif($checaSenha == true && $checaautent != 1){
