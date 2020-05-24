@@ -1,4 +1,64 @@
 function navegacao(){
+    // carrega as ultimas atualizações de artigos na pesquisa
+    let quantidade = 7;
+    let inicio = 3;
+    this.procurarConteudo = () =>{
+        url = 'requisicoes/buscar-dados.php?get=true&livros=todos&inicio='+inicio+'&quantidade='+quantidade
+
+        console.log(url)
+        const xmlreq = CriaRequest();
+        xmlreq.open("GET", url, true);
+        xmlreq.onreadystatechange = function(){
+            if (xmlreq.readyState == 4) {
+                if (xmlreq.status == 200) {
+                    let tag = ''
+                    document.querySelector('#appArtigosBox').classList.remove('hidden')
+
+                    let resposta = xmlreq.response
+                    resposta = JSON.parse(resposta)
+                    console.log(resposta);
+                    for (const key in resposta) {
+                        if (resposta.hasOwnProperty(key)) {
+                            for (let contador = 0; contador < quantidade+1; contador++) {
+                                if(key === 'id'+contador){
+                                    //console.log(resposta[key]);
+                                    tag += `<div id="${resposta[key]}" class="livro-card">`
+                                }
+                                else if(key === 'imagem'+contador){
+                                    //console.log(resposta[key]);
+                                    tag += `<div style="background: url(http://localhost/storiesbr/resources/src/${resposta[key]}) center;background-size: cover;height: 100%;">`
+                                }
+                                else if(key === 'titulo'+contador){
+                                    //console.log(resposta[key]);
+                                    tag += `<div class="card-titulo"><p>${resposta[key]}</p></div></div></div>`
+                                }
+                            }
+                        }
+                    }                          
+                    document.querySelector('#appArtigosBox').innerHTML += tag
+                }
+                else{
+                    console.log('erro');
+                }
+            }
+        };
+        xmlreq.send(null)
+
+        // eventos de clique que direciona pra url adequada
+        const artigos = document.querySelector('#appArtigosBox')
+        artigos.onclick = event =>{
+            //console.log(event.target.parentNode.parentNode.parentNode);
+            if(event.target.parentNode.classList.value == 'livro-card'){
+                sessionStorage.setItem('id', event.target.parentNode.id)
+                window.location.href = 'buscar-tudo.html?artigo='+event.target.parentNode.id
+            }
+            else if(event.target.parentNode.parentNode.parentNode.classList.value == 'livro-card'){
+                sessionStorage.setItem('id', event.target.parentNode.parentNode.parentNode.id)
+                window.location.href = 'buscar-tudo.html?artigo='+event.target.parentNode.parentNode.parentNode.id
+            }
+        }
+    }
+
     const view = document.querySelectorAll('.view')
     const nav_items = document.querySelectorAll('.nav_items')
 
@@ -23,6 +83,7 @@ function navegacao(){
             case 'pesquisar':
                 view[0].style.display = 'block'
                 sessionStorage.setItem('estado', item_id)
+                procurarConteudo()
                 break;
         }
     }
@@ -61,12 +122,10 @@ function navegacao(){
 }
 navegacao()
 
-//navigator.onLine  if false botar tela "você está offline"
-/* const load_page = document.querySelector('#load_page')
-    const tela_app = document.querySelector('#tela_app')
-    tela_app.style.display = 'none'
-    load_page.classList.remove('load_page_off')
-    load_page.className +=('load_page') */
+// tela do primeiro carregamento do app
+// Todo - começar com tela e depois do primeiro carregamento tirar ela
+const load_page = document.querySelector('#load_page')
+load_page.classList.replace('load_page', 'load_page_off')
 
 function CriaRequest() {
     try{
@@ -87,8 +146,8 @@ function CriaRequest() {
     else return request;
 }
 function login(){
-    const email = document.querySelector('')
-    const senha = document.querySelector('')
+    const email = document.querySelector('').value
+    const senha = document.querySelector('').value
     var xmlreq = CriaRequest();
     xmlreq.open("POST", 'buscar-dados.php', true);
     xmlreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -118,22 +177,6 @@ function logout(){
 
     window.location.href = '?';
 }
-function carregarPesquisa(){
-    var url = ''
-    console.log(url)    
-    var xmlreq = CriaRequest();
-    xmlreq.open("GET", url, true);
-    xmlreq.onreadystatechange = function(){
-        if (xmlreq.readyState == 4) {
-            if (xmlreq.status == 200) {
-                console.log('carregado');
-            }else{
-
-            }
-        }
-    };
-    xmlreq.send(null);
-}
 let quantidadeVideos = 0
 function carregarVideos(){
     if(quantidadeVideos !== 0) quantidadeVideos + 4
@@ -152,36 +195,6 @@ function carregarVideos(){
     };
     xmlreq.send(null);
 }
-let usuarioId = localStorage.getItem('usuarioId')
-let usuarioNome = localStorage.getItem('usuarioNome')
-let usuarioEmail = localStorage.getItem('usuarioEmail')
-let usuarioImg = localStorage.getItem('usuarioImg')
-function carregarDadosFavoritos(){
-    var url = 'buscar-dados.php?get=favoritos&usuarioId='+usuarioId
-    console.log(url)    
-    var xmlreq = CriaRequest();
-    xmlreq.open("GET", url, true);
-    xmlreq.onreadystatechange = function(){
-        if (xmlreq.readyState == 4) {
-            if (xmlreq.status == 200) {
-                console.log('carregado');
-            }else{
-                console.log('error');
-            }
-        }
-    };
-    xmlreq.send(null);
-}
-function carregarPaginaFavoritos(){
-    if(usuarioId) carregarDadosFavoritos()
-    else{
-        const paginaFavoritos = document.querySelector('#')
-    }
-}
-/* const a = new URL(window.location.href)
-get = a.searchParams.get('pesquisar')
-console.log(get) */
-
 
 const buscarTudo = document.querySelector('#buscarTudo')
 .onclick = () => {
