@@ -1,0 +1,406 @@
+:root{
+    --white: white;
+    --black: black;
+}
+.claro{
+    --navbar: ;
+    --navbar-secundaria: ;
+    --textocor: ;
+    --textocor-secundario: ;
+    --fundocor: ;
+    --fundocor-secundario: ;
+    --fundocor-terciario: ;
+
+}
+.escuro{
+
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    margin:0;
+    overflow: hidden;
+    user-select: none;
+    scroll-behavior: smooth;
+
+    font-size: 6vw;
+}
+body{
+}
+.hidden{
+    display: none !important;
+}
+
+.views{
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+    position: absolute;/*bug de overflow   FIX */
+    z-index:1;/*bug de overflow  FIX*/
+}
+.view{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    overflow-y: scroll;
+}
+
+.nav{
+    background-color: rgb(231, 231, 231);
+    position: absolute;
+    top: calc(100% - 60px);
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:10;
+}
+.nav_items{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.8s ease-out;
+}
+.active{
+    background-color: rgb(55, 81, 131);
+    color: white;
+}
+
+.left{
+    animation-name: view-anim-left;
+    animation-duration: 0.8s;
+}
+.right{
+    animation-name: view-anim-right;
+    animation-duration: 0.8s;
+}
+.down{
+    animation-name: view-anim-down;
+    animation-duration: 0.8s;
+}
+
+@keyframes view-anim-left{
+    0%{
+        left: -100%;
+    }
+    25%{
+        left: -100%;
+    }
+    75%{
+        left: -10px;
+    }
+    100%{
+        left: 0;
+    }
+}
+@keyframes view-anim-right{
+    0%{
+        right: -100%;
+
+    }
+    25%{
+        right: -100%;
+
+    }
+    75%{
+        right: -10px;
+    }
+    100%{
+        right: 0;
+    }
+}
+@keyframes view-anim-down{
+    0%{
+        bottom: -100%;
+    }
+    25%{
+        bottom: -100%;
+    }
+    75%{
+        bottom: -10px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+
+.fa, .fas, .fab, .far{
+    font-size: 40px;
+}
+
+.container-livros{
+ background: white;
+}
+.livro-tab{
+    background: cornflowerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-bottom-left-radius: 25px; 
+    border-bottom-right-radius: 25px;
+    transition: 200ms ease-in;
+    box-shadow: inset 0px -3px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.livro-tab:hover{
+    background: rgb(55, 81, 131);
+    color: aliceblue;
+}
+.livro-tab i, .livro-tab p{
+    margin: 0 5px 0 5px;
+    font-size: 30px;
+}
+.container-livros .atualizacoes{
+    margin: 10px 0 0 10px;
+}
+.livro-container{
+    overflow-x: auto;
+    display: flex;
+    padding: 5px;
+}
+.livro-card{
+    /* background: url(../img/caravela2.png) center; */
+    background-size: cover;
+    position: relative;
+    min-width: 140px;
+    width: 160px;
+    height: 160px;
+    margin: 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+.card-titulo{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+.container-jogos{
+    background-color: #ffca00;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.jogo-cabral{
+    display: flex;
+    flex-direction: column;
+}
+.jogo-cabral .titulo{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.jogo-cabral .titulo i{
+    margin-right: 10px;
+}
+.jogos-selecao{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-jogo{
+    display: flex;
+    justify-content: center;
+    background-color: cornflowerblue;
+    min-height: 25px;
+    min-width: 170px;
+    padding: 5px;
+    margin: 5px;
+    border: solid 1px black;
+    border-radius: 30px;
+    transition: 200ms ease-in;
+}
+.card-jogo:hover{
+    background-color: rgb(55, 81, 131);
+}
+
+/*////////////////// seção de leitura ///////////////////*/
+.tela{
+    width: 100%;
+    height: 100%;
+}
+.nav-cima{
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    background: cornflowerblue;
+    font-size: 30px;
+    width: 100%;
+    padding: 5px;
+    transition: 200ms ease-in;
+    box-shadow: inset 0px -3px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.nav-pesquisa{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 5px;
+}
+.nav-pesquisa input{
+    width: 250px;
+    height: 35px;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 200ms ease-in;
+    font-size: 20px !important;
+}
+#btnLimpar{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    margin: 5px;
+    padding: 7px;
+    border: solid 1px;
+    border-radius: 25px;
+    transition: 100ms ease-out;
+    background-color: #000;
+    color: #fff;
+}
+#btnLimpar:hover{
+    background-color: #fff;
+    color: #000;
+}
+.barra-progresso {
+    height: 5px;
+    background-color: #009ACF;
+    width: 0px;
+    z-index: 1000;
+    position: fixed;
+    top: 50px;
+    left: 0;
+}
+.artigos{
+    display: grid;
+    position: relative;
+    top: 50px;
+    height: 100%;
+}
+#artigosBox, #favoritosBox{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
+}
+.img-capa{
+    background: center;
+    background-size: cover;
+    height: 150px;
+}
+.img-capa .overlay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+}
+.img-capa i{
+    font-size: 40px;
+    color: white;
+    margin: 10px;
+}
+.img-capa #tocar{
+    margin-right: 15px;
+}
+.texto{
+    overflow: auto;
+}
+.texto .select{
+    display: flex;
+    justify-content: flex-end;
+}
+.texto select{
+    align-self: center;
+    background-color: #e0e0e0;
+    margin: 3px;
+    padding: 2px;
+    border: 0;
+    border-radius: 5px;
+}
+.texto select:focus{
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
+#secaoTexto{
+    padding: 5px;
+}
+
+.buscar-favoritos{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    margin: 5px;
+    padding: 7px;
+    border: solid 1px;
+    border-radius: 25px;
+    transition: 100ms ease-out;
+}
+.buscar-favoritos:hover{
+    background-color: black;
+    color: white;
+}
+.buscar-favoritos i, .buscar-favoritos p{
+    font-size: 1.05em;
+}
+
+
+/*////////// RESPONSIVIDADE /////////////*/
+@media screen and (min-width: 500px){
+    .livro-card{
+        width: 230px;
+        height: 230px;
+    }
+}
+@media screen and (min-width: 700px){
+    *{
+        font-size: 4vw !important;
+    }
+    .nav i{
+        font-size: 45px !important;
+    }
+    .barra-progresso {
+        top: 40px;
+    }  
+    .artigos{
+        top: 40px;
+    }
+    .livro-card{
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+    }
+}
+@media screen and (min-width: 900px){
+    .barra-progresso {
+        top: 50px;
+    }
+    .artigos{
+        top: 50px;
+    }
+    .livro-card{
+        width: 370px;
+        height: 370px;
+        margin: 20px;
+    }
+}

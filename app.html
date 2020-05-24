@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories Br app</title>
+    <script>
+        if(!navigator.onLine) window.location.href = 'offline.html';
+    </script>
+    <link rel="stylesheet" href="sources/fontawesome-free-5.13.0-web/css/all.css">
+    <link rel="stylesheet" href="sources/css/app.css">
+    <link rel="stylesheet" href="sources/css/animacao.css">
+</head>
+<body>
+    <script defer src="sources/javascript/app.js"></script>
+
+    <div id="load_page" class="load_page_off"><!--pag carregamento-->
+        <img src="sources/img/caravela2.png" class="boat">
+        <div class="carregando">
+            <span>C</span>
+            <span>a</span>
+            <span>r</span>
+            <span>r</span>
+            <span>e</span>
+            <span>g</span>
+            <span>a</span>
+            <span>n</span>
+            <span>d</span>
+            <span>o</span>
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
+        <div class="wave"></div>
+    </div>
+    <div id="tela_app"><!--contem todas telas-->
+        <div class="views">
+            <div id="pesquisar" class="view left">
+                <div class="container-livros">
+                    <div id="buscarTudo" class="livro-tab">
+                        <i class="fas fa-search"></i>
+                        <p>Ver todos</p>
+                    </div>
+                    <p class="atualizacoes">Últimas atualizações:</p>
+                    <div class="livro-container">
+                        <div id="1" class="livro-card">
+                            <div class="card-titulo">
+                                <p>Descobrimento do Brasil</p>
+                            </div>
+                        </div>
+                        <div id="2" class="livro-card">
+                            <div class="card-titulo">
+                                <p>Descobrimento do Brasil</p>
+                            </div>
+                        </div>
+                        <div id="3" class="livro-card">
+                            <div class="card-titulo">
+                                <p>Descobrimento do Brasil</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-jogos">
+                    <div class="jogo-cabral">
+                        <div class="titulo">
+                            <i class="fas fa-gamepad"></i>
+                            <p>Jogos</p>
+                        </div>
+                        <img src="sources/img/Capturar.PNG" alt="seu cabral" height="100%">
+                    </div>
+                    <div class="jogos-selecao">
+                        <div class="card-jogo"><p>Jogo da digitação</p></div>
+                        <div class="card-jogo"><p>Jogo da Memória</p></div>
+                        <div class="card-jogo"><p>Quiz</p></div>
+                        <div class="card-jogo"><p>Em breve mais...</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="jogos" class="view left">
+                <p>jogos</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dicta ipsam in eaque voluptas facilis odit, quod praesentium. Dicta eaque cum ab eligendi dolor cupiditate facilis! Perferendis quasi illo odit.</p>
+            </div>
+            <div id="inicio" class="view down" style="display: block;">
+                <i class="fas fa-user-circle"></i>
+                inicio
+            </div>
+            <div id="videos" class="view right">
+                videos
+            </div>
+            <div id="configuracao" class="view right">
+                configuracao
+            </div>
+        </div>
+        <div class="nav"><!--navbar de acesso rápido-->
+            <div id="nav_pesquisar" class="nav_items"><i class="fas fa-search"></i></div>
+            <div id="nav_jogos" class="nav_items"><i class="fas fa-gamepad"></i></div>
+            <div id="nav_inicio" class="nav_items active">inic</div>
+            <div id="nav_videos" class="nav_items"><i class="fab fa-youtube"></i></div>
+            <div id="nav_configuracao" class="nav_items"><i class="fas fa-cog"></i></div>
+        </div>
+    </div>
+
+    <script>
+        const artigos = document.querySelector('.livro-container')
+        artigos.onclick = event =>{
+            if(event.target.parentNode.parentNode.classList.value == 'livro-card'){
+                sessionStorage.setItem('id', event.target.parentNode.parentNode.id)
+                window.location.href = 'buscar-tudo.html?artigo='+event.target.parentNode.parentNode.id
+            }
+            else if(event.target.classList.value == 'livro-card'){
+                sessionStorage.setItem('id', event.target.id)
+                window.location.href = 'buscar-tudo.html?artigo='+event.target.id
+            }
+        }
+    </script>
+</body>
+</html>

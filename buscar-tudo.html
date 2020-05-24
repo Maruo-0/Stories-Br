@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar tudo</title>
+    <link rel="stylesheet" href="sources/fontawesome-free-5.13.0-web/css/all.css">
+    <link rel="stylesheet" href="sources/css/app.css">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            overflow: unset !important;
+            user-select: unset;
+            font-size: 5vw;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="tela">
+        <div class="nav-cima">
+            <i id="voltar" class="fas fa-arrow-left"></i>
+            <div class="nav-pesquisa">
+                <input class="hidden" type="text" id="inputProcurar" tabindex="0">
+                <i id="botaoProcurar" class="fas fa-search"></i>
+            </div>
+        </div>
+        <div id="artigos" class="artigos">
+            <div class="buscar-favoritos hidden">
+                <i class="fas fa-star"></i>
+                <p>Ver favoritos</p>
+            </div>
+            <div id="btnLimpar" class="hidden" onclick="limparPesquisa()">Limpar pesquisa</div>
+            <div id="artigosBox" class="hidden">
+                <div id="1" class="livro-card">
+                    <div class="card-titulo">
+                        <p>Descobrimento do Brasil - TESTE</p>
+                    </div>
+                </div>
+            </div>
+            <div id="favoritosBox" class="hidden">
+                <div id="1" class="livro-card">
+                    <div class="card-titulo">
+                        <p>Descobrimento do Brasil - TESTE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="artigo" class="artigos hidden">
+            <div class="barra-progresso"></div>
+            <div class="img-capa">
+                <div class="overlay">
+                    <i id="favoritar" class="far fa-star"></i>
+                    <i id="tocar" class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="texto">
+                <div class="select">
+                    <select id="tema">
+                        <option value="claro">Claro</option>
+                        <option value="escuro">Escuro</option>
+                    </select>
+                    <select id="linguaSelecao">
+                        <option value="Brazilian Portuguese Female">Português</option>
+                        <option value="US English Male">Inglês</option>
+                    </select>
+                    </div>
+                <div id="secaoTexto">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, minima ad. Animi iusto porro itaque beatae reiciendis minima sapiente temporibus rem saepe esse, odit excepturi deserunt numquam. Cupiditate, labore quidem?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let artigoId = sessionStorage.getItem('id')
+        let checarfavoritos = localStorage.getItem('favoritos')
+        let checarfavoritosArray = checarfavoritos.split(",")
+        console.log(checarfavoritosArray.includes(artigoId));
+        
+        if(checarfavoritosArray.includes(artigoId)){
+            document.querySelector('#favoritar').classList.replace('far', 'fas')
+        }
+    </script>
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=QXQuGGcR"></script>
+
+    <script src="sources/javascript/funcoes-busca.js"></script>
+
+
+    <script>
+        /// string que pode ser convertida em objeto JSON com .parse()
+        /* let storageJson = '{"eu": "marcelo", "idade": "18", "profissao": "programador"}'
+        /// objeto JSON, pode ser usado assim
+        let otherjson = [
+            {eu: "marcelo", idade: "20", profissao: "programador", linguas: {lingua1: 'c#', lingua2: 'php', lingua3: 'javascript'}},
+            {eu: "samuel", idade: "18", profissao: "programador", linguas: {lingua1: 'c++', lingua2: 'php', lingua3: 'javascript'}},
+        ]
+
+        let Json = JSON.stringify(otherjson)
+        console.log(Json);
+        Json = JSON.parse(Json)
+        console.log(otherjson[0].linguas[3]);
+        console.log(Json); */
+
+        /* const map = otherjson.map(({ eu, idade, profissao, linguas }) => `
+            <div id="1" class="livro-card">
+                <div class="card-titulo">
+                    <p>${eu}</p>
+                    <p>${idade}</p>
+                    <p>${profissao}</p>
+                    <p>${linguas.lingua1} ${linguas.lingua2} ${linguas.lingua3}</p>
+                </div>
+            </div>
+        `).join('')
+        document.querySelector('#artigosBox').innerHTML += map */
+    </script>
+</body>
+</html>
