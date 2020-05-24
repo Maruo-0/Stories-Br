@@ -2,6 +2,31 @@ function navegacao(){
     const view = document.querySelectorAll('.view')
     const nav_items = document.querySelectorAll('.nav_items')
 
+    this.navegacaoMudar = (item_id) =>{
+        switch(item_id){
+            case 'inicio':
+                view[2].style.display = 'block'
+                sessionStorage.setItem('estado', item_id)
+                break;
+            case 'videos':
+                view[3].style.display = 'block'
+                sessionStorage.setItem('estado', item_id)
+                break;
+            case 'configuracao':
+                view[4].style.display = 'block'
+                sessionStorage.setItem('estado', item_id)
+                break;
+            case 'jogos':
+                view[1].style.display = 'block'
+                sessionStorage.setItem('estado', item_id)
+                break;
+            case 'pesquisar':
+                view[0].style.display = 'block'
+                sessionStorage.setItem('estado', item_id)
+                break;
+        }
+    }
+
     // retem estado da página
     let estado = sessionStorage.getItem('estado')
     if(estado){
@@ -16,24 +41,8 @@ function navegacao(){
             for(i = 0; i <= 4; i++){
                 view[i].style.display = 'none'
             }
-            switch(estado){
-                case 'inicio':
-                    view[2].style.display = 'block'
-                    break;
-                case 'videos':
-                    view[3].style.display = 'block'
-                    break;
-                case 'configuracao':
-                    view[4].style.display = 'block'
-                    break;
-                case 'jogos':
-                    view[1].style.display = 'block'
-                    break;
-                case 'pesquisar':
-                    view[0].style.display = 'block'
-                    break;
-            }
         }
+        navegacaoMudar(estado)
     }
     // navegação de páginas
     for (const item of nav_items) { item.addEventListener('click', () =>{
@@ -46,28 +55,7 @@ function navegacao(){
                 view[i].style.display = 'none'
             }
             let item_id = item.id.substr(4)
-            switch(item_id){
-                case 'inicio':
-                    view[2].style.display = 'block'
-                    sessionStorage.setItem('estado', item_id)
-                    break;
-                case 'videos':
-                    view[3].style.display = 'block'
-                    sessionStorage.setItem('estado', item_id)
-                    break;
-                case 'configuracao':
-                    view[4].style.display = 'block'
-                    sessionStorage.setItem('estado', item_id)
-                    break;
-                case 'jogos':
-                    view[1].style.display = 'block'
-                    sessionStorage.setItem('estado', item_id)
-                    break;
-                case 'pesquisar':
-                    view[0].style.display = 'block'
-                    sessionStorage.setItem('estado', item_id)
-                    break;
-            }
+            navegacaoMudar(item_id)
         })
     }
 }
