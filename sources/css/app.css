@@ -34,6 +34,7 @@ body{
     display: none !important;
 }
 
+/*////////////////// telas app INICIO ///////////////////*/
 .views{
     width: 100%;
     height: calc(100% - 60px);
@@ -48,7 +49,6 @@ body{
     display: none;
     overflow-y: scroll;
 }
-
 .nav{
     background-color: rgb(231, 231, 231);
     position: absolute;
@@ -72,7 +72,9 @@ body{
     background-color: rgb(55, 81, 131);
     color: white;
 }
-
+.active g{
+    fill: white;
+}
 .left{
     animation-name: view-anim-left;
     animation-duration: 0.8s;
@@ -157,7 +159,7 @@ body{
     margin: 0 5px 0 5px;
     font-size: 30px;
 }
-.container-livros .atualizacoes{
+.atualizacoes{
     margin: 10px 0 0 10px;
 }
 .livro-container{
@@ -184,51 +186,84 @@ body{
     background: rgba(0, 0, 0, 0.5);
     color: white;
 }
-.container-jogos{
-    background-color: #ffca00;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40%;
-    padding-top: 5px;
-    display: grid;
-    grid-template-columns: auto auto;
-}
-.jogo-cabral{
-    display: flex;
-    flex-direction: column;
-}
-.jogo-cabral .titulo{
+/*////////////////// inicio inicio ///////////////////*/
+.ini-bar{
     display: flex;
     align-items: center;
+    background: #375183;
+    padding: 10px;
+    color: white;
+}
+.ini-bar p{
+    padding: 4px;
+}
+.ini-bar button{
+    padding: 5px;
+    background-color: white;
+    color: #375183;
+    border: 0;
+    border-radius: 4px;
+}
+.inicio-livro-container{
+    overflow-x: auto;
+    display: flex;
     padding: 5px;
 }
-.jogo-cabral .titulo i{
-    margin-right: 10px;
+.inicio-livro-card{
+    background: url(../img/caravela2.png) center;
+    background-size: cover;
+    position: relative;
+    min-width: 95%;
+    width: 95%;
+    height: 160px;
+    margin: 5px;
+    border-radius: 5px;
 }
-.jogos-selecao{
-    overflow-y: auto;
+.inicio-card-titulo{
+    position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.card-jogo{
-    display: flex;
     justify-content: center;
-    background-color: cornflowerblue;
-    min-height: 25px;
-    min-width: 170px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 8px 0 8px;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+}
+.inicio-livro-card p{
+    font-size: 5vw;
+}
+.inicio-card-titulo button{
     padding: 5px;
     margin: 5px;
-    border: solid 1px black;
-    border-radius: 30px;
-    transition: 200ms ease-in;
+    background-color: #375183;
+    color: white;
+    border: 0;
+    box-shadow: 3px 4px 4px rgba(51, 7, 7, 0.25);
+    border-radius: 4px;
 }
-.card-jogo:hover{
-    background-color: rgb(55, 81, 131);
+.diversao{
+    padding: 5px;
+}
+.secao-container{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
 }
 
-/*////////////////// seção de leitura ///////////////////*/
+
+/*////////////////// inicio FIM ///////////////////*/
+
+/*////////////////// configurações inicio ///////////////////*/
+
+/*////////////////// configurações FIM ///////////////////*/
+/*////////////////// telas app FIM ///////////////////*/
+
+
+/*////////////////// seção de leitura INICIO ///////////////////*/
 .tela{
     width: 100%;
     height: 100%;
@@ -363,9 +398,9 @@ body{
 .buscar-favoritos i, .buscar-favoritos p{
     font-size: 1.05em;
 }
+/*////////////////// seção de leitura FIM ///////////////////*/
 
-
-/*////////// RESPONSIVIDADE /////////////*/
+/*////////// RESPONSIVIDADE INICIO /////////////*/
 @media screen and (min-width: 500px){
     .livro-card{
         width: 230px;
@@ -386,9 +421,13 @@ body{
         top: 40px;
     }
     .livro-card{
+        min-width: 300px;
         width: 300px;
         height: 300px;
         margin: 20px;
+    }
+    .inicio-livro-card{
+        height: 260px;
     }
 }
 @media screen and (min-width: 900px){
@@ -399,8 +438,10 @@ body{
         top: 50px;
     }
     .livro-card{
+        min-width: 350px;
         width: 370px;
         height: 370px;
         margin: 20px;
     }
 }
+/*////////// RESPONSIVIDADE FIM /////////////*/

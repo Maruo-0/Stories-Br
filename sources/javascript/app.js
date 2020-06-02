@@ -1,7 +1,36 @@
+// tela do primeiro carregamento do app
+// Todo - começar com tela e depois do primeiro carregamento tirar ela
+const load_page = document.querySelector('#load_page');
+//load_page.normalize
+//load_page.remove()
+load_page.classList.replace('load_page', 'load_page_off');
+
+function verificarUsuario(){
+    const usuarioId = localStorage.getItem('usuarioNome')//TESTE-MUDAR DEPOIS
+    if(usuarioId){
+        const usuarioNome = localStorage.getItem('usuarioNome');
+        const usuarioEmail = localStorage.getItem('usuarioEmail');
+    
+        const mensagem = document.querySelector('.ini-bar p')
+        console.log(mensagem);
+        mensagem.innerHTML = usuarioNome
+        const btnEntrar = document.querySelector('.ini-bar .login')
+        const btnSair = document.querySelector('.ini-bar .logout')
+        console.log(btnEntrar);
+        btnEntrar.classList.add('hidden')
+        btnSair.classList.remove('hidden')
+        btnSair.onclick = () => logout()
+    }
+    else{
+        document.querySelector('.ini-bar .login').onclick = () => window.location.href = 'login.html'
+    }
+}
+verificarUsuario();
+
 function navegacao(){
     // carrega as ultimas atualizações de artigos na pesquisa
     let quantidade = 7;
-    let inicio = 3;
+    let inicio = 0;
     this.procurarConteudo = () =>{
         url = 'requisicoes/buscar-dados.php?get=true&livros=todos&inicio='+inicio+'&quantidade='+quantidade
 
@@ -12,7 +41,7 @@ function navegacao(){
             if (xmlreq.readyState == 4) {
                 if (xmlreq.status == 200) {
                     let tag = ''
-                    document.querySelector('#appArtigosBox').classList.remove('hidden')
+                    document.querySelector('#buscaArtigosBox').classList.remove('hidden')
 
                     let resposta = xmlreq.response
                     resposta = JSON.parse(resposta)
@@ -35,7 +64,7 @@ function navegacao(){
                             }
                         }
                     }                          
-                    document.querySelector('#appArtigosBox').innerHTML += tag
+                    document.querySelector('#buscaArtigosBox').innerHTML = tag
                 }
                 else{
                     console.log('erro');
@@ -45,7 +74,7 @@ function navegacao(){
         xmlreq.send(null)
 
         // eventos de clique que direciona pra url adequada
-        const artigos = document.querySelector('#appArtigosBox')
+        const artigos = document.querySelector('#buscaArtigosBox')
         artigos.onclick = event =>{
             //console.log(event.target.parentNode.parentNode.parentNode);
             if(event.target.parentNode.classList.value == 'livro-card'){
@@ -61,7 +90,7 @@ function navegacao(){
 
     const view = document.querySelectorAll('.view')
     const nav_items = document.querySelectorAll('.nav_items')
-
+    // função que trocar a view exibida
     this.navegacaoMudar = (item_id) =>{
         switch(item_id){
             case 'inicio':
@@ -119,15 +148,29 @@ function navegacao(){
             navegacaoMudar(item_id)
         })
     }
+
+    document.querySelector('.secao-container').onclick = event =>{
+        if(event.target.id == 'cardVideo'){
+            for (const item of nav_items) {
+                nav_items.forEach(item => {
+                    item.classList.remove('active');
+                    if(item.id === 'nav_'+estado){
+                        item.classList.add('active');
+                    }
+                });
+                for(i = 0; i <= 4; i++){
+                    view[i].style.display = 'none';
+                }
+            }
+            navegacaoMudar('videos');
+        }
+        else if(event.target.id == 'cardMem') window.location.href = 'jogo-da-memoria.html';
+        else if(event.target.id == 'cardQuiz') window.location.href = 'quiz.html';
+    }
 }
-navegacao()
+navegacao();
 
-// tela do primeiro carregamento do app
-// Todo - começar com tela e depois do primeiro carregamento tirar ela
-const load_page = document.querySelector('#load_page')
-load_page.classList.replace('load_page', 'load_page_off')
-
-function CriaRequest() {
+function CriaRequest(){
     try{
         request = new XMLHttpRequest();        
     }catch (IEAtual){
@@ -145,44 +188,24 @@ function CriaRequest() {
     if (!request) alert("Seu Navegador não suporta Ajax!");
     else return request;
 }
-function login(){
-    const email = document.querySelector('').value
-    const senha = document.querySelector('').value
-    var xmlreq = CriaRequest();
-    xmlreq.open("POST", 'buscar-dados.php', true);
-    xmlreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlreq.onreadystatechange = function(){
-        if (xmlreq.readyState == 4) {
-            if (xmlreq.status == 200) {
-                //retornar json com dados
-                //salvar no localStorage ou sessionStorage
-                localStorage.setItem('usuarioId', usuarioId)
-                localStorage.setItem('usuarioNome', usuarioNome)
-                localStorage.setItem('usuarioEmail', usuarioEmail)
-                localStorage.setItem('usuarioImg', usuarioImg)
-                console.log('carregado');
-            }else{
+function carregaInicio(){
 
-            }
-        }
-    };
-    xmlreq.send('email='+email+'&senha='+senha);
 }
 function logout(){
-    localStorage.removeItem('usuarioId')
-    localStorage.removeItem('usuarioNome')
-    localStorage.removeItem('usuarioEmail')
-    localStorage.removeItem('usuarioImg')
-    sessionStorage.removeItem('estado')
+    localStorage.removeItem('usuarioId');
+    localStorage.removeItem('usuarioNome');
+    localStorage.removeItem('usuarioEmail');
+    localStorage.removeItem('usuarioImg');
+    sessionStorage.removeItem('estado');
 
     window.location.href = '?';
 }
-let quantidadeVideos = 0
+let quantidadeVideos = 0;
 function carregarVideos(){
     if(quantidadeVideos !== 0) quantidadeVideos + 4
-    var url = 'buscar-dados.php?get=videos&quantidade='+quantidadeVideos
+    let url = 'buscar-dados.php?get=videos&quantidade='+quantidadeVideos
     console.log(url)
-    var xmlreq = CriaRequest();
+    let xmlreq = CriaRequest();
     xmlreq.open("GET", url, true);
     xmlreq.onreadystatechange = function(){
         if (xmlreq.readyState == 4) {
@@ -196,7 +219,6 @@ function carregarVideos(){
     xmlreq.send(null);
 }
 
-const buscarTudo = document.querySelector('#buscarTudo')
-.onclick = () => {
+document.querySelector('#buscarTudo').onclick = () => {
     window.location.href = 'buscar-tudo.html';
 }

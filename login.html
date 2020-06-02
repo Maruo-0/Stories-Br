@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories Br app</title>
+    <link rel="stylesheet" href="sources/css/app.css">
+    <style>
+        body, .login-container{
+            height: 100vh;
+        }
+        .login-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        input{
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            background-color: #f6f6f6;
+            border: none;
+            color: #0d0d0d;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            width: 85%;
+            border: 2px solid #f6f6f6;
+        }
+        .senha-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .switch {
+        position: absolute;
+        right: 7%;
+        display: inline-block;
+        height: 25px;
+        }
+        .switch-input {
+        display: none;
+        }
+        .switch-label {
+        display: block;
+        width: 48px;
+        height: 24px;
+        text-indent: -150%;
+        clip: rect(0 0 0 0);
+        color: transparent;
+        user-select: none;
+        }
+        .switch-label::before,
+        .switch-label::after {
+        content: "";
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        }
+        .switch-label::before {
+        width: 100%;
+        height: 100%;
+        background-color: #dedede;
+        border-radius: 9999em;
+        -webkit-transition: background-color 0.25s ease;
+        transition: background-color 0.25s ease;
+        }
+        .switch-label::after {
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+        -webkit-transition: left 0.25s ease;
+        transition: left 0.25s ease;
+        }
+        .switch-input:checked + .switch-label::before {
+        background-color: #375183;
+        }
+        .switch-input:checked + .switch-label::after {
+        left: 24px;
+        }
+        button{
+            margin: 5px;
+            padding: 10px;
+            border: solid 1px transparent;
+            border-radius: 4px;
+            width: 50vw;
+            background: white;
+            color: white;
+            transition: 200ms ease-in;
+        }
+        #entrar{
+            margin-top: 40px;
+            background: #375183;
+        }
+        #cadastrar{
+            border: solid 1px #C10000;
+            color: #C10000;
+        }
+        #entrar:hover{
+            border: solid 1px #375183;
+            background: white;
+            color: #375183;
+        }
+        #cadastrar:hover{
+            border: solid 1px transparent;
+            background: #C10000;
+            color: white;
+        }
+        .loader{
+            display: none;
+            position: fixed;
+            z-index: 10030;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            align-items: center;
+            justify-content: center;
+        }
+        .loader .spin{
+            position: absolute;
+            top: 37vh;
+            left: 32vw;
+            z-index: 10032;
+            border: 12px solid #ddd;
+            border-top: 12px solid #375183;
+            border-right: 12px solid #375183;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .logo{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 10px 30px 0 0;
+        }
+        .logo p{
+            font-size: 40px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <p>Stories </p><img src="sources/img/icon.png" width="60px">
+    </div>
+    <div class="loader"><div class="spin"></div></div>
+    <div class="login-container">
+        <input type="text" id="email" placeholder="Digite seu e-mail">
+        <div class="senha-container">
+            <input type="password" id="senha" placeholder="Digite sua senha">
+            <div class="switch">
+                <input id="mostrarSenha" type="checkbox" class="switch-input" onclick="mostrarSenha()" />
+                <label for="mostrarSenha" class="switch-label">Mostar senha</label>
+            </div>
+        </div>
+        <button id="entrar">Entrar</button>
+        <button id="cadastrar">Criar conta</button>
+    </div>
+
+    <script>
+        function mostrarSenha(){
+            const senha = document.querySelector("#senha");
+            if (senha.type === "password")senha.type = "text";
+            else senha.type = "password";
+            senha.focus();
+        }
+        function CriaRequest(){
+            try{
+                request = new XMLHttpRequest();        
+            }catch (IEAtual){
+                try{
+                    request = new ActiveXObject("Msxml2.XMLHTTP");       
+                }catch(IEAntigo){
+                
+                    try{
+                        request = new ActiveXObject("Microsoft.XMLHTTP");          
+                    }catch(falha){
+                        request = false;
+                    }
+                }
+            }
+            if (!request) alert("Seu Navegador não suporta Ajax!");
+            else return request;
+        }
+        function login(){
+            const load = document.querySelector('.loader')
+            load.style.display = 'block'
+            const email = document.querySelector('#email').value
+            const senha = document.querySelector('#senha').value
+            let xmlreq = CriaRequest();
+            xmlreq.open("POST", 'requisicoes/usuario.php', true);
+            xmlreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlreq.onreadystatechange = function(){
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                        let resposta = xmlreq.response
+                        if(resposta !== 'erro'){
+                            resposta = JSON.parse(resposta)                            
+                            localStorage.setItem('usuarioId', resposta.usuarioId)
+                            localStorage.setItem('usuarioNome', resposta.usuarioNome)
+                            localStorage.setItem('usuarioEmail', resposta.usuarioEmail)
+                            localStorage.setItem('usuarioImg', resposta.usuarioImg)
+                            
+                            alert('Sucesso')
+                            window.location.href = 'app.html'
+                        }
+                        else{
+                            alert('Erro, insira seus dados corretamente ou tente mais tarde!')
+                        }
+                        load.style.display = 'none'
+                    }else{
+                        load.style.display = 'none'
+                        console.log('erro');
+                    }
+                }
+            };
+            xmlreq.send('email='+email+'&senha='+senha+'&login=true');
+        }
+        document.querySelector('#entrar').onclick = () => login()
+        document.querySelector('#cadastrar').onclick = () => window.location.href = 'cadastrar.html'
+    </script>
+</body>
+</html>
