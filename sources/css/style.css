@@ -7,6 +7,9 @@ body{
     width:calc(100% - 1px);
     overflow: hidden;
 }
+button, input, textarea{
+    outline: none;
+}
 svg {
     position:absolute;
     top:0;

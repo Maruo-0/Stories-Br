@@ -7,7 +7,6 @@ require 'config/db.php';
             $inicio = $_GET['inicio'];
         
             $query = "select * from historias where aprovado = 1 order by created_at desc limit $inicio, $quantidade";
-            $arrayAcessado = false;
             $array = array();
             $query = mysqli_query($conn, $query);
             $contador = 1;
@@ -28,7 +27,6 @@ require 'config/db.php';
             $titulo = $_GET['livrosNomes'];
 
             $query = "select * from historias where titulo like '%{$titulo}%'";
-            $arrayAcessado = false;
             $array = array();
             $query = mysqli_query($conn, $query);
             $contador = 1;
@@ -47,7 +45,6 @@ require 'config/db.php';
         }
         elseif(isset($_GET['favoritos']) && isset($_GET['usuarioId'])){
             $usuario_id = $_GET['usuarioId'];
-            $arrayAcessado = false;
             $array = array();
             $contador = 1;
             $query  = "select * from ler_depois where id_usuario = {$usuario_id}";
@@ -95,6 +92,43 @@ require 'config/db.php';
             echo $texto['texto'];
             mysqli_close($conn);
             exit();
+        }
+        elseif($_GET['get'] == 'videos'){
+            $query = "select * from videos order by created_at desc";
+            $array = array();
+            $query = mysqli_query($conn, $query);
+            $contador = 1;
+            while($video = mysqli_fetch_assoc($query)){
+                $array = array_merge($array, array(
+                    "id{$contador}" => "{$video['id']}",
+                    "iframe{$contador}" => "{$video['url']}",
+                    "titulo{$contador}" => "{$video['titulo']}",         
+                ));
+                $contador++;
+            }
+            $array = json_encode($array);
+            echo $array;
+            mysqli_close($conn);
+            exit();
+
+        }
+        elseif($_GET['get'] == 'video'){
+            $id = $_GET['id'];
+            $query = "select * from videos where id = {$id} order by created_at desc";
+            $array = array();
+            $query = mysqli_query($conn, $query);
+            while($video = mysqli_fetch_assoc($query)){
+                $array = array_merge($array, array(
+                    "id" => "{$video['id']}",
+                    "iframe" => "{$video['url']}",
+                    "titulo" => "{$video['titulo']}",         
+                ));
+            }
+            $array = json_encode($array);
+            echo $array;
+            mysqli_close($conn);
+            exit();
+
         }
     }
     elseif(isset($_POST['estado']) && isset($_POST['artigoId'])){

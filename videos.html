@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sources/css/app.css">
+    <link rel="stylesheet" href="sources/fontawesome-free-5.13.0-web/css/all.css">
+    <style>
+        .video-card{
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+        .video-frame{
+            height: 40%;
+        }
+        .videos-container{
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="ini-bar"><i class="fas fa-arrow-left"></i>&nbsp&nbsp Vídeo</div>
+    <div class="videos-container"></div>
+    <script>
+        function CriaRequest(){
+            try{
+                request = new XMLHttpRequest();        
+            }catch (IEAtual){
+                try{
+                    request = new ActiveXObject("Msxml2.XMLHTTP");       
+                }catch(IEAntigo){
+                
+                    try{
+                        request = new ActiveXObject("Microsoft.XMLHTTP");          
+                    }catch(falha){
+                        request = false;
+                    }
+                }
+            }
+            if (!request) alert("Seu Navegador não suporta Ajax!");
+            else return request;
+        }
+        function carregarVideo(){
+            const videoId = sessionStorage.getItem('videoId');
+            let url = 'requisicoes/buscar-dados.php?get=video&id='+videoId;
+            console.log(url)
+            let xmlreq = CriaRequest();
+            xmlreq.open("GET", url, true);
+            xmlreq.onreadystatechange = function(){
+                if (xmlreq.readyState == 4) {
+                    if (xmlreq.status == 200) {
+                        let tag = '';
+                        let resposta = xmlreq.response;
+                        resposta = JSON.parse(resposta);
+                        for (let key in resposta) {
+                            if(key === 'id'){
+                                tag += `<div id="${resposta[key]}" class="video-card">`
+                            }
+                            else if(key === 'iframe'){
+                                tag += `<div class="video-frame">${resposta[key]}</div>`
+                            }
+                            else if(key === 'titulo'){
+                                tag += `<div class="video-card-titulo"><p>${resposta[key]}</p></div></div>`
+                            }
+                        }           
+                                
+                        document.querySelector('.videos-container').innerHTML = tag
+                        const iframe = document.querySelector('iframe');
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                    }else{
+                        alert('Houve uma falha no sistema, tente novamente mais tarde!')
+                    }
+                }
+            };
+            xmlreq.send(null);
+        }
+
+        const urlParams = new URLSearchParams(window.location.search)
+        if(urlParams.has('id')){
+            carregarVideo();
+        }
+        else window.location.href = 'index.html';
+        document.querySelector('i').onclick = () =>{
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -20,7 +20,13 @@
         }
     </style>
 </head>
-<body>
+<body class="claro">
+    <script>
+        const tema = localStorage.getItem('tema');
+        const body = document.querySelector('body');
+        if(tema === 'escuro') body.classList.replace('claro', 'escuro')
+    </script>
+
     <div class="tela">
         <div class="nav-cima">
             <i id="voltar" class="fas fa-arrow-left"></i>

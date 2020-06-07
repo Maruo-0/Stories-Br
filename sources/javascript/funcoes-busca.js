@@ -45,7 +45,7 @@ document.querySelector('#voltar').onclick = () => {
     if(urlParams.has('favoritos') && urlParams.has('artigo')) window.location.href = '?favoritos=true'
     else if(urlParams.has('artigo')) window.location.href = '?'
     else if(urlParams.has('favoritos')) window.location.href = '?'
-    else window.location.href = 'app.html'
+    else window.location.href = 'index.html'
 }
 
 
@@ -111,16 +111,14 @@ if(usuarioId){
 function mudarTema(){
     const tema = localStorage.getItem('tema')
     const temaSelect = document.querySelector('#tema')
-    if(tema){
-        document.querySelector('body').classList.add(tema)
+    if(tema === 'escuro'){
+        document.querySelector('body').classList.replace('claro', 'escuro')
         temaSelect.value = tema
-    }
-    else{
-        document.querySelector('body').classList.add('claro')
-        temaSelect.value = tema 
     }
     temaSelect.onchange = () =>{
         localStorage.setItem('tema', temaSelect.value)
+        if(temaSelect.value === 'escuro') document.querySelector('body').classList.replace('claro', 'escuro');
+        else document.querySelector('body').classList.replace('escuro', 'claro');
     }
 }
 mudarTema()

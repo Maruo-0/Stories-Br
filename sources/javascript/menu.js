@@ -107,7 +107,7 @@ function menu(){
 
     var idx = id;
     var selected = menu_list.textContent
-    options_title.innerHTML = 'SELECT '+selected
+    options_title.innerHTML = 'Escolha '+selected
     options_div.innerHTML = ''
     var html = "";
     switch (idx) {
@@ -403,7 +403,7 @@ function primeiroLoad(){
     const options_title = document.querySelector('#options_title')
     const options_div = document.querySelector('#options_div')
 
-    options_title.innerHTML = 'SELECT SKIN COLOR'
+    options_title.innerHTML = 'Escolha a Cor da Pele'
     options_div.innerHTML = ''
     var html = "";
     for (var i=0;i<array_skins.length; i++) {
