@@ -130,7 +130,7 @@
       <section class="container-fluid lista-img">
         <ul class="ul-img">
             <li class="li-img">
-                <a class="a-img" href="playground/atividades">Quadrinhos</a>
+                <a class="a-img" href="aplicativo.html">Aplicativo</a>
                 <img class="l-img" src="resources/src/img01.svg" alt="">
             </li>
             <li class="li-img">
@@ -243,19 +243,13 @@
       <footer class="container-fluid">
         <ul class="nav list">
           <li class="nav-item active">
-            <a class="nav-link" href="documentacao">Documentação TCC</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="politica-privacidade" target="_blank">Política de Privacidade</a>
-          </li>
-          <li class="nav-item active">
             <a class="nav-link" href="fale-conosco" target="_blank">Fale Conosco</a>
           </li>
         </ul>
         <div class="social-buttons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.youtube.com/watch?v=8ola10-AzV4"><i class="fab fa-youtube"></i></a>
+          <a href="playground/videos"><i class="fab fa-youtube"></i></a>
         </div>
         <p class="esp">Desenvolvido por - ADS-5 UNIBR-SV 2020</p>
       </footer>

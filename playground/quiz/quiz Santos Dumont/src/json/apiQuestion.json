@@ -1,0 +1,125 @@
+{
+    "response_code": 0,
+    "results": [
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em 23 de outubro de 1960 avião 14-Bis foi primeiro voo da história. Como ficou conhecido esse dia?",
+        "correct_answer": "Dia da Aviação",
+        "incorrect_answers": [
+          "Dia do Avião",
+          "Dia dos Ares",
+          "Dia do Voo"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Como foi chamada a primeira criação de Santos Dumont?",
+        "correct_answer": "Brésil “Brasil”, em francês",
+        "incorrect_answers": [
+          "Dirigível",
+          "Aeronave de Asas Fixas",
+          "Canhão Paradoxal"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Após saber que sua invenção foi usada para guerras, Dumont decidiu se dedicar a qual estudo?",
+        "correct_answer": "Astronomia",
+        "incorrect_answers": [
+          "Psicologia",
+          "Escritor",
+          "Física"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Dumont ganhou um prêmio em 19 de outubro de 1901, circundar a Torre Eiffel. Qual era o nome desse prêmio?",
+        "correct_answer": "Prêmio Deutsch",
+        "incorrect_answers": [
+          "Prêmio Paris",
+          "Prêmio Saint-Clould",
+          "Prêmio Eifeel"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Respectivamente, em qual ano Santos Dumont nasceu e em qual houve seu falecimento?",
+        "correct_answer": "1873-1932",
+        "incorrect_answers": [
+          "1870-1955",
+          "1871-1937",
+          "1875-1930"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "O 14-bis em francês também era conhecido como:",
+        "correct_answer": "Oiseau de Proie (Ave de rapina )",
+        "incorrect_answers": [
+          "Avion",
+          "Oiseau de Paris",
+          "Oiseau Dumont"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em que data Dumont teve seu último voo?",
+        "correct_answer": "Em 14 de abril de 1907",
+        "incorrect_answers": [
+          "Em 14 de maio de 1907",
+          "Em 14 de abril de 1908",
+          "Em 13 de março de 1907"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em qual estudo Dumont quando jovem se aprofundou?",
+        "correct_answer": "Mecânica e Motor de combustão",
+        "incorrect_answers": [
+          "Biologia",
+          "Matématica",
+          "ADS"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "AERONAVE MAIS PESADA QUE O AR ,se referia a qual projeto de Dumont? ",
+        "correct_answer": "Avião 14-Bis",
+        "incorrect_answers": [
+          "Avião motorizado N.º1",
+          "Um dirigível ônibus N.º10",
+          "O balão Brasil"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Com a morte de seu pai, Dumont em Paris começou construir as próprias aeronaves. Em que ano isso ocorreu?",
+        "correct_answer": "Em 1892",
+        "incorrect_answers": [
+          "Em 1882",
+          "Em 1992",
+          "Em 1888"
+        ]
+      }
+    ]
+  }

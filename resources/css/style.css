@@ -246,14 +246,17 @@ hr{
 
 .card-b{
     background-color: #fff;
-    min-height: 420px;
+    min-height: 440px;
+    height: 460px;
     max-width: 500px;
     box-shadow: 0px 0px 10px #b1b1b1;
     border: none;
     border-radius: 1%;
 }
 .card-img-top{
-    box-shadow: 0px 0px 50px #000000 inset;
+    box-shadow: 0px 0px 10px #000000 inset;
+    min-height: 220px;
+    background-size: cover !important;
 }
 
 .cont-all{

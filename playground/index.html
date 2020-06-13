@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="../resources/favicon.png"/>
+    <link rel="manifest" href="../manifest.json"> 
+    <title>Atividades - Stories BR</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/playground.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,300&display=swap');
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Rubik', Arial, Helvetica, sans-serif;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+            color: white !important;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            min-height: 100vh;
+            background: #222;
+        }
+
+        .playground-container{
+            position: relative;
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-rows:minmax(100px, auto);
+            margin: 40px;
+            grid-auto-flow: dense;
+            grid-gap: 10px;
+            cursor: pointer;
+        }
+        .playground-container .playground-box{
+            color: #929796;
+            background: #079992;
+            padding: 10px;
+            display: grid;
+            font-size: 20px;
+            place-items: center;
+            text-align: center;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .playground-container .playground-box:hover{
+            background: #e91e63;
+        }
+        .playground-container .playground-box img{
+            position: relative;
+            width:130px;
+            margin-bottom: 5px;
+        }
+
+        .playground-container .playground-box:nth-child(1){
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .playground-container .playground-box:nth-child(2){
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        .playground-container .playground-box:nth-child(4){
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        .playground-container .playground-box:nth-child(5){
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+
+        @media screen and (max-width:900px)
+        {
+            .playground-container{
+                grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+                grid-template-rows:minmax(auto, auto);
+            }
+
+            .playground-container .playground-box img{
+                width:100PX;
+            }
+
+        .playground-container .playground-box{
+                font-size: 15px;
+                grid-column: unset!important;
+                grid-row: unset!important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="playground-container">
+        <div class="playground-box">
+            <a href="../livros">
+            <div class="playground-content"> 
+                <img src="img/1.svg" alt="">
+                <h4>Artigos em audio</h4> <br>
+                <p>Estude os artigos e conheça mais do Brasil e com comodidade de ouvir seus textos em audio, em português ou inglês</p>
+            </div></a>
+        </div>
+        <div class="playground-box">
+            <a href="avatar.html">
+            <div class="playground-content"> 
+                <img src="img/3.svg" alt="">
+                <h4>Personalize seu Avatar</h4><br>
+                <p>Crie e customize seu próprio avatar</p>
+            </div></a>
+        </div>
+        <div class="playground-box">
+            <a href="videos">
+            <div class="playground-content"> 
+                <img src="img/2.svg" alt="">
+                <h4>Videos</h4> <br>
+                <p>Aprenda se dirvertindo com as histórias animadas da Turma do Seu Cabral</p>
+            </div></a>
+        </div>
+        <div class="playground-box">
+            <a href="quiz/Quiz De quem estou falando/index.html">
+            <div class="playground-content"> 
+                <img src="img/5.svg" alt="">
+                <h4>Quiz Stories</h4><br>
+                <p>Leia os artigos da página e Teste seu conhecimento no Quiz de perguntas</p>
+            </div></a>
+        </div>
+        <div class="playground-box">
+            <a href="../perfil">
+            <div class="playground-content"> 
+                <img src="img/7.svg" alt="">
+                <h4>Perfil</h4> <br>
+                <p>Configure seu perfil e conheça as utilidades da sua conta Stories</p>
+            </div></a> 
+        </div>
+        <div class="playground-box">
+            <a href="jogo-memoria.html">
+            <div class="playground-content"> 
+                <img src="img/4.SVG" alt="">
+                <h4>Jogo da memoria</h4> <br>
+                <p>Pratique de forma rápida divertida a sua memória</p>
+            </div></a>
+        </div>
+        <div class="playground-box">
+            <a href="digitar.html">
+            <div class="playground-content"> 
+                <img src="img/6.svg" alt="">
+                <h4>Jogo da digitação</h4><br>
+                <p>Divirta-se digitando cada vez rápido com tempo recorde!</p>
+            </div></a>
+        </div>
+    </div>
+</body>
+</html>

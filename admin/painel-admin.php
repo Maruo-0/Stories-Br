@@ -45,6 +45,7 @@
             <a class="botao" id="revisao">Revisão</a>
             <a class="botao" id="reportes">Reportes</a>
             <a class="botao" id="sugestoes">Sugestões</a>
+            <a class="botao" id="avaliacoes">Avaliações app</a>
             <a class="botao" href="edicao">Criar</a><br>
             <form action="../config/login.inc.php?sair=true" method="post">
                 <button type="submit" name="logout" class="btn btn-danger" style="margin-left: 32px;">Sair</button>
@@ -60,7 +61,7 @@
                 <div id="relogio" class="relogio" onload="showTime()"></div>
                 <div class="quadro-grid">
                     <div class="quadro">
-                        <img src="" style="background-color: #21ABA5;">
+                        <img src="../resources/src/icone1.png" width="67px">
                         <div class="quadro-content">
                             <div>
                                 <h4>Visitantes</h4>
@@ -81,7 +82,7 @@
                         </div>
                     </div>
                     <div class="quadro">
-                        <img src="" style="background-color: #21ABA5;">
+                        <img src="../resources/src/icone2.png" width="67px">
                         <div class="quadro-content">
                             <div>
                                 <h4>Membros</h4>
@@ -168,6 +169,7 @@
                             <div class="botao" id="revisao"><h4>Revisão</h4></div>
                             <div class="botao" id="reportes"><h4>Reportes</h4></div>
                             <div class="botao" id="sugestoes"><h4>Sugestões</h4></div>
+                            <div class="botao" id="avaliacoes"><h4>Avaliações app</h4></div>
                         </div>
                     </div>
                 </div>
@@ -377,6 +379,11 @@
                         </tr> -->
                     </table>
                 </div>
+            </div>
+            <div class="view" id="avaliacoespag">
+                <a class="botao btn-link" href="../" >/Página Inicial</a><a class="botao btn-link" id="inicio">/Painel Inicio</a>
+
+                <h2 class="title">Avaliações</h2>
             </div>
         </div>
     </div>

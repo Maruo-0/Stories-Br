@@ -1,7 +1,7 @@
 <?php session_start();    require '../config/db.php';
     if(!isset($_SESSION['userid'])){
         header("Location: ../index.php");
-        exit();                    
+        exit();
     }
     elseif(isset($_POST['mudar_nome'])){
         $nome = mysqli_real_escape_string($conn, $_POST['nome_atual']);
@@ -123,10 +123,14 @@
             background-color: #4CAF50;
             padding: 30px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         form{
             display: flex;
             flex-direction: column;
+            align-items: center;
             margin-bottom: 40px;
         }
         label{

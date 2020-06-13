@@ -171,6 +171,7 @@ mysqli_close($conn); ?>
     }
 
 </script>
+<!--Texto para voz-->
 <script>
     const themeSelection = document.querySelector('#themeSelection')
     const body = document.body
@@ -184,6 +185,8 @@ mysqli_close($conn); ?>
         else{
             themeSelection.selectedIndex = [1]
         }
+    } else{
+        body.classList.add('light');
     }
 
     function salvarTema(){
@@ -197,8 +200,6 @@ mysqli_close($conn); ?>
         }
     }
 </script>
-<!--Texto para voz-->
-
 <script defer src="../resources/js/style.js"></script>
 </body>
 </html>

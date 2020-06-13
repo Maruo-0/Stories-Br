@@ -1,0 +1,202 @@
+*{
+    height: 100%;
+}
+body{
+    margin: 0;
+    height: 100%;
+    width:calc(100% - 1px);
+    overflow: hidden;
+}
+button, input, textarea{
+    outline: none;
+}
+svg {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:360px;
+}
+svg #background{
+    transform: scaleX(2) translateX(-100px);
+}
+#avatar {
+    position:relative;
+    margin:0;
+    width:100%;
+    height: 360px;
+}
+
+#footer{
+    position:absolute;
+    top:360px;
+    left:0;
+    width:361px;
+    width: calc(100% - 0.5px);
+    height:99px;
+    height: calc(100% - 360px);
+    border-top:1px solid #707070;
+}
+#menu {
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:60px;
+    height:99px;
+    height: 100%;
+    background-color:#ffffff;
+    border-right:1px solid #707070;
+    z-index:200;
+    overflow:hidden;
+}
+#menu_lines div {
+    position:absolute;
+    left:10px;
+    width:40px;
+    height:7px;
+    background-color:#707070;
+    -webkit-transition: all 0.35s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+    transition: all 0.35s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+}
+#menu.active #menu1 {
+    top: 22px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all 0.5s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+    transition: all 0.5s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+}
+#menu.active #menu2 {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+    transition: opacity 0.5s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+}
+#menu.active #menu3 {
+    top: 22px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transition: all 0.5s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+    transition: all 0.5s cubic-bezier(0.75, 0.25, 0.10, 0.95);
+}
+#options {
+    position:absolute;
+    top:0;
+    left:61px;
+    width:299px;
+    width: calc(100% - 64px);
+    height:99px;
+    height: 100%;
+}
+#options_title {
+    font-size:17px;
+    font-weight:bold;
+    text-align:center;
+    padding-top:8px;
+}
+#options_div {
+    display: grid;
+    grid-template-columns: 65px 65px 65px 65px;
+    grid-template-rows: 65px 65px 65px 65px; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    position:absolute;
+    top:34px;
+    left:0;
+    width:299px;
+    width: 100%;
+    height:65px;
+    height: calc(100% - 35px);
+
+    /* overflow-y:hidden; */
+
+    
+}
+.skins,.eyes,.eyebrows,.mouths,.hairstyles,.haircolors,.facialhairs,.clothes,.fabriccolors,.backgroundcolors,.glasses,.glassopacity,.tattoos,.accesories {
+    flex: 0 0 auto;
+    top:0;
+    /* width:45%;
+    height:35%; */
+    width:53px;
+    height:53px;
+    margin:5px;
+    border:1px solid #707070;
+    cursor:pointer;
+    border-radius:10px;
+    background-color:#ffdbb4;
+}
+.eyes,.eyebrows,.mouths,.hairstyles,.facialhairs,.clothes,.glasses,.tattoos,.accesories {
+    background-image:url(https://i.imgur.com/q0DdlUI.png);
+}
+/*put images yyaaaaaaaaaaaa///// adicionar imagens no menu()/// usar id como nomes*/
+.eyes{
+
+}
+.eyebrows{
+
+}
+.mouths{
+    
+}
+.mouths{
+
+}
+.hairstyles{
+
+}
+.facialhairs{
+
+}
+.clothes{
+
+}
+.glasses{
+
+}
+.tattoos{
+
+}
+.accesories{
+
+}
+.glassopacity {
+    text-align:center;
+    font-size:21px;
+    font-weight:bold;
+    height:43px;
+    padding-top:10px;
+    color:#707070;
+}
+#menu_list {
+    position:absolute;
+    bottom: -5px;
+    left:70px;
+    width:250px;
+    height:100%;
+    text-align:center;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+.btn {
+    padding:8px;
+    font-weight:bold;
+    margin-bottom:7px;
+    width: 200px;
+}
+#menu_list div {
+    width:100%;
+    cursor:pointer;
+    padding:7px 0 7px 0;
+    font-size:19px;
+    font-weight:bold;
+    color:#707070;
+}
+
+div:nth-last-child(4){
+    display: none !important;
+}

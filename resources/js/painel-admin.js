@@ -42,7 +42,7 @@ function closeNav() {
 }
 function mudarJanela(){
     const view = document.querySelectorAll('.view')   ;   
-    for(i = 0; i <= 5; i++){
+    for(i = 0; i <= 6; i++){
         view[i].style.display = 'none';
     }
     switch(botao_id){
@@ -64,13 +64,16 @@ function mudarJanela(){
         case 'sugestoes':
             view[5].style.display = 'block';
             break;
+        case 'avaliacoes':
+            view[6].style.display = 'block';
+            break;
     }
     closeNav()
 }
 function showTime(){
     var date = new Date();
     var d = date.getDate();
-    var me = date.getMonth();
+    var me = date.getMonth()+1;
     var a = date.getFullYear();
     var h = date.getHours();
     var mi = date.getMinutes();

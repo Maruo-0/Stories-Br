@@ -11,8 +11,7 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^login login.php [NC,L]
 RewriteRule ^inscricao inscricao.php [NC,L]
 RewriteRule ^fale-conosco fale-conosco.php [NC,L]
-RewriteRule ^documentacao documentacao.php [NC,L]
-RewriteRule ^politica-privacidade politica-privacidade.php [NC,L]
+RewriteRule ^aplicativo aplicativo.html [NC,L]
 
 
 RewriteRule ^livros biblioteca/livros.php [NC,L]

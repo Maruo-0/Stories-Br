@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Capriola&family=Homemade+Apple&family=Special+Elite&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+ 
+    background: #d2dae2;
+  }
+  
+#cardboard {
+  display: flex;
+    width: 640px;
+    height: 385px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .memory-card {
+    width: calc(25% - 10px);
+    height: 33%;
+    margin: 5px;
+    transform-style: preserve-3d;
+    transition: 0.3s;
+    position: relative;
+  }
+  .memory-card:active {
+    transform: scale(0.97);
+  }
+  
+  .memory-card.flip {
+    transform: rotateY(180deg);
+  }
+  
+  .front-face,
+  .back-face {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    position: absolute;
+    background: #0a052b;
+  }
+  
+  .front-face {
+    transform: rotateY(180deg);
+  }
+  .names{
+    padding-left: 10px;
+    font-size: 22px;  
+    align-items: center;
+    font-family: 'Special Elite', cursive;
+
+    background-color: #37badb;
+  }
+
+  .soma{
+    font-family: 'Special Elite', cursive;
+    margin: 10px 20px ;
+  
+
+  
+  }
+  .btn{
+    margin-left: 20px;
+    padding: 8px;
+  }
+
+  @media(max-width:991px)
+{
+    
+    .memory-card {
+    
+      height:20%;
+      margin: 5px;
+     
+    }
+    #cardboard {   
+      width: 430px;
+      height: 452px;     
+  } 
+  .front-face, .back-face {
+ 
+    padding: 0;
+   
+}
+  .names {
+    font-size: 18px;
+    padding-top: 40px;    
+    margin: 10px 0 0 0;
+   background-color: #37badb;
+}
+}

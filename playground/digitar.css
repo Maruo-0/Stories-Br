@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: blueviolet;
+    height: 100vh;
+    width: 100vw;
+}
+
+body, .quote-input{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container{
+    background-color: coral;
+    padding: 1rem;
+    border-radius: .5rem;
+    width: 700px;
+    max-width: 90%;
+    display: none;
+    margin: 10px;
+}
+
+.title{
+    font-size: 2.5rem;
+    color: coral;
+    font-weight: bold;
+}
+.timer{
+    font-size: 3rem;
+    color: coral;
+    font-weight: bold;
+    display: none;
+}
+
+.comecar{
+    background-color: green;
+    padding: 20px;
+    font-size: 4rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 43vh;
+}
+.continuar{
+    background-color: green;
+    padding: 15px;
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    display: none;
+    margin: 5px;
+}
+
+.quote-display{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: calc(1rem +2px);
+    margin-right: calc(1rem +2px);
+}
+
+.timer, .quote-display, .comecar, .continuar{
+    /* -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none; */
+}
+
+.quote-input{
+    background-color: transparent;
+    border: 2px solid chocolate;
+    outline: none;
+    width: 100%;
+    height: 8rem;
+    margin: auto;
+    resize: none;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    text-decoration: none;
+}
+.quote-input:focus{
+    border-color: black;
+}
+.correct{
+    color: green;
+}
+.incorrect{
+    color: red;
+}
+
+.tema{
+    position: absolute;
+    top: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#tema{
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 8px;
+}
+.modal-back{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.534);
+    display: none;
+}
+.modal{
+    position: relative;
+    top: 43vh;
+    left: calc(50vw - 250px);
+    background-color: aquamarine;
+    width: 500px;
+    padding: 15px;
+    border-radius: 5px;
+}
+.modal span{
+    position: relative;
+    float: right;
+    cursor: pointer;
+    font-size: 3em;
+    color: white;
+    background-color: rgb(177, 14, 14);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#reiniciar{
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.5rem;
+    background-color: yellow;
+    border-radius: 8px;
+    margin: 5px;
+    display: none;
+}
+@media screen and (max-width: 500px){
+    .modal{
+        left: 0;
+        width: 100vw;
+    }
+}

@@ -23,15 +23,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php if(isset($_GET['id'])){
+    <?php if(isset($_GET['id'])){
       $id = mysqli_real_escape_string($conn, $_GET['id']);
       $query = 'select * from historias where id ='.$id;
       $result = mysqli_query($conn, $query);
       $historia = mysqli_fetch_assoc($result);
-      mysqli_free_result($result);
-      echo trim($historia['titulo'], '<p></p>');
+      mysqli_free_result($result);?>
+    <meta name="Description" content="<?php echo $historia['desc'] ?>">
+    <title>
+    <?php echo trim($historia['titulo'], '<p></p>');
     }
-    else echo 'Biblioteca';?> - Stories Br</title>
+    else echo '<meta name="Description" content="Aprenda a história do Brasil 
+    com diversos artigos em texto e audio, português e inglês">
+    <title>Biblioteca';?> - Stories Br</title>
     <link rel="manifest" href="/StoriesBr/manifest.json">
     <link rel="shortcut icon" type="image/png" href="/StoriesBr/resources/favicon.png"/>
     <!--CSS-->

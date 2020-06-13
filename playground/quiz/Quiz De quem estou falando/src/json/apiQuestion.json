@@ -1,0 +1,125 @@
+{
+    "response_code": 0,
+    "results": [
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Segundo imperador brasileiro, cujo reinado durou de 1831 a 1889",
+        "correct_answer": "D. Pedro II",
+        "incorrect_answers": [
+          "D. Joao II ",
+          "D. Henrique",
+          "Barão de Mauá"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Um dos grandes artistas do Brasil Colonial. É considerado o mais importante escultor do período artístico conhecido como barroco mineiro.",
+        "correct_answer": "D. João VI",
+        "incorrect_answers": [
+          "D. Sebastião",
+          "D. Pedro I",
+          "D. Pedro II"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Foi o primeiro governador-geral do Brasil.",
+        "correct_answer": "Tomé de Souza",
+        "incorrect_answers": [
+          "Marechal Deodoro da Fonseca",
+          "Duarte da Costa",
+          "Mem de Sá"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Assinou a lei da Abolição da Escravatura em 1888 (Lei Áurea)",
+        "correct_answer": "Princesa Isabel",
+        "incorrect_answers": [
+          "Maria Francisca",
+          "Carlota Joaquina",
+          "Isabel Luiza"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Um dos mais importantes e brilhantes escritores brasileiros de todos os tempos.",
+        "correct_answer": "Machado de Assis",
+        "incorrect_answers": [
+          "José de Alencar",
+          "Euclides da Cunha",
+          "Carlos Drummont de Andrade"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Líder do processo de Independência do Brasil em 7 de setembro de 1822, tornou-se o primeiro imperador brasileiro. Seu reinado durou de 1822 a 1831.",
+        "correct_answer": "D. Pedro I",
+        "incorrect_answers": [
+          "D. Pedro II",
+          "D. João VI",
+          "D. João"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": " Passou para a História como sendo o “patrono da independência”, pois teve grande papel no processo de Independência do Brasil.",
+        "correct_answer": "José Bonifácio ",
+        "incorrect_answers": [
+          "Maria Leopoldina",
+          "D. Pedro I",
+          "Cipriano José Barata de Almeida:"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quem foi o primeiro presidente do Brasil?",
+        "correct_answer": "Marechal. Deodoro da Fonseca",
+        "incorrect_answers": [
+          "Getúlio Vargas",
+          "Jucelino Kubitschek",
+          "Marechal Floriano Peixoto"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Assumiu a presidência após o suicídio de Vargas?",
+        "correct_answer": "Café Filho",
+        "incorrect_answers": [
+          "Eduardo Gomes",
+          "João Goulart",
+          "Juscelino Kubitschek"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em que ano começou o governo de Vargas?",
+        "correct_answer": "1930",
+        "incorrect_answers": [
+          "1932",
+          "1925",
+          "1935"
+        ]
+      }
+    ]
+  }
