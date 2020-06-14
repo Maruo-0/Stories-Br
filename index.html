@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stories Br app</title>
-    <script>
-        if(!navigator.onLine) window.location.href = 'offline.html';
-    </script>
     <link rel="stylesheet" href="sources/fontawesome-free-5.13.0-web/css/all.css">
     <link rel="stylesheet" href="sources/css/app.css">
     <link rel="stylesheet" href="sources/css/animacao.css">
@@ -18,6 +15,14 @@
 </head>
 <body class="claro">
     <script>
+        if(!navigator.onLine) window.location.href = 'offline.html';
+        function updateOnlineStatus(event) {
+            const condition = navigator.onLine ? "online" : "offline";
+            console.log(condition);
+            window.location.href = 'offline.html';
+        }
+        window.addEventListener('offline', updateOnlineStatus);
+
         let tema = localStorage.getItem('tema');
         const body = document.querySelector('body');
         if(tema === 'escuro') body.classList.replace('claro', 'escuro')
@@ -87,7 +92,7 @@
                     </div>
                     <div class="playground-box">
                         <div id="cardMem" class="playground-content"> 
-                          <img src="sources/img/4.SVG" alt="">
+                          <img src="sources/img/4.svg" alt="">
                           <h4>Jogo da memoria</h4> <br>
                           <p>Pratique de forma rápida divertida a sua memória</p>
                         </div>   
@@ -122,14 +127,7 @@
                         <div class="inicio-card-titulo">
                             <h5>Descobrimento do Brasil</h5>
                             <p>A chegada de Cabral ao território brasileiro representou o início de uma conquista sobre o descobrimento</p>
-                            <button>Ler agora</button>    
-                        </div>
-                    </div>
-                    <div id="1" class="inicio-livro-card">
-                        <div class="inicio-card-titulo">
-                            <h5>Descobrimento do Brasil</h5>
-                            <p>A chegada de Cabral ao território brasileiro representou o início de uma conquista sobre o descobrimento</p>
-                            <button>Ler agora</button>    
+                            <button>Ler agora</button>
                         </div>
                     </div>
                 </div>
@@ -244,7 +242,7 @@
             <div id="nav_jogos" class="nav_items"><i class="fas fa-gamepad"></i></div>
             <div id="nav_inicio" class="nav_items active">
                 <svg width="45" height="45" viewBox="0 0 640 640" preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)" fill="#000000">
+                    <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)">
                     <path d="M1185 6390 c-518 -41 -953 -380 -1119 -874 -66 -196 -61 -24 -61
                     -2321 0 -1952 1 -2085 18 -2162 57 -264 173 -481 356 -663 185 -185 405 -301
                     664 -351 94 -18 174 -19 2157 -19 1983 0 2063 1 2157 19 461 89 827 411 977

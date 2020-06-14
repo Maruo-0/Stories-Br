@@ -45,7 +45,35 @@ function carregarPag(){
         if (xmlreq.readyState == 4) {
             result.style.display = 'block';
             if (xmlreq.status == 200) {
-                result.innerHTML = xmlreq.responseText;
+                fetch('http://localhost/storiesapp/dir/'+xmlreq.response)
+                .then(response => response.blob())
+                .then(blob => {
+                    const reader = new FileReader;
+                    reader.addEventListener('load', () => {
+                        const image = new Image;
+                        image.src = reader.result;
+                        document.body.appendChild(image);
+                    });
+                    reader.readAsDataURL(blob);
+                    downloadBlob(blob, 'meu-avatar.png')
+                });
+                function downloadBlob(blob, filename) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename || 'download';
+                    const clickHandler = () => {
+                        setTimeout(() => {
+                            URL.revokeObjectURL(url);
+                            this.removeEventListener('click', clickHandler);
+                        }, 150);
+                    };
+                    a.addEventListener('click', clickHandler, false);
+                    a.click();
+                    return a;
+                }
+                alert('Iniciando download!');
+                //window.location.href = 'index.html';
                 console.log('carregado');
             }else{
                 result.innerHTML = "Erro: " + xmlreq.statusText;
@@ -54,6 +82,6 @@ function carregarPag(){
     };
     xmlreq.send(null);
 }
-const renderizar = document.querySelector('#download2').addEventListener('click', () =>{
+document.querySelector('#download2').onclick = () =>{
     carregarPag()
-})
+}

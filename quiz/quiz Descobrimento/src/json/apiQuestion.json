@@ -1,0 +1,125 @@
+{
+    "response_code": 0,
+    "results": [
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quem descobriu a América e em que ano esse fato aconteceu?",
+        "correct_answer":   "Colombo, em 1492",
+        "incorrect_answers": [
+          "Dom Pedro, em 1500",
+          "Napoleão em 1888",        
+          "Pedro Alvares Cabral em 1500"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quando partiu em direção às Índias, Pedro Álvares Cabral encarregou qual dos membros de suas caravelas a ir para a corte portuguesa informar ao rei sobre a descoberta?",
+        "correct_answer": "Mem de Sá",
+        "incorrect_answers": [
+          "Pero Vaz de Caminha",
+          "Cristóvão Colombo",
+          "Gaspar de Lemos"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Qual foi o PRIMEIRO nome que o nosso país teve, que foi dado por Pedro Álvares Cabral?",
+        "correct_answer": "Ilha de Vera Cruz",
+        "incorrect_answers": [
+          "Terra dos Papagaios",
+          "Terra de Santa Cruz",
+          "Terra do Brasil"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em que dia, mês e ano Cabral chegou ao território que hoje é chamado Brasil?",
+        "correct_answer": "22 de abril de 1500",
+        "incorrect_answers": [
+          "12 de novembro de 1520",
+          "22 de setembro de 1500",
+          "22 de outubro de 1500"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Pedro Álvares Cabral chegou ao Brasil acompanhado de quantas frotas e quantos homens?",
+        "correct_answer": "13 navios, 1500 homens",
+        "incorrect_answers": [
+          "10 navios, 1000 homens",
+          "7 navios, 800 homens",
+          "5 navios, 600 homens"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quando chegaram ao Brasil, em 22 de abril de 1500, os Portugueses se depararam com grande quantidade de uma espécie vegetal e passaram a explorá-la. Iniciou-se assim que ciclo?",
+        "correct_answer": "Ciclo de Pau-Brasil",
+        "incorrect_answers": [
+          "Ciclo da Borracha",
+          "Ciclo Colonial",
+          "Ciclo da Cana-de-Açucar"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quem escreveu a carta ao rei de Portugal?",
+        "correct_answer": "Em 14 de abril de 1907",
+        "incorrect_answers": [
+          "Pero Vaz de Caminha",
+          "Em 14 de abril de 1908",
+          "Em 13 de março de 1907"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Cabral pensava que tinha chegado aonde?",
+        "correct_answer": "Índia",
+        "incorrect_answers": [
+          "Austrália",
+          "Áustria ",
+          "Brasil"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "As caravelas comandadas por Pedro Alvares Cabral chegaram a Ilha de Vera Cruz. A que estado corresponde essa ilha atualmente?",
+        "correct_answer": "Bahia",
+        "incorrect_answers": [
+          "Rio Grande do Norte",
+          "Pernambuco",
+          "Ceará"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": " D. João fugiu para o brasil, e no meio da viagem ocorreu uma tempestade. Metade da tripulação foi para o RJ e D. João foi para:",
+        "correct_answer": "Salvador",
+        "incorrect_answers": [
+          "São Paulo",
+          "Ceara",
+          "Pernambuco"
+        ]
+      }
+    ]
+  }

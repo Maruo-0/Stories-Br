@@ -43,6 +43,29 @@ require 'config/db.php';
             mysqli_close($conn);
             exit();
         }
+        elseif(isset($_GET['livro1'])){
+            $livro1 = $_GET['livro1'];
+            $livro2 = $_GET['livro2'];
+            $livro3 = $_GET['livro3'];
+
+            $query = "select * from historias where id in({$livro1}, {$livro2}, {$livro3})";
+            $array = array();
+            $query = mysqli_query($conn, $query);
+            $contador = 1;
+            while($historia = mysqli_fetch_assoc($query)){
+                $array = array_merge($array, array(
+                    "id{$contador}" => "{$historia['id']}",
+                    "imagem{$contador}" => "{$historia['img_capa']}",
+                    "titulo{$contador}" => "{$historia['titulo']}",        
+                    "desc{$contador}" => "{$historia['desc']}",        
+                ));
+                $contador++;
+            }
+            $array = json_encode($array);
+            echo $array;
+            mysqli_close($conn);
+            exit();
+        }
         elseif(isset($_GET['favoritos']) && isset($_GET['usuarioId'])){
             $usuario_id = $_GET['usuarioId'];
             $array = array();

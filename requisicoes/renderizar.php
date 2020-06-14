@@ -450,12 +450,11 @@ class Render{
 
 $a = new Render();
 $a->montarHTML();
-//echo $a->html;
-echo '<style>'.$a->css.'</style>';
+//echo '<style>'.$a->css.'</style>';
 
 $html = $a->html;
 $css = $a->css;
-echo $html;
+//echo $html;
 
 $client = new \GuzzleHttp\Client();
 
@@ -475,9 +474,7 @@ $dir = '../dir/';
 $filename = basename($json->url).'.png';
 $save_dir = $dir . $filename;
 file_put_contents($save_dir, file_get_contents($json->url.'?width=720&height=720'));
-/* if(file_put_contents($save_dir, file_get_contents($json->url.'?width=720&height=720'))){
-    echo '<h2>upload realizado</h2>';
-}
- */
 $query = "update `usuarios` set `img_user`='$filename' where `id`='4'";
 mysqli_query($conn, $query);
+
+echo $filename;

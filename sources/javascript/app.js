@@ -1,9 +1,7 @@
+const urlFinal = 'https://stories-br.000webhostapp.com/';
 // tela do primeiro carregamento do app
 // Todo - começar com tela e depois do primeiro carregamento tirar ela
 const load_page = document.querySelector('#load_page');
-//load_page.normalize
-//load_page.remove()
-load_page.classList.replace('load_page', 'load_page_off');
 
 const usuarioId = localStorage.getItem('usuarioId');
 function verificarUsuario(){
@@ -44,27 +42,25 @@ function logout(){
 }
 
 // seleção de temas
+const temaSelect = document.querySelector('#tema');
 function mudarTema(){
-    tema = localStorage.getItem('tema')
-    const temaSelect = document.querySelector('#tema');
-    this.definirTema = () => {
-        if(tema === 'escuro'){
-            document.querySelector('body').classList.replace('claro', 'escuro');
-            temaSelect.value = tema;
-        }
-    }
-    temaSelect.onchange = () =>{
-        localStorage.setItem('tema', temaSelect.value);
-        if(temaSelect.value === 'escuro') document.querySelector('body').classList.replace('claro', 'escuro');
-        else document.querySelector('body').classList.replace('escuro', 'claro');
+    const tema = localStorage.getItem('tema')
+    if(tema === 'escuro'){
+        document.querySelector('body').classList.replace('claro', 'escuro');
+        temaSelect.value = tema;
     }
 }
-mudarTema()
+temaSelect.onchange = () =>{
+    localStorage.setItem('tema', temaSelect.value);
+    if(temaSelect.value === 'escuro') document.querySelector('body').classList.replace('claro', 'escuro');
+    else document.querySelector('body').classList.replace('escuro', 'claro');
+}
+mudarTema();
 
 // todas funções de navegação da pag inicial estão aqui 
 function navegacao(){
     // carrega as ultimas atualizações de artigos na pesquisa
-    let quantidade = 7;
+    let quantidade = 4;
     let inicio = 0;
     this.procurarConteudo = () =>{
         url = 'requisicoes/buscar-dados.php?get=true&livros=todos&inicio='+inicio+'&quantidade='+quantidade
@@ -80,17 +76,18 @@ function navegacao(){
 
                     let resposta = xmlreq.response
                     resposta = JSON.parse(resposta)
+                    respostaLength = Object.keys(resposta).length
                     console.log(resposta);
                     for (let key in resposta) {
                         if (resposta.hasOwnProperty(key)) {
-                            for (let contador = 0; contador < quantidade+1; contador++) {
+                            for (let contador = 0; contador < respostaLength; contador++) {
                                 if(key === 'id'+contador){
                                     //console.log(resposta[key]);
                                     tag += `<div id="${resposta[key]}" class="livro-card">`
                                 }
                                 else if(key === 'imagem'+contador){
                                     //console.log(resposta[key]);
-                                    tag += `<div style="background: url(http://localhost/storiesbr/resources/src/${resposta[key]}) center;background-size: cover;height: 100%;">`
+                                    tag += `<div style="background: url(http://10.0.0.6/storiesbr/resources/src/${resposta[key]}) center;background-size: cover;height: 100%;">`
                                 }
                                 else if(key === 'titulo'+contador){
                                     //console.log(resposta[key]);
@@ -122,40 +119,98 @@ function navegacao(){
             }
         }
     }
+    this.procurarOutroConteudo = () =>{
+        let outroInicio = 4;
+        let outraQuant = 8;
+        url = 'requisicoes/buscar-dados.php?get=true&livros=todos&inicio='+outroInicio+'&quantidade='+outraQuant
 
-    const view = document.querySelectorAll('.view')
-    const nav_items = document.querySelectorAll('.nav_items')
+        const xmlreq = CriaRequest();
+        xmlreq.open("GET", url, true);
+        xmlreq.onreadystatechange = function(){
+            if (xmlreq.readyState == 4) {
+                if (xmlreq.status == 200) {
+                    let tag = ''
+
+                    let resposta = xmlreq.response
+                    resposta = JSON.parse(resposta)
+                    respostaLength = Object.keys(resposta).length
+                    console.log(resposta);
+                    for (let key in resposta) {
+                        if (resposta.hasOwnProperty(key)) {
+                            for (let contador = 0; contador < respostaLength; contador++) {
+                                if(key === 'id'+contador){
+                                    //console.log(resposta[key]);
+                                    tag += `<div id="${resposta[key]}" class="livro-card">`
+                                }
+                                else if(key === 'imagem'+contador){
+                                    //console.log(resposta[key]);
+                                    tag += `<div style="background: url(http://10.0.0.6/storiesbr/resources/src/${resposta[key]}) center;background-size: cover;height: 100%;">`
+                                }
+                                else if(key === 'titulo'+contador){
+                                    //console.log(resposta[key]);
+                                    tag += `<div class="card-titulo"><p>${resposta[key]}</p></div></div></div>`
+                                }
+                            }
+                        }
+                    }                          
+                    document.querySelector('#outrosArtigosBox').innerHTML = tag
+                }
+                else{
+                    console.log('erro');
+                }
+            }
+        };
+        xmlreq.send(null)
+
+        // eventos de clique que direciona pra url adequada
+        const artigos = document.querySelector('#outrosArtigosBox')
+        artigos.onclick = event =>{
+            //console.log(event.target.parentNode.parentNode.parentNode);
+            if(event.target.parentNode.classList.value == 'livro-card'){
+                sessionStorage.setItem('id', event.target.parentNode.id)
+                window.location.href = 'buscar-tudo.html?artigo='+event.target.parentNode.id
+            }
+            else if(event.target.parentNode.parentNode.parentNode.classList.value == 'livro-card'){
+                sessionStorage.setItem('id', event.target.parentNode.parentNode.parentNode.id)
+                window.location.href = 'buscar-tudo.html?artigo='+event.target.parentNode.parentNode.parentNode.id
+            }
+        }
+    }
+
+    const view = document.querySelectorAll('.view');
+    const nav_items = document.querySelectorAll('.nav_items');
     // função que trocar a view exibida
     this.navegacaoMudar = (item_id) =>{
         switch(item_id){
             case 'inicio':
-                view[2].style.display = 'block'
-                sessionStorage.setItem('estado', item_id)
+                view[2].style.display = 'block';
+                sessionStorage.setItem('estado', item_id);
                 break;
             case 'videos':
-                view[3].style.display = 'block'
-                sessionStorage.setItem('estado', item_id)
-                carregarVideos()
+                view[3].style.display = 'block';
+                sessionStorage.setItem('estado', item_id);
+                carregarVideos();
                 break;
             case 'configuracao':
-                view[4].style.display = 'block'
-                sessionStorage.setItem('estado', item_id)
-                definirTema();
+                view[4].style.display = 'block';
+                sessionStorage.setItem('estado', item_id);
+                mudarTema();
                 break;
             case 'jogos':
-                view[1].style.display = 'block'
-                sessionStorage.setItem('estado', item_id)
+                view[1].style.display = 'block';
+                sessionStorage.setItem('estado', item_id);
                 break;
             case 'pesquisar':
-                view[0].style.display = 'block'
-                sessionStorage.setItem('estado', item_id)
-                procurarConteudo()
+                view[0].style.display = 'block';
+                sessionStorage.setItem('estado', item_id);
+                procurarConteudo();
+                procurarOutroConteudo();
                 break;
         }
     }
 
     // retem estado da página
-    let estado = sessionStorage.getItem('estado')
+    let estado = sessionStorage.getItem('estado');
     if(estado){
         console.log(estado)
         for (const item of nav_items) {
@@ -203,15 +258,13 @@ function navegacao(){
         }
         else if(event.target.id == 'cardArt' || event.target.parentNode.id == 'cardArt') window.location.href = 'buscar-tudo.html';
         else if(event.target.id == 'cardAvat' || event.target.parentNode.id == 'cardAvat') window.location.href = 'avatar.html';
-        else if(event.target.id == 'cardMem' || event.target.parentNode.id == 'cardMem') window.location.href = 'jogo-da-memoria.html';
-        else if(event.target.id == 'cardQuiz' || event.target.parentNode.id == 'cardQuiz') window.location.href = 'quiz.html';
-        else if(event.target.id == 'cardDig' || event.target.parentNode.id == 'cardDig') window.location.href = 'jogo-digitacao.html';
+        else if(event.target.id == 'cardQuiz' || event.target.parentNode.id == 'cardQuiz') window.location.href = 'quiz/Quiz De quem estou falando/index.html';
     }
     document.querySelector('#jogos .playground-container').onclick = event =>{
         if(event.target.id == 'cardAvat' || event.target.parentNode.id == 'cardAvat') window.location.href = 'avatar.html';
-        else if(event.target.id == 'cardMem' || event.target.parentNode.id == 'cardMem') window.location.href = 'jogo-da-memoria.html';
-        else if(event.target.id == 'cardQuiz' || event.target.parentNode.id == 'cardQuiz') window.location.href = 'quiz.html';
-        else if(event.target.id == 'cardDig' || event.target.parentNode.id == 'cardDig') window.location.href = 'jogo-digitacao.html';
+        else if(event.target.id == 'cardMem' || event.target.parentNode.id == 'cardMem') window.location.href = 'jogo-memoria.html';
+        else if(event.target.id == 'cardQuiz' || event.target.parentNode.id == 'cardQuiz') window.location.href = 'quiz/Quiz De quem estou falando/index.html';
+        else if(event.target.id == 'cardDig' || event.target.parentNode.id == 'cardDig') window.location.href = 'digitar.html';
     }
 }
 navegacao();
@@ -234,9 +287,64 @@ function CriaRequest(){
     if (!request) alert("Seu Navegador não suporta Ajax!");
     else return request;
 }
+//mudar id dos livros em request 
 function carregaInicio(){
+    url = 'requisicoes/buscar-dados.php?get=true&livro1=3&livro2=1&livro3=2'
 
+    const xmlreq = CriaRequest();
+    xmlreq.open("GET", url, true);
+    xmlreq.onreadystatechange = function(){
+        if (xmlreq.readyState == 4) {
+            if (xmlreq.status == 200) {
+                let tag = ''
+
+                let resposta = xmlreq.response
+                resposta = JSON.parse(resposta)
+                respostaLength = Object.keys(resposta).length
+                for (let key in resposta) {
+                    if (resposta.hasOwnProperty(key)) {
+                        for (let contador = 0; contador < respostaLength; contador++) {
+                            if(key === 'id'+contador){
+                                //console.log(resposta[key]);
+                                tag += `<div id="${resposta[key]}" class="inicio-livro-card">`
+                            }
+                            else if(key === 'imagem'+contador){
+                                //console.log(resposta[key]);
+                                tag += `<div style="background:url(http://10.0.0.6/storiesbr/resources/src/${resposta[key]}) center;background-size:cover;height:100%;"><div class="inicio-card-titulo">`
+                            }
+                            else if(key === 'titulo'+contador){
+                                //console.log(resposta[key]);
+                                tag += `<h5>${resposta[key]}</h5>`
+                            }
+                            else if(key === 'desc'+contador){
+                                //console.log(resposta[key]);
+                                tag += `<p>${resposta[key]}</p><button>Ler agora</button></div></div></div>`
+                            }
+                        }
+                    }
+                }                          
+                document.querySelector('#inicioArtigosBox').innerHTML = tag
+                load_page.classList.replace('load_page', 'load_page_off');
+            }
+            else{
+                console.log('erro');
+            }
+        }
+    };
+    xmlreq.send(null)
+
+    // eventos de clique que direciona pra url adequada
+    const inicioArtigos = document.querySelector('#inicioArtigosBox');
+    inicioArtigos.onclick = event =>{
+        console.log(event.target.nodeName);
+        if(event.target.nodeName === 'BUTTON'){
+            sessionStorage.setItem('id', event.target.parentNode.parentNode.parentNode.id);
+            window.location.href = 'buscar-tudo.html?artigo='+event.target.parentNode.parentNode.parentNode.id;
+        }
+    }
 }
+//carregaInicio();
+
 let quantidadeVideos = 0;
 function carregarVideos(){
     //if(quantidadeVideos !== 0) quantidadeVideos + 4

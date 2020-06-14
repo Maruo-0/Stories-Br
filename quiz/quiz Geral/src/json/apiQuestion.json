@@ -1,0 +1,125 @@
+{
+    "response_code": 0,
+    "results": [
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Qual o nome do tratado que era estabelecida uma linha imaginária localizada a 370 léguas a oeste das Ilhas de Cabo Verde, dividindo o mundo não europeu entre Portugal e Espanha?",
+        "correct_answer": "Tratado de Tordesilhas",
+        "incorrect_answers": [
+          "Tratado de Versalhes",
+          "Tratado de Cabo Verde",
+          "Tratado de Divisões"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em 22 de Abril, homens da esquadra de Cabral avistaram um monte no litoral brasileiro. Qual nome foi apelidado?",
+        "correct_answer": "Monte Pascoal",
+        "incorrect_answers": [
+          "Monte Cabral",
+          "Monte do Litoral",
+          "Monte Pascoa"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em que data a carta escrita por Pero Vaz de Caminha foi enviada?",
+        "correct_answer": "1 de maio de 1500",
+        "incorrect_answers": [
+          "1 de junho de 1500",
+          "11 de julho de 1500",
+          "10 de maio de 1501 "
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Qual o nome do navegador português que chegou ao território brasileiro em 1498?",
+        "correct_answer": "Duarte Pacheco Pereira",
+        "incorrect_answers": [
+          "Diego de Lepe",
+          "Vasco da Gama",
+          "Vicente Yañez Pinzón"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quem foi o primeiro presidente do Brasil?",
+        "correct_answer": "Marechal. Deodoro da Fonseca",
+        "incorrect_answers": [
+          "Getúlio Vargas",
+          "Jucelino Kubitschek",
+          "Marechal Floriano Peixoto"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quem foi o primeiro imperador e a primeira imperatriz do Brasil independente?",
+        "correct_answer": "D Pedro e Maria Leopoldina",
+        "incorrect_answers": [
+          "D João e Carlota Joaquina",
+          "D. Pedro e Maria Antonieta",
+          "D. Fernando e Isabel de Bragança"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Em que ano começou o governo de Vargas?",
+        "correct_answer": "1930",
+        "incorrect_answers": [
+          "1932",
+          "1925",
+          "1935"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question":  "Por que a princesa Isabel foi chamada de a “redentora”?",
+        "correct_answer": "Pois ela assinou a lei Áurea que estabelecia a liberdade de todo os escravos",
+        "incorrect_answers": [
+          "Porque todos os escravos gostavam dela, e subordinava só para ganhar liberdade",
+          "Porque ela defendia os escravos e ajudava eles nas rebeliões",
+          "Para se beneficiar com uma popularidade positiva"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Quem foi o primeiro país a reconhecer a independência do Brasil?",
+        "correct_answer": "Estados Unidos",
+        "incorrect_answers": [
+          "Portugal",
+          "Inglaterra",
+          "Uruguai"
+        ]
+      },
+      {
+        "category": "History: Brasil",
+        "type": "multiple",
+        "difficulty": "easy",
+        "question": "Ano da Abdicação de D. Pedro I?",
+        "correct_answer": "1831",
+        "incorrect_answers": [
+          "1822",
+          "1834",
+          "1824"
+        ]
+      }
+    ]
+  }

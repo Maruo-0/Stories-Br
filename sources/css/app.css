@@ -1,28 +1,72 @@
 :root{
     --white: white;
+    --transparent-white: #ffffff80;
     --black: black;
-}
-.claro{
-    --navbar: ;
-    --navbar-secundaria: ;
-    --textocor: ;
-    --textocor-secundario: ;
-    --fundocor: ;
-    --fundocor-secundario: ;
-    --fundocor-terciario: ;
-    --fundo-titulo: ;
-    --card-titulo: ;
-    --card-titulo-secundario: ;
+    --transparent-black: #00000073;
+    --light-gray: #d4d4d4;
+    --gray: rgb(68, 68, 68);
+    --darkgray: rgb(48, 48, 48);
+    --light-blue: #009ACF;
+    --darkblue: #375183;
+    --darkerblue: #162747;
+    --green: rgb(74, 197, 117);
+    --darkgreen: rgb(55, 148, 88);
+
+    --dia-bg-color: #87dceb;
+    --dia-wave-color: linear-gradient(0deg, rgba(2,0,36,1) 55%, rgb(53, 175, 231) 90%, rgb(28, 233, 240) 100%);
+    --noite-bg-color: #271a61;
+    --noite-wave-color: linear-gradient(0deg, rgba(2,0,36,1) 55%, rgb(38, 41, 94) 90%, rgb(32, 48, 141) 100%);
 
 }
+.claro{
+    --upnavbar: var(--green);
+    --navbar: var(--white);
+    --nav-selected: var(--darkgreen);
+    --navbar-active: var(--darkgreen);
+    --navbar-active-alternate: var(--white);
+    
+    --textocor: var(--black);
+    --textocor-secundario: var(--white);
+    --fundocor: var(--white);
+    --button: var(--darkgreen);
+    --button-secundario: var(--darkgreen);
+    --card-play: var(--green);
+    --card-play-h: var(--darkgreen);
+    --config-back: var(--light-gray);
+
+    --card-border: var(--black);
+    --card-overlay: var(--transparent-black);
+    --card-text: var(--white);
+
+    --barra-progresso: var(--darkgreen);
+
+    --bg-color: var(--dia-bg-color);
+    --wave-color: var(--dia-wave-color);
+}
 .escuro{
-    --navbar: ;
-    --navbar-secundaria: ;
-    --textocor: ;
-    --textocor-secundario: ;
-    --fundocor: ;
-    --fundocor-secundario: ;
-    --fundocor-terciario: ;
+    --upnavbar: var(--darkerblue);
+    --navbar: var(--darkerblue);
+    --nav-selected: var(--white);
+    --navbar-active: var(--white);
+    --navbar-active-alternate: var(--darkerblue);
+    
+    --textocor: var(--white);
+    --textocor-secundario: var(--white);
+    --fundocor: var(--gray);
+    --button: var(--darkblue);
+    --button-secundario: var(--darkblue);
+    --card-play: var(--darkblue);
+    --card-play-h: var(--darkerblue);
+    --config-back: var(--darkgray);
+
+    --card-border: var(--white);
+    --card-overlay: var(--transparent-white);
+    --card-text: var(--black);
+
+    --barra-progresso: var(--light-blue);
+
+    --bg-color: var(--noite-bg-color);
+    --wave-color: var(--noite-wave-color);
 }
 
 ::-webkit-scrollbar{
@@ -44,6 +88,9 @@
 button, input, textarea, select{
     outline: none;
 }
+#configuracao, #inicio, #videos, #pesquisar{
+    color: var(--textocor);
+}
 
 /*////////////////// telas app INICIO ///////////////////*/
 .views{
@@ -52,6 +99,7 @@ button, input, textarea, select{
     display: flex;
     position: absolute;/*bug de overflow   FIX */
     z-index:1;/*bug de overflow  FIX*/
+    background-color: var(--fundocor);
 }
 .view{
     width: 100%;
@@ -59,9 +107,10 @@ button, input, textarea, select{
     position: absolute;
     display: none;
     overflow-y: scroll;
+    background-color: var(--fundocor);
 }
 .nav{
-    background-color: rgb(231, 231, 231);
+    background-color: var(--navbar);
     position: absolute;
     top: calc(100% - 60px);
     width: 100%;
@@ -78,13 +127,17 @@ button, input, textarea, select{
     justify-content: center;
     align-items: center;
     transition: background-color 0.8s ease-out;
+    color: var(--navbar-active);
+}
+g{
+    fill: var(--navbar-active);
 }
 .active{
-    background-color: rgb(55, 81, 131);
-    color: white;
+    background-color: var(--nav-selected);
+    color: var(--navbar-active-alternate);
 }
 .active g{
-    fill: white;
+    fill: var(--navbar-active-alternate);
 }
 .left{
     animation-name: view-anim-left;
@@ -148,10 +201,9 @@ button, input, textarea, select{
     font-size: 40px;
 }
 
-/* .container-livros{
-} */
 .livro-tab{
-    background: cornflowerblue;
+    background: var(--upnavbar);
+    color: var(--textocor);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,10 +212,6 @@ button, input, textarea, select{
     border-bottom-right-radius: 25px;
     transition: 200ms ease-in;
     box-shadow: inset 0px -3px 4px 0px rgba(0, 0, 0, 0.2);
-}
-.livro-tab:hover{
-    background: rgb(55, 81, 131);
-    color: aliceblue;
 }
 .livro-tab i, .livro-tab p{
     margin: 0 5px 0 5px;
@@ -185,7 +233,7 @@ button, input, textarea, select{
     width: 160px;
     height: 160px;
     margin: 5px;
-    border: solid 1px black;
+    border: solid 1px var(--card-border);
     border-radius: 5px;
 }
 .card-titulo{
@@ -193,26 +241,28 @@ button, input, textarea, select{
     bottom: 0;
     width: 100%;
     padding: 5px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: var(--card-overlay);
+    color: var(--card-text);
 }
 /*////////////////// inicio inicio ///////////////////*/
 .ini-bar{
     display: flex;
     align-items: center;
-    background: #375183;
+    background: var(--upnavbar);
     padding: 10px;
-    color: white;
+    color: var(--textocor);
 }
 .ini-bar p{
     padding: 4px;
 }
 .ini-bar button{
     padding: 5px;
-    background-color: white;
-    color: #375183;
+    background-color: var(--button-secundario);
+    color: var(--textocor-secundario);
     border: 0;
     border-radius: 4px;
+    position: absolute;
+    right: 10px;
 }
 .inicio-livro-container{
     overflow-x: auto;
@@ -220,8 +270,6 @@ button, input, textarea, select{
     padding: 5px;
 }
 .inicio-livro-card{
-    background: url(../img/caravela2.png) center;
-    background-size: cover;
     position: relative;
     min-width: 95%;
     width: 95%;
@@ -247,8 +295,8 @@ button, input, textarea, select{
 .inicio-card-titulo button{
     padding: 5px;
     margin: 5px;
-    background-color: #375183;
-    color: white;
+    background-color: var(--button);
+    color: var(--textocor-secundario);
     border: 0;
     box-shadow: 3px 4px 4px rgba(51, 7, 7, 0.25);
     border-radius: 4px;
@@ -266,8 +314,7 @@ button, input, textarea, select{
     cursor: pointer;
 }
 .playground-container .playground-box{
-    color: #929796;
-    background: #079992;
+    background: var(--card-play);
     padding: 15px;
     display: grid;
     font-size: 15px;
@@ -278,7 +325,7 @@ button, input, textarea, select{
     border-radius: 5px;
 }
 .playground-container .playground-box:hover{
-    background: #e91e63;
+    background: var(--card-play-h);
 }
 .playground-container .playground-box img{
     position: relative;
@@ -334,7 +381,7 @@ button, input, textarea, select{
     border-bottom: solid 1px #d4d4d4;
 }
 .usuario-container{
-    background-color: #d4d4d4;
+    background-color: var(--config-back);
 }
 .usuario-container i{
     font-size: 100px !important;
@@ -387,7 +434,7 @@ button, input, textarea, select{
 }
 .creditos-container{
     padding: 10px 10px 20px 10px;
-    background-color: #d4d4d4;
+    background-color: var(--config-back);
     text-align: center;
 }
 /*////////////////// configurações FIM ///////////////////*/
@@ -398,18 +445,21 @@ button, input, textarea, select{
 .tela{
     width: 100%;
     height: 100%;
+    background-color: var(--fundocor);
 }
 .nav-cima{
     position: fixed;
     z-index: 100;
     display: flex;
     align-items: center;
-    background: cornflowerblue;
+    background: var(--upnavbar);
     font-size: 30px;
     width: 100%;
+    max-width: 100vw;
     padding: 5px;
     transition: 200ms ease-in;
     box-shadow: inset 0px -3px 4px 0px rgba(0, 0, 0, 0.2);
+    color: var(--textocor);
 }
 .nav-pesquisa{
     display: flex;
@@ -445,7 +495,7 @@ button, input, textarea, select{
 }
 .barra-progresso {
     height: 5px;
-    background-color: #009ACF;
+    background-color: var(--barra-progresso);
     width: 0px;
     z-index: 1000;
     position: fixed;
@@ -458,7 +508,10 @@ button, input, textarea, select{
     top: 50px;
     height: 100%;
 }
-#artigosBox, #favoritosBox{
+#artigo{
+    color: var(--textocor);
+}
+#artigosBox, #favoritosBox, #outrosArtigosBox{
     display: grid;
     grid-template-columns: repeat(2, auto);
     justify-content: center;
@@ -489,6 +542,8 @@ button, input, textarea, select{
 }
 .texto{
     overflow: auto;
+    overflow-x: hidden !important;
+    max-width: 100vw;
 }
 .texto .select{
     display: flex;
@@ -508,6 +563,7 @@ button, input, textarea, select{
     outline-style: none;
 }
 #secaoTexto{
+    text-overflow: ellipsis;
     padding: 5px;
 }
 
