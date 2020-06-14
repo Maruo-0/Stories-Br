@@ -343,7 +343,7 @@ function carregaInicio(){
         }
     }
 }
-//carregaInicio();
+carregaInicio();
 
 let quantidadeVideos = 0;
 function carregarVideos(){
