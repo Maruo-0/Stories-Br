@@ -28,6 +28,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../resources/css/style.css">
     <link rel="stylesheet" href="../resources/css/painel-admin.css">
+    <style>
+        .avaliacao{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+        }
+        .avaliacao h2, .avaliacao h3{
+            margin: 5px 0;
+        }
+        .avaliacao p{
+            margin: 5px 10px;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/57b737a7cf.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -384,6 +397,42 @@
                 <a class="botao btn-link" href="../" >/Página Inicial</a><a class="botao btn-link" id="inicio">/Painel Inicio</a>
 
                 <h2 class="title">Avaliações</h2>
+
+                <div class="avaliacao">
+                    <h3>Gostou</h3>
+                    <p>Membros: <?php 
+                        $query = "select count(*) from app_avaliacao where id_usuario is not null and avaliacao = 1";
+                        $resultado = mysqli_query($conn, $query);
+                        $resultado = mysqli_fetch_assoc($resultado);
+                        echo $resultado['count(*)'];?>
+                    </p>
+                    <p>Não-Membros: <?php 
+                        $query = "select count(*) from app_avaliacao where id_usuario is null and avaliacao = 1";
+                        $resultado = mysqli_query($conn, $query);
+                        $resultado = mysqli_fetch_assoc($resultado);
+                        echo $resultado['count(*)'];?>
+                    </p>
+
+                    <h3>Não gostou</h3>
+                    <p>Membros: <?php 
+                        $query = "select count(*) from app_avaliacao where id_usuario is not null and avaliacao = 0";
+                        $resultado = mysqli_query($conn, $query);
+                        $resultado = mysqli_fetch_assoc($resultado);
+                        echo $resultado['count(*)'];?>
+                    </p>
+                    <p>Não-Membros: <?php 
+                        $query = "select count(*) from app_avaliacao where id_usuario is null and avaliacao = 0";
+                        $resultado = mysqli_query($conn, $query);
+                        $resultado = mysqli_fetch_assoc($resultado);
+                        echo $resultado['count(*)'];?>
+                    </p>
+                    <h2>Total: <?php 
+                        $query = "select count(*) from app_avaliacao";
+                        $resultado = mysqli_query($conn, $query);
+                        $resultado = mysqli_fetch_assoc($resultado);
+                        echo $resultado['count(*)'];?>
+                    </h2>
+                </div>
             </div>
         </div>
     </div>
