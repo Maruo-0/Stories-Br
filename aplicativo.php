@@ -157,7 +157,7 @@
                 <center>
                 <h1>App Stories Br</h1>
                 <p>Quer usar o stories br no seu smartphone com mais conforto e facilidade?</p>
-                <a class="button" href="resources/app/StoriesBr.apk" download="StoriesBr.apk">Baixe o app aqui</a>
+                <a class="button" href="https://drive.google.com/file/d/1pRAesBmFW4NfZA46X0nCJZzlqKPPOxE1/view?usp=sharing">Baixe o app aqui</a>
                 </center>
             </div>
         </div>
